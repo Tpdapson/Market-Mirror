@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify Payment — Market Mirror</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="otp.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <i class="ph-fill ph-shopping-bag" style="font-size:16px;"></i>
+      </div>
+      Market Mirror
+    </a>
+    <div class="nav-secure">
+      <i class="ph-fill ph-lock" style="font-size:14px;color:#16A34A;"></i>
+      256-bit SSL secured
+    </div>
+  </nav>
+
+  <!-- PROGRESS -->
+  <div class="checkout-progress">
+    <div class="cp-step">
+      <div class="cp-num done">&#10003;</div>
+      <span class="cp-label done">Cart</span>
+    </div>
+    <div class="cp-line done"></div>
+    <div class="cp-step">
+      <div class="cp-num done">&#10003;</div>
+      <span class="cp-label done">Delivery</span>
+    </div>
+    <div class="cp-line done"></div>
+    <div class="cp-step">
+      <div class="cp-num done">&#10003;</div>
+      <span class="cp-label done">Payment</span>
+    </div>
+    <div class="cp-line done"></div>
+    <div class="cp-step">
+      <div class="cp-num active">4</div>
+      <span class="cp-label active">Verify</span>
+    </div>
+  </div>
+
+  <!-- OTP PAGE -->
+  <div class="otp-page">
+    <div class="otp-card">
+      <div class="otp-icon">📱</div>
+      <div class="otp-title">Verify Your Payment</div>
+      <p class="otp-sub">We sent a 6-digit code to your phone number</p>
+      <div class="otp-phone" id="otp-phone">+234 803 456 7890</div>
+
+      <div class="otp-inputs" id="otp-inputs">
+        <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" />
+        <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" />
+        <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" />
+        <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" />
+        <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" />
+        <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" />
+      </div>
+      <div class="otp-hint">Enter any 6 digits to verify</div>
+
+      <button class="otp-submit" id="otp-submit" disabled>Verify &amp; Confirm Payment</button>
+
+      <div class="otp-resend">
+        Didn't receive the code? <a id="resend-link">Resend</a>
+        <span class="otp-timer" id="otp-timer">Resend in 0:30</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAYMENT SUCCESS POPUP -->
+  <div class="success-backdrop" id="success-backdrop">
+    <div class="success-popup">
+      <div class="success-ring">
+        <span class="success-check">✓</span>
+      </div>
+      <h2>Payment Successful!</h2>
+      <p>Your order has been confirmed and is now being processed.</p>
+      <div class="success-amount" id="success-amount">₦35,050</div>
+      <p style="font-size:12px;color:var(--muted);">You will receive an SMS confirmation shortly.</p>
+      <button class="success-continue" id="success-continue">View Order Summary →</button>
+    </div>
+  </div>
+
+  <script src="cart.js"></script>
+  <script>
+    (function () {
+      // ── Populate phone from saved order ───────────────────────────
+      var order = MM_CART ? MM_CART.getOrder() : null;
+      var phoneEl = document.getElementById('otp-phone');
+      if (order && order.phone && phoneEl) {
+        phoneEl.textContent = order.phone;
+      }
+      var amountEl = document.getElementById('success-amount');
+      if (order && amountEl) {
+        amountEl.textContent = '₦' + Number(order.total || 35050).toLocaleString();
+      }
+
+      // ── OTP digits: auto-advance, backspace, paste ─────────────
+      var digits = Array.from(document.querySelectorAll('.otp-digit'));
+      var submitBtn = document.getElementById('otp-submit');
+
+      function getCode() {
+        return digits.map(function(d){ return d.value; }).join('');
+      }
+
+      function checkComplete() {
+        var code = getCode();
+        if (code.length === 6 && /^\d{6}$/.test(code)) {
+          submitBtn.disabled = false;
+          digits.forEach(function(d){ d.classList.add('filled'); });
+        } else {
+          submitBtn.disabled = true;
+          digits.forEach(function(d){ d.classList.remove('filled'); });
+        }
+      }
+
+      digits.forEach(function (input, idx) {
+        input.addEventListener('input', function () {
+          // Keep only last digit if somehow more than one
+          this.value = this.value.replace(/\D/g, '').slice(-1);
+          if (this.value && idx < digits.length - 1) {
+            digits[idx + 1].focus();
+          }
+          checkComplete();
+        });
+
+        input.addEventListener('keydown', function (e) {
+          if (e.key === 'Backspace') {
+            if (!this.value && idx > 0) {
+              digits[idx - 1].focus();
+              digits[idx - 1].value = '';
+              checkComplete();
+            }
+          }
+          if (e.key === 'ArrowLeft' && idx > 0) digits[idx - 1].focus();
+          if (e.key === 'ArrowRight' && idx < digits.length - 1) digits[idx + 1].focus();
+        });
+
+        // Paste support: paste all 6 digits at once
+        input.addEventListener('paste', function (e) {
+          e.preventDefault();
+          var text = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '');
+          for (var i = 0; i < digits.length && i < text.length; i++) {
+            digits[i].value = text[i];
+          }
+          digits[Math.min(text.length, digits.length) - 1].focus();
+          checkComplete();
+        });
+      });
+
+      // Focus first digit on load
+      setTimeout(function(){ digits[0] && digits[0].focus(); }, 100);
+
+      // ── Submit handler ─────────────────────────────────────────
+      submitBtn.addEventListener('click', function () {
+        var code = getCode();
+        if (code.length !== 6) return;
+
+        submitBtn.textContent = '⏳ Verifying…';
+        submitBtn.disabled = true;
+
+        // Simulate verification delay
+        setTimeout(function () {
+          showSuccess();
+        }, 1000);
+      });
+
+      // ── Show success popup ─────────────────────────────────────
+      function showSuccess() {
+        var backdrop = document.getElementById('success-backdrop');
+        backdrop.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }
+
+      document.getElementById('success-continue').addEventListener('click', function () {
+        // Clear the cart after successful payment
+        if (window.MM_CART) MM_CART.clear();
+        window.location.href = 'order-summary.html';
+      });
+
+      // ── Resend countdown timer ────────────────────────────────
+      var timerEl = document.getElementById('otp-timer');
+      var resendLink = document.getElementById('resend-link');
+      var seconds = 30;
+
+      function tick() {
+        if (seconds <= 0) {
+          timerEl.style.display = 'none';
+          resendLink.style.opacity = '1';
+          resendLink.style.pointerEvents = 'auto';
+          return;
+        }
+        timerEl.textContent = 'Resend in 0:' + (seconds < 10 ? '0' : '') + seconds;
+        seconds--;
+        setTimeout(tick, 1000);
+      }
+
+      resendLink.style.opacity = '0.4';
+      resendLink.style.pointerEvents = 'none';
+      tick();
+
+      resendLink.addEventListener('click', function () {
+        digits.forEach(function(d){ d.value = ''; d.classList.remove('filled','error'); });
+        digits[0].focus();
+        submitBtn.disabled = true;
+        seconds = 30;
+        timerEl.style.display = '';
+        resendLink.style.opacity = '0.4';
+        resendLink.style.pointerEvents = 'none';
+        tick();
+      });
+    })();
+  </script>
+</body>
+</html>

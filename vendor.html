@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vendor — Market Mirror</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  
+  
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link rel="stylesheet" href="vendor.css">
+  <link rel="stylesheet" href="auth-modal.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <i class="ph-fill ph-shopping-bag" style="font-size:18px;"></i>
+      </div>
+      Market Mirror
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#markets">Markets</a></li>
+      <li><a href="product-listing.html">Categories</a></li>
+      <li><a href="vendors.html" id="nav-vendors-link">Vendors</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-search-btn" aria-label="Search">
+        <i class="ph-bold ph-magnifying-glass" style="font-size:16px;"></i>
+      </button>
+      <a href="#" class="btn btn-outline">Sign in</a>
+      <a href="cart.html" class="btn btn-dark">
+        <i class="ph-bold ph-shopping-cart" style="font-size:15px;"></i>
+        Cart (0)
+      </a>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="sep">/</span>
+    <a href="index.html#markets">Markets</a>
+    <span class="sep">/</span>
+    <a href="#" id="bc-market-link">Balogun Market</a>
+    <span class="sep">/</span>
+    <a href="#" id="bc-vendors-link">Vendors</a>
+    <span class="sep">/</span>
+    <span class="current" id="bc-vendor-name">Mama Titi Fabrics</span>
+  </div>
+
+  <!-- VENDOR HERO -->
+  <section class="vendor-hero">
+
+    <div class="vh-avatar-col">
+      <div class="vh-avatar-wrap">
+        <div class="vh-avatar sa-1" id="vh-avatar">&#129526;</div>
+        <div class="vh-avatar-glow"></div>
+      </div>
+      <div class="vh-live-tag">
+        <span class="live-dot"></span>
+        <span id="vh-live-text">Stall open now</span>
+      </div>
+    </div>
+
+    <div class="vh-info-col">
+      <div class="vh-top-row">
+        <span class="vh-badge badge-top" id="vh-badge">Top Seller</span>
+        <span class="vh-market-tag" id="vh-market-tag">Balogun Market</span>
+      </div>
+
+      <h1 class="vh-name" id="vh-name">Mama Titi Fabrics</h1>
+      <div class="vh-owner" id="vh-owner">Titilayo Adeyemi &middot; Row 4, Stall 12</div>
+
+      <div class="vh-tags" id="vh-tags">
+        <span class="vh-tag">Ankara</span>
+        <span class="vh-tag">Lace</span>
+        <span class="vh-tag">Aso-oke</span>
+      </div>
+
+      <div class="vh-stats-row">
+        <div class="vh-stat">
+          <div class="vh-stat-num" id="vh-stat-rating">4.9<span>★</span></div>
+          <div class="vh-stat-label">Rating</div>
+        </div>
+        <div class="vh-stat">
+          <div class="vh-stat-num" id="vh-stat-reviews">1,204</div>
+          <div class="vh-stat-label">Reviews</div>
+        </div>
+        <div class="vh-stat">
+          <div class="vh-stat-num" id="vh-stat-products">340</div>
+          <div class="vh-stat-label">Products</div>
+        </div>
+      </div>
+
+      <div class="vh-actions">
+        <a href="#vendor-products" class="btn btn-red" id="vh-browse-btn">Browse products &darr;</a>
+        <button class="btn btn-outline" id="vh-msg-btn">
+          <i class="ph-bold ph-chat-circle-text" style="font-size:14px;"></i>
+          Message
+        </button>
+        <a href="#" class="btn btn-outline" id="vh-market-btn">
+          <i class="ph-fill ph-storefront" style="font-size:14px;"></i>
+          View market
+        </a>
+        <a href="#" class="btn btn-outline" id="vh-all-vendors-btn">
+          <i class="ph-fill ph-users" style="font-size:14px;"></i>
+          All vendors
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- PRODUCTS SECTION -->
+  <section class="vendor-products" id="vendor-products">
+
+    <div class="vp-header">
+      <div>
+        <p class="section-label" id="vp-label">Products</p>
+        <h2 id="vp-title">Products from<br/><span class="accent" id="vp-title-name">Mama Titi Fabrics</span></h2>
+      </div>
+      <div class="vp-header-right">
+        <span class="vp-count" id="vp-count"></span>
+        <a href="#" class="btn btn-outline" id="vp-all-btn">View all at market &rarr;</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div class="vp-grid" id="vp-grid">
+      <!-- populated by vendor.js -->
+    </div>
+
+    <!-- NO PRODUCTS STATE -->
+    <div class="vp-empty" id="vp-empty" style="display:none;">
+      <p class="vp-empty-note" id="vp-empty-note">Showing top products from this market</p>
+    </div>
+
+  </section>
+
+  <!-- OTHER VENDORS -->
+  <section class="other-vendors" id="other-vendors-section">
+    <div class="ov-header">
+      <div>
+        <p class="section-label">More vendors</p>
+        <h2 id="ov-title">Other sellers at<br/><span class="accent" id="ov-market-name">Balogun Market</span></h2>
+      </div>
+      <a href="#" class="btn btn-outline" id="ov-all-link">See all vendors &rarr;</a>
+    </div>
+    <div class="ov-grid" id="ov-grid">
+      <!-- populated by vendor.js -->
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="cta-strip">
+    <h2 id="cta-title">
+      Ready to explore<br/>
+      <span class="dim">more at</span><br/>
+      <span class="red" id="cta-market-name">Balogun Market?</span>
+    </h2>
+    <div class="cta-strip-right">
+      <a href="#" class="btn btn-red" id="cta-btn">Browse all products &rarr;</a>
+      <p class="cta-note">Same-day delivery across Lagos. Secure checkout.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom:16px;">
+          <div class="nav-logo-icon">
+            <i class="ph-fill ph-shopping-bag" style="font-size:16px;"></i>
+          </div>
+          Market Mirror
+        </a>
+        <p>The digital twin of Lagos markets — shop from Balogun to Alaba without leaving your home.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Markets</h4>
+        <ul>
+          <li><a href="market-page.html?market=balogun">Balogun Market</a></li>
+          <li><a href="market-page.html?market=alaba">Alaba International</a></li>
+          <li><a href="market-page.html?market=computer-village">Computer Village</a></li>
+          <li><a href="market-page.html?market=tejuosho">Tejuosho Market</a></li>
+          <li><a href="index.html#markets">All markets</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#">How it works</a></li>
+          <li><a href="#">Become a vendor</a></li>
+          <li><a href="#">Delivery info</a></li>
+          <li><a href="#">Buyer protection</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 <span>Market Mirror</span>. All rights reserved.</p>
+      <p style="font-size:13px;color:var(--muted)">Currently viewing: <span id="currently-viewing">Mama Titi Fabrics</span></p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="cart.js"></script>
+  <script src="wishlist.js"></script>
+  <script src="chats.js"></script>
+  <script src="vendor.js"></script>
+  <script src="auth-modal.js"></script>
+</body>
+</html>

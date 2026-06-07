@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Messages — Market Mirror</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="chats.css"/>
+  <link rel="stylesheet" href="auth-modal.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <i class="ph-fill ph-shopping-bag" style="font-size:18px;"></i>
+      </div>
+      Market Mirror
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#markets">Markets</a></li>
+      <li><a href="product-listing.html">Categories</a></li>
+      <li><a href="vendors.html">Vendors</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-search-btn" aria-label="Search">
+        <i class="ph-bold ph-magnifying-glass" style="font-size:16px;"></i>
+      </button>
+      <a href="#" class="btn btn-outline">Sign in</a>
+      <a href="cart.html" class="btn btn-dark">
+        <i class="ph-bold ph-shopping-cart" style="font-size:15px;"></i>
+        Cart
+      </a>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="sep">/</span>
+    <span class="current">Messages</span>
+  </div>
+
+  <!-- CHATS LAYOUT -->
+  <div class="chats-layout" id="chats-layout">
+
+    <!-- LEFT: conversation list -->
+    <aside class="chats-sidebar">
+      <div class="chats-sidebar-header">
+        <h2>Messages</h2>
+      </div>
+      <div class="chats-list" id="chats-list">
+        <!-- populated by JS -->
+      </div>
+    </aside>
+
+    <!-- RIGHT: active conversation or placeholder -->
+    <div class="chats-panel" id="chats-panel">
+      <!-- populated by JS -->
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="nav-logo-icon">
+            <i class="ph-fill ph-shopping-bag" style="font-size:16px;"></i>
+          </div>
+          Market Mirror
+        </a>
+        <p>The digital twin of Lagos markets — shop from Balogun to Alaba without leaving your home.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Markets</h4>
+        <ul>
+          <li><a href="#">Balogun Market</a></li>
+          <li><a href="#">Alaba International</a></li>
+          <li><a href="#">Computer Village</a></li>
+          <li><a href="#">Tejuosho Market</a></li>
+          <li><a href="#">All markets</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#">How it works</a></li>
+          <li><a href="#">Become a vendor</a></li>
+          <li><a href="#">Delivery info</a></li>
+          <li><a href="#">Buyer protection</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 <span>Market Mirror</span>. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="cart.js"></script>
+  <script src="wishlist.js"></script>
+  <script src="chats.js"></script>
+  <script src="auth-modal.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    var _activeVid = null;
+    var isMobile = function () { return window.innerWidth <= 768; };
+
+    function esc(s) {
+      return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function fmtTime(ts) {
+      var d = new Date(ts);
+      var now = new Date();
+      var diff = now - d;
+      if (diff < 60000) return 'Just now';
+      if (diff < 3600000) return Math.floor(diff / 60000) + 'm ago';
+      if (d.toDateString() === now.toDateString()) {
+        return d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
+      }
+      var yesterday = new Date(now); yesterday.setDate(now.getDate() - 1);
+      if (d.toDateString() === yesterday.toDateString()) return 'Yesterday';
+      return d.toLocaleDateString('en-GB', { day:'numeric', month:'short' });
+    }
+
+    function renderList() {
+      var list = document.getElementById('chats-list');
+      var all = Object.values(MM_CHATS.getAll());
+      all.sort(function (a, b) { return b.lastAt - a.lastAt; });
+
+      if (!all.length) {
+        list.innerHTML =
+          '<div class="chats-list-empty">' +
+            '<i class="ph-bold ph-chat-circle-text" style="font-size:40px;color:#E0DAD1;margin-bottom:4px"></i>' +
+            '<h3>No messages yet</h3>' +
+            '<p>Browse products or visit a vendor to start a conversation.</p>' +
+            '<a href="product-listing.html" class="btn btn-dark" style="margin-top:8px;font-size:12px;padding:9px 18px">Browse products</a>' +
+          '</div>';
+        return;
+      }
+
+      list.innerHTML = all.map(function (c) {
+        var active = c.vendorId === _activeVid ? ' active' : '';
+        var unreadHtml = c.unread > 0
+          ? '<span class="cli-unread">' + c.unread + '</span>'
+          : '';
+        var preview = c.lastMessage ? esc(c.lastMessage) : '<em>No messages yet</em>';
+        return '<div class="chats-list-item' + active + '" data-vid="' + esc(c.vendorId) + '" onclick="openConv(this.dataset.vid)">' +
+          '<div class="cli-avatar">' + esc(c.vendorAvatar) + '</div>' +
+          '<div class="cli-info">' +
+            '<div class="cli-top">' +
+              '<span class="cli-name">' + esc(c.vendorName) + '</span>' +
+              '<span class="cli-time">' + fmtTime(c.lastAt) + '</span>' +
+            '</div>' +
+            '<div class="cli-preview">' + preview + '</div>' +
+          '</div>' +
+          unreadHtml +
+        '</div>';
+      }).join('');
+    }
+
+    function renderPanel(vendorId) {
+      var panel = document.getElementById('chats-panel');
+      var chat = MM_CHATS.getAll()[vendorId];
+      if (!chat) {
+        renderEmptyPanel();
+        return;
+      }
+
+      var vendorUrl = 'vendor.html?market=' + encodeURIComponent(chat.marketId) + '&name=' + encodeURIComponent(chat.vendorName);
+      var backBtn = isMobile()
+        ? '<button class="cch-btn" onclick="closeConvMobile()" style="border:none;background:none;padding:4px 8px;"><i class="ph-bold ph-arrow-left" style="font-size:16px;"></i></button>'
+        : '';
+
+      var msgsHtml = '';
+      if (!chat.messages.length) {
+        msgsHtml = '<div class="chats-no-msgs"><i class="ph-bold ph-chat-circle-text" style="font-size:36px;color:#E0DAD1;margin-bottom:8px"></i><span>Say hi to ' + esc(chat.vendorName) + '!</span></div>';
+      } else {
+        msgsHtml = '<div class="chats-conv-start">Beginning of your conversation with ' + esc(chat.vendorName) + '</div>' +
+          chat.messages.map(function (m) {
+            var cls = m.from === 'user' ? 'chats-msg-user' : 'chats-msg-vendor';
+            return '<div class="chats-msg ' + cls + '">' +
+              '<div class="chats-msg-bubble">' + esc(m.text) + '</div>' +
+              '<div class="chats-msg-time">' + fmtTime(m.at) + '</div>' +
+            '</div>';
+          }).join('');
+      }
+
+      panel.innerHTML =
+        '<div class="chats-conv">' +
+          '<div class="chats-conv-header">' +
+            backBtn +
+            '<div class="cch-avatar">' + esc(chat.vendorAvatar) + '</div>' +
+            '<div class="cch-info">' +
+              '<div class="cch-name">' + esc(chat.vendorName) + '</div>' +
+              '<div class="cch-sub">' + esc(chat.marketName) + (chat.sub ? ' · ' + esc(chat.sub) : '') + '</div>' +
+            '</div>' +
+            '<div class="cch-actions">' +
+              '<a href="' + vendorUrl + '" class="cch-btn"><i class="ph-bold ph-storefront" style="font-size:13px;"></i>Visit stall</a>' +
+            '</div>' +
+          '</div>' +
+          '<div class="chats-messages" id="chats-messages">' + msgsHtml + '</div>' +
+          '<div class="chats-input-bar">' +
+            '<input type="text" id="chats-input" class="chats-input" placeholder="Message ' + esc(chat.vendorName) + '…" autocomplete="off"/>' +
+            '<button class="chats-send-btn" id="chats-send-btn"><i class="ph-fill ph-paper-plane-tilt"></i></button>' +
+          '</div>' +
+        '</div>';
+
+      scrollToBottom();
+      wireInput(vendorId);
+    }
+
+    function renderEmptyPanel() {
+      document.getElementById('chats-panel').innerHTML =
+        '<div class="chats-panel-empty">' +
+          '<i class="ph-bold ph-chats-circle" style="font-size:56px;color:#E0DAD1;margin-bottom:8px"></i>' +
+          '<h3>Your messages</h3>' +
+          '<p>Select a conversation or message a vendor from any product page.</p>' +
+          '<a href="product-listing.html" class="btn btn-dark" style="margin-top:8px">Browse products</a>' +
+        '</div>';
+    }
+
+    function scrollToBottom() {
+      var el = document.getElementById('chats-messages');
+      if (el) el.scrollTop = el.scrollHeight;
+    }
+
+    function wireInput(vendorId) {
+      var input = document.getElementById('chats-input');
+      var sendBtn = document.getElementById('chats-send-btn');
+      if (!input || !sendBtn) return;
+
+      function doSend() {
+        var text = input.value.trim();
+        if (!text) return;
+        input.value = '';
+        MM_CHATS.addMessage(vendorId, text, 'user');
+        appendMsg({ text: text, from: 'user', at: Date.now() });
+        scrollToBottom();
+        renderList();
+
+        var vid = vendorId;
+        setTimeout(function () {
+          var reply = MM_CHATS.REPLIES[Math.floor(Math.random() * MM_CHATS.REPLIES.length)];
+          MM_CHATS.addMessage(vid, reply, 'vendor');
+          if (_activeVid === vid) {
+            appendMsg({ text: reply, from: 'vendor', at: Date.now() });
+            scrollToBottom();
+          }
+          renderList();
+          MM_CHATS.refreshNavCount();
+        }, 900 + Math.floor(Math.random() * 700));
+      }
+
+      sendBtn.addEventListener('click', doSend);
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); doSend(); }
+      });
+      setTimeout(function () { input.focus(); }, 60);
+    }
+
+    function appendMsg(msg) {
+      var el = document.getElementById('chats-messages');
+      if (!el) return;
+      var noMsgs = el.querySelector('.chats-no-msgs');
+      if (noMsgs) el.innerHTML = '<div class="chats-conv-start">Beginning of your conversation</div>';
+      var cls = msg.from === 'user' ? 'chats-msg-user' : 'chats-msg-vendor';
+      var div = document.createElement('div');
+      div.className = 'chats-msg ' + cls;
+      div.innerHTML = '<div class="chats-msg-bubble">' + esc(msg.text) + '</div><div class="chats-msg-time">' + fmtTime(msg.at) + '</div>';
+      el.appendChild(div);
+    }
+
+    window.openConv = function (vendorId) {
+      _activeVid = vendorId;
+      MM_CHATS.markRead(vendorId);
+      renderList();
+      renderPanel(vendorId);
+      if (isMobile()) document.getElementById('chats-layout').classList.add('conv-open');
+      // update URL without reload
+      var url = new URL(location.href);
+      url.searchParams.set('v', vendorId);
+      history.replaceState(null, '', url.toString());
+    };
+
+    window.closeConvMobile = function () {
+      _activeVid = null;
+      document.getElementById('chats-layout').classList.remove('conv-open');
+      renderEmptyPanel();
+      var url = new URL(location.href);
+      url.searchParams.delete('v');
+      history.replaceState(null, '', url.toString());
+    };
+
+    // ── Listen for new messages from the modal ─────────────────
+    document.addEventListener('mm-chats-change', function () {
+      renderList();
+      if (_activeVid) {
+        var chat = MM_CHATS.getAll()[_activeVid];
+        if (chat) scrollToBottom();
+      }
+    });
+
+    // ── Init ──────────────────────────────────────────────────
+    renderList();
+
+    var initVid = new URLSearchParams(location.search).get('v');
+    if (initVid && MM_CHATS.getAll()[initVid]) {
+      openConv(initVid);
+    } else {
+      renderEmptyPanel();
+    }
+  })();
+  </script>
+</body>
+</html>

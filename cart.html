@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart (3 items) — Market Mirror</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link rel="stylesheet" href="cart.css"/>
+  <link rel="stylesheet" href="auth-modal.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <i class="ph-fill ph-shopping-bag" style="font-size:18px;"></i>
+      </div>
+      Market Mirror
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#markets">Markets</a></li>
+      <li><a href="product-listing.html">Categories</a></li>
+      <li><a href="vendors.html">Vendors</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-search-btn" aria-label="Search">
+        <i class="ph-bold ph-magnifying-glass" style="font-size:16px;"></i>
+      </button>
+      <a href="#" class="btn btn-outline">Sign in</a>
+      <a href="cart.html" class="btn btn-dark">
+        <i class="ph-bold ph-shopping-cart" style="font-size:15px;"></i>
+        Cart (3)
+      </a>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a><span class="sep">/</span>
+    <a href="market-page.html?market=balogun">Balogun Market</a><span class="sep">/</span>
+    <a href="product-listing.html?market=balogun">Products</a><span class="sep">/</span>
+    <span class="current">Cart</span>
+  </div>
+
+  <!-- CHECKOUT PROGRESS -->
+  <div class="checkout-progress">
+    <div class="cp-step">
+      <div class="cp-num active">1</div>
+      <span class="cp-label active">Cart</span>
+    </div>
+    <div class="cp-line"></div>
+    <a href="checkout.html" class="cp-step" style="text-decoration:none;">
+      <div class="cp-num">2</div>
+      <span class="cp-label">Delivery</span>
+    </a>
+    <div class="cp-line"></div>
+    <a href="checkout.html" class="cp-step" style="text-decoration:none;">
+      <div class="cp-num">3</div>
+      <span class="cp-label">Payment</span>
+    </a>
+    <div class="cp-line"></div>
+    <a href="checkout.html" class="cp-step" style="text-decoration:none;">
+      <div class="cp-num">4</div>
+      <span class="cp-label">Confirm</span>
+    </a>
+  </div>
+
+  <!-- CART PAGE -->
+  <div class="cart-page">
+
+    <!-- LEFT: ITEMS -->
+    <div class="cart-items">
+      <div class="cart-header">
+        <div>
+          <h1>Your Cart</h1>
+          <div class="cart-count" id="cart-header-count">Loading…</div>
+        </div>
+        <button class="clear-cart">Clear cart</button>
+      </div>
+
+      <!-- Items rendered by cart-render.js -->
+      <div id="cart-items-list"></div>
+
+      <!-- FREE DELIVERY PROGRESS -->
+      <div class="upsell" style="margin:24px 48px">
+        <div class="upsell-icon">&#128666;</div>
+        <div class="upsell-text">
+          <div class="upsell-title">You're &#8358;5,300 away from free delivery!</div>
+          <div class="upsell-sub">Add more to unlock free same-day Lagos delivery</div>
+        </div>
+        <div class="upsell-progress">
+          <div class="upsell-bar"><div class="upsell-fill"></div></div>
+          <div class="upsell-val">&#8358;34,700 of &#8358;20,000 min. — already unlocked!</div>
+        </div>
+      </div>
+
+      <!-- PROMO CODE -->
+      <div class="cart-promo">
+        <span style="font-size:13px;color:var(--dark);font-weight:500;white-space:nowrap">Promo code</span>
+        <input type="text" class="promo-input" placeholder="Enter promo code&hellip;" />
+        <button class="promo-apply">Apply</button>
+      </div>
+
+      <div class="cart-continue">
+        <a href="product-listing.html" class="btn btn-outline" style="font-size:13px">&larr; Continue shopping</a>
+        <div style="font-size:13px;color:var(--muted)">Items held for <strong style="color:var(--dark);font-family:'Inter',sans-serif">24 hours</strong></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: ORDER SUMMARY -->
+    <aside class="order-summary">
+      <div class="os-title">Order Summary</div>
+
+      <div class="os-items" id="os-items-list"></div>
+
+      <div class="os-breakdown">
+        <div class="os-row">
+          <span class="os-row-label">Subtotal (<span id="os-item-count">0</span> items)</span>
+          <span class="os-row-val" id="os-subtotal">₦0</span>
+        </div>
+        <div class="os-row">
+          <span class="os-row-label">Delivery fee</span>
+          <span class="os-row-val green">Free</span>
+        </div>
+        <div class="os-row">
+          <span class="os-row-label">Buyer protection</span>
+          <span class="os-row-val">&#8358;350</span>
+        </div>
+        <div class="os-row">
+          <span class="os-row-label">Promo code</span>
+          <span class="os-row-val red">–&#8358;0</span>
+        </div>
+      </div>
+
+      <div class="os-total">
+        <span class="os-total-label">Total</span>
+        <span class="os-total-val" id="os-total">₦350</span>
+      </div>
+
+      <button class="btn-checkout" onclick="window.location.href='checkout.html'">
+        Proceed to Checkout &rarr;
+      </button>
+
+      <div class="os-trust">
+        <div class="trust-item">&#128274; Secure checkout</div>
+        <div class="trust-item">&#9989; Buyer protected</div>
+        <div class="trust-item">&#8617; Easy returns</div>
+      </div>
+
+      <div class="os-payment-icons">
+        <div class="pay-icon">VISA</div>
+        <div class="pay-icon">Mastercard</div>
+        <div class="pay-icon">Paystack</div>
+        <div class="pay-icon">Bank</div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><div class="nav-logo-icon"><i class="ph-fill ph-shopping-bag" style="font-size:16px;"></i></div>Market Mirror</a>
+        <p>The digital twin of Lagos markets — shop from Balogun to Alaba without leaving your home.</p>
+      </div>
+      <div class="footer-col"><h4>Markets</h4><ul><li><a href="market-page.html?market=balogun">Balogun Market</a></li><li><a href="market-page.html?market=alaba">Alaba International</a></li><li><a href="index.html#markets">All markets</a></li></ul></div>
+      <div class="footer-col"><h4>Platform</h4><ul><li><a href="#">How it works</a></li><li><a href="#">Delivery info</a></li><li><a href="#">Buyer protection</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About us</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 <span>Market Mirror</span>. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="cart.js"></script>
+  <script src="auth-modal.js"></script>
+  <script src="cart-render.js"></script>
+</body>
+</html>

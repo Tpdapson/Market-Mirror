@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Wishlist — Market Mirror</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="wishlist.css"/>
+  <link rel="stylesheet" href="auth-modal.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <i class="ph-fill ph-shopping-bag" style="font-size:18px;"></i>
+      </div>
+      Market Mirror
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#markets">Markets</a></li>
+      <li><a href="product-listing.html">Categories</a></li>
+      <li><a href="vendors.html">Vendors</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-search-btn" aria-label="Search">
+        <i class="ph-bold ph-magnifying-glass" style="font-size:16px;"></i>
+      </button>
+      <a href="#" class="btn btn-outline">Sign in</a>
+      <a href="cart.html" class="btn btn-dark">
+        <i class="ph-bold ph-shopping-cart" style="font-size:15px;"></i>
+        Cart
+      </a>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="sep">/</span>
+    <span class="current">My Wishlist</span>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="wl-header">
+    <div>
+      <h1>My <span class="accent">Wishlist</span></h1>
+      <p class="wl-subtitle" id="wl-subtitle">0 saved items</p>
+    </div>
+    <div class="wl-header-actions" id="wl-header-actions" style="display:none">
+      <button class="btn btn-outline" id="wl-add-all-btn" style="font-size:13px;padding:10px 20px">
+        <i class="ph-bold ph-shopping-cart" style="font-size:13px;"></i>Add all to cart
+      </button>
+      <button class="btn btn-outline" id="wl-clear-btn" style="font-size:13px;padding:10px 20px;color:var(--muted)">
+        <i class="ph-bold ph-trash" style="font-size:13px;"></i>Clear all
+      </button>
+    </div>
+  </div>
+
+  <!-- WISHLIST CONTENT -->
+  <div class="wl-content">
+    <div class="wl-grid" id="wl-grid"></div>
+
+    <!-- EMPTY STATE -->
+    <div class="wl-empty" id="wl-empty" style="display:none">
+      <div class="wl-empty-icon">
+        <i class="ph-fill ph-heart" style="font-size:40px;color:#E0DAD1"></i>
+      </div>
+      <h2>Your wishlist is empty</h2>
+      <p>Browse products and tap the <i class="ph-bold ph-heart" style="font-size:13px;"></i> icon to save items here for later.</p>
+      <a href="product-listing.html" class="btn btn-dark" style="margin-top:4px">Browse products</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="nav-logo-icon">
+            <i class="ph-fill ph-shopping-bag" style="font-size:16px;"></i>
+          </div>
+          Market Mirror
+        </a>
+        <p>The digital twin of Lagos markets — shop from Balogun to Alaba without leaving your home.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Markets</h4>
+        <ul>
+          <li><a href="#">Balogun Market</a></li>
+          <li><a href="#">Alaba International</a></li>
+          <li><a href="#">Computer Village</a></li>
+          <li><a href="#">Tejuosho Market</a></li>
+          <li><a href="#">All markets</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#">How it works</a></li>
+          <li><a href="#">Become a vendor</a></li>
+          <li><a href="#">Delivery info</a></li>
+          <li><a href="#">Buyer protection</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 <span>Market Mirror</span>. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="cart.js"></script>
+  <script src="wishlist.js"></script>
+  <script src="chats.js"></script>
+  <script src="auth-modal.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    function stars(r) {
+      var full = Math.floor(r);
+      return '&#9733;'.repeat(full) + '&#9734;'.repeat(5 - full);
+    }
+
+    function escAttr(str) {
+      return String(str).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function renderGrid() {
+      var items = Object.values(MM_WISHLIST.getAll());
+      var grid = document.getElementById('wl-grid');
+      var empty = document.getElementById('wl-empty');
+      var subtitle = document.getElementById('wl-subtitle');
+      var headerActions = document.getElementById('wl-header-actions');
+
+      subtitle.textContent = items.length === 1 ? '1 saved item' : items.length + ' saved items';
+
+      if (items.length === 0) {
+        grid.innerHTML = '';
+        empty.style.display = 'flex';
+        headerActions.style.display = 'none';
+        return;
+      }
+
+      empty.style.display = 'none';
+      headerActions.style.display = 'flex';
+
+      items.sort(function (a, b) { return b.addedAt - a.addedAt; });
+
+      grid.innerHTML = items.map(function (item) {
+        return '<div class="wl-card" data-id="' + escAttr(item.id) + '">' +
+          '<div class="wl-card-img">' +
+            '<img src="' + escAttr(item.image) + '" alt="' + escAttr(item.name) + '" loading="lazy"/>' +
+            '<button class="wl-remove-btn" title="Remove from wishlist"' +
+              ' data-wid="' + escAttr(item.id) + '"' +
+              ' data-wname="' + escAttr(item.name) + '"' +
+              ' data-wvendor="' + escAttr(item.vendor) + '"' +
+              ' data-wprice="' + escAttr(item.price) + '"' +
+              ' data-wpricenum="' + item.priceNum + '"' +
+              ' data-wunit="' + escAttr(item.unit) + '"' +
+              ' data-wmarket="' + escAttr(item.marketId) + '"' +
+              ' data-wmarketname="' + escAttr(item.marketName) + '"' +
+              ' data-wimage="' + escAttr(item.image) + '"' +
+              ' data-wsub="' + escAttr(item.sub) + '"' +
+              ' data-wrating="' + item.rating + '"' +
+              ' data-wreviews="' + escAttr(item.reviews) + '"' +
+              ' onclick="event.stopPropagation();mmToggleWishlist(this)">' +
+              '<i class="ph-fill ph-heart" style="color:var(--red)"></i>' +
+            '</button>' +
+          '</div>' +
+          '<div class="wl-card-body">' +
+            '<div class="wl-card-market">' + escAttr(item.marketName || '') + '</div>' +
+            '<div class="wl-card-vendor">' + escAttr(item.vendor) + '</div>' +
+            '<div class="wl-card-name">' + escAttr(item.name) + '</div>' +
+            '<div class="wl-card-sub">' + escAttr(item.sub || '') + '</div>' +
+            '<div class="wl-card-rating">' +
+              '<span class="wl-stars">' + stars(item.rating) + '</span>' +
+              '<span class="wl-score">' + item.rating + '</span>' +
+              '<span class="wl-reviews">(' + escAttr(item.reviews) + ')</span>' +
+            '</div>' +
+            '<div class="wl-card-footer">' +
+              '<div class="wl-price-wrap">' +
+                '<div class="wl-price">' + escAttr(item.price) + '</div>' +
+                '<div class="wl-unit">per ' + escAttr(item.unit) + '</div>' +
+              '</div>' +
+              '<button class="wl-add-btn"' +
+                ' data-product-name="' + escAttr(item.name) + '"' +
+                ' data-product-vendor="' + escAttr(item.vendor) + '"' +
+                ' data-product-price="' + escAttr(item.price) + '"' +
+                ' data-product-pricenum="' + item.priceNum + '"' +
+                ' data-product-unit="' + escAttr(item.unit) + '"' +
+                ' data-market-id="' + escAttr(item.marketId) + '"' +
+                ' data-market-name="' + escAttr(item.marketName) + '"' +
+                ' onclick="mmWlAdd(this)">Add</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    window.mmWlAdd = function (btn) {
+      if (!window.MM_CART) return;
+      var d = btn.dataset;
+      MM_CART.add({
+        name:       d.productName,
+        vendor:     d.productVendor,
+        price:      d.productPrice,
+        priceNum:   parseInt(d.productPricenum, 10) || 0,
+        unit:       d.productUnit,
+        emoji:      '🛍️',
+        qty:        1,
+        marketId:   d.marketId,
+        marketName: d.marketName
+      });
+      btn.textContent = '✓ Added!';
+      btn.style.background = '#16A34A';
+      setTimeout(function () {
+        btn.textContent = 'Add';
+        btn.style.background = '';
+      }, 1500);
+    };
+
+    document.getElementById('wl-add-all-btn').addEventListener('click', function () {
+      if (!window.MM_CART) return;
+      var items = Object.values(MM_WISHLIST.getAll());
+      items.forEach(function (item) {
+        MM_CART.add({
+          name:       item.name,
+          vendor:     item.vendor,
+          price:      item.price,
+          priceNum:   item.priceNum,
+          unit:       item.unit,
+          emoji:      '🛍️',
+          qty:        1,
+          marketId:   item.marketId,
+          marketName: item.marketName
+        });
+      });
+      var btn = this;
+      btn.innerHTML = '<i class="ph-bold ph-check" style="font-size:13px;"></i>All added!';
+      btn.style.background = '#16A34A';
+      btn.style.color = '#fff';
+      btn.style.borderColor = '#16A34A';
+      setTimeout(function () {
+        btn.innerHTML = '<i class="ph-bold ph-shopping-cart" style="font-size:13px;margin-right:6px"></i>Add all to cart';
+        btn.style.background = '';
+        btn.style.color = '';
+        btn.style.borderColor = '';
+      }, 2000);
+    });
+
+    document.getElementById('wl-clear-btn').addEventListener('click', function () {
+      if (!confirm('Remove all items from your wishlist?')) return;
+      var ids = Object.keys(MM_WISHLIST.getAll());
+      ids.forEach(function (id) { MM_WISHLIST.remove(id); });
+    });
+
+    document.addEventListener('mm-wishlist-change', renderGrid);
+    renderGrid();
+  })();
+  </script>
+</body>
+</html>

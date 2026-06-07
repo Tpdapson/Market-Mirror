@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vendors — Market Mirror</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  
+  
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link rel="stylesheet" href="vendors.css">
+  <link rel="stylesheet" href="auth-modal.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <i class="ph-fill ph-shopping-bag" style="font-size:18px;"></i>
+      </div>
+      Market Mirror
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#markets">Markets</a></li>
+      <li><a href="product-listing.html">Categories</a></li>
+      <li><a href="vendors.html" class="nav-active">Vendors</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-search-btn" aria-label="Search">
+        <i class="ph-bold ph-magnifying-glass" style="font-size:16px;"></i>
+      </button>
+      <a href="#" class="btn btn-outline">Sign in</a>
+      <a href="cart.html" class="btn btn-dark">
+        <i class="ph-bold ph-shopping-cart" style="font-size:15px;"></i>
+        Cart (0)
+      </a>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="sep">/</span>
+    <a href="index.html#markets">Markets</a>
+    <span class="sep">/</span>
+    <a href="#" id="bc-market-link">Balogun Market</a>
+    <span class="sep">/</span>
+    <span class="current">All Vendors</span>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="vendors-header">
+    <div class="vh-left">
+      <p class="section-label" id="vh-market-label">Balogun Market</p>
+      <h1 id="vh-title">Active Stalls &amp;<br/><span class="accent">Verified Sellers</span></h1>
+      <p class="vh-sub" id="vh-sub">Showing all verified vendors and stalls</p>
+    </div>
+    <div class="vh-right">
+      <div class="search-wrap">
+        <i class="ph-fill ph-magnifying-glass search-icon"></i>
+        <input type="text" id="vendor-search" class="vendor-search" placeholder="Search vendors, products or locations…" />
+      </div>
+      <a href="#" class="btn btn-dark" id="vh-browse-btn">Browse all products &rarr;</a>
+    </div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="vendors-stats" id="vendors-stats">
+    <div class="vs-item">
+      <div class="vs-num" id="stat-vendors">—</div>
+      <div class="vs-label">Active Vendors</div>
+    </div>
+    <div class="vs-item">
+      <div class="vs-num" id="stat-products">—</div>
+      <div class="vs-label">Products Listed</div>
+    </div>
+    <div class="vs-item">
+      <div class="vs-num" id="stat-rating">—</div>
+      <div class="vs-label">Avg. Rating</div>
+    </div>
+    <div class="vs-item">
+      <div class="vs-num" id="stat-specialty">—</div>
+      <div class="vs-label">Speciality</div>
+    </div>
+  </div>
+
+  <!-- FILTER + SORT BAR -->
+  <div class="vendor-filter-bar">
+    <div class="vf-chips" id="vf-chips">
+      <button class="vf-chip active" data-filter="all">All vendors</button>
+      <button class="vf-chip" data-filter="Top Seller">&#9733; Top Sellers</button>
+      <button class="vf-chip" data-filter="Verified">&#10003; Verified</button>
+      <button class="vf-chip" data-filter="New">&#10024; New</button>
+    </div>
+    <div class="vf-right">
+      <span class="vf-count" id="vf-count"></span>
+      <select class="sort-select" id="vendor-sort">
+        <option value="rating">Sort: Top Rated</option>
+        <option value="reviews">Most Reviews</option>
+        <option value="products">Most Products</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- VENDORS GRID -->
+  <div class="vendors-body">
+    <div class="vendors-grid" id="vendors-grid">
+      <!-- populated by vendors.js -->
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state" id="empty-state" style="display:none;">
+      <div class="es-icon">&#128269;</div>
+      <h3>No vendors found</h3>
+      <p>Try a different search or filter</p>
+      <button class="btn btn-outline" id="clear-search-btn" style="margin-top:16px">Clear search</button>
+    </div>
+  </div>
+
+  <!-- CTA STRIP -->
+  <section class="cta-strip">
+    <h2 id="cta-title">
+      Ready to shop?<br/>
+      <span class="dim">Browse all products at</span><br/>
+      <span class="red" id="cta-market-name">Balogun Market</span>
+    </h2>
+    <div class="cta-strip-right">
+      <a href="product-listing.html?market=balogun" class="btn btn-red" id="cta-btn">Browse all products &rarr;</a>
+      <p class="cta-note">Same-day delivery across Lagos. Secure checkout.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom:16px;">
+          <div class="nav-logo-icon">
+            <i class="ph-fill ph-shopping-bag" style="font-size:16px;"></i>
+          </div>
+          Market Mirror
+        </a>
+        <p>The digital twin of Lagos markets — shop from Balogun to Alaba without leaving your home.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Markets</h4>
+        <ul>
+          <li><a href="market-page.html?market=balogun">Balogun Market</a></li>
+          <li><a href="market-page.html?market=alaba">Alaba International</a></li>
+          <li><a href="market-page.html?market=computer-village">Computer Village</a></li>
+          <li><a href="market-page.html?market=tejuosho">Tejuosho Market</a></li>
+          <li><a href="index.html#markets">All markets</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#">How it works</a></li>
+          <li><a href="#">Become a vendor</a></li>
+          <li><a href="#">Delivery info</a></li>
+          <li><a href="#">Buyer protection</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 <span>Market Mirror</span>. All rights reserved.</p>
+      <p style="font-size:13px;color:var(--muted)">Currently viewing: <span id="currently-viewing">Balogun Market — Vendors</span></p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="cart.js"></script>
+  <script src="wishlist.js"></script>
+  <script src="chats.js"></script>
+  <script src="vendors.js"></script>
+  <script src="auth-modal.js"></script>
+</body>
+</html>

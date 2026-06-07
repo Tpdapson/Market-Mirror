@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — Market Mirror</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link rel="stylesheet" href="checkout.css"/>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <i class="ph-fill ph-shopping-bag" style="font-size:18px;"></i>
+      </div>
+      Market Mirror
+    </a>
+    <div style="display:flex;align-items:center;gap:16px">
+      <span style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:5px"><i class="ph ph-lock-simple" style="font-size:14px;color:#16A34A"></i> 256-bit SSL secured checkout</span>
+      <a href="cart.html" class="btn btn-outline"><i class="ph ph-arrow-left" style="font-size:13px"></i> Back to cart</a>
+    </div>
+  </nav>
+
+  <!-- CHECKOUT PROGRESS -->
+  <div class="checkout-progress">
+    <a href="cart.html" class="cp-step" style="text-decoration:none;">
+      <div class="cp-num done">&#10003;</div>
+      <span class="cp-label done">Cart</span>
+    </a>
+    <div class="cp-line done"></div>
+    <div class="cp-step">
+      <div class="cp-num active">2</div>
+      <span class="cp-label active">Delivery</span>
+    </div>
+    <div class="cp-line"></div>
+    <div class="cp-step">
+      <div class="cp-num">3</div>
+      <span class="cp-label">Payment</span>
+    </div>
+    <div class="cp-line"></div>
+    <div class="cp-step">
+      <div class="cp-num">4</div>
+      <span class="cp-label">Confirm</span>
+    </div>
+  </div>
+
+  <!-- CHECKOUT LAYOUT -->
+  <div class="checkout-layout">
+
+    <!-- LEFT: FORM -->
+    <div class="checkout-form">
+
+      <div class="cf-header">
+        <h1>Checkout</h1>
+        <p>Complete your order from 2 vendors at Balogun Market</p>
+      </div>
+
+      <!-- CONTACT INFO -->
+      <div class="cf-section">
+        <div class="cf-section-title">
+          <div class="cf-section-num">1</div>
+          <span class="cf-section-name">Contact Information</span>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label>First name</label>
+            <input type="text" class="filled" value="Adaeze" />
+          </div>
+          <div class="field">
+            <label>Last name</label>
+            <input type="text" class="filled" value="Okonkwo" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label>Email address</label>
+            <input type="email" class="filled" value="adaeze@email.com" />
+          </div>
+          <div class="field">
+            <label>Phone number</label>
+            <input type="tel" class="filled" value="+234 803 456 7890" />
+          </div>
+        </div>
+      </div>
+
+      <!-- DELIVERY ADDRESS -->
+      <div class="cf-section">
+        <div class="cf-section-title">
+          <div class="cf-section-num">2</div>
+          <span class="cf-section-name">Delivery Address</span>
+        </div>
+        <div class="form-row full">
+          <div class="field">
+            <label>Street address</label>
+            <input type="text" placeholder="e.g. 12 Broad Street, Lagos Island" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label>City / LGA</label>
+            <select><option selected>Lagos Island</option><option>Ikeja</option><option>Lekki</option><option>Victoria Island</option><option>Ikoyi</option><option>Surulere</option></select>
+          </div>
+          <div class="field">
+            <label>State</label>
+            <select><option selected>Lagos State</option><option>Abuja FCT</option><option>Rivers</option></select>
+          </div>
+        </div>
+        <div class="form-row full" style="margin-top:4px">
+          <div class="field">
+            <label>Delivery instructions (optional)</label>
+            <textarea rows="2" placeholder="e.g. Call on arrival, leave with security&hellip;" style="resize:none;border-radius:10px"></textarea>
+          </div>
+        </div>
+
+        <!-- DELIVERY METHOD -->
+        <div style="margin-top:24px">
+          <div style="font-size:12px;font-weight:600;color:var(--dark);font-family:'Inter',sans-serif;margin-bottom:14px;letter-spacing:0.02em">SELECT DELIVERY METHOD</div>
+          <div class="delivery-opts">
+            <div class="delivery-opt selected">
+              <div class="do-radio selected"></div>
+              <div class="do-icon"><i class="ph ph-truck"></i></div>
+              <div class="do-info">
+                <div class="do-name">Same-Day Delivery</div>
+                <div class="do-sub">Delivered today by 7:00 PM &middot; Order by 2:00 PM</div>
+              </div>
+              <div class="do-price free">Free</div>
+            </div>
+            <div class="delivery-opt">
+              <div class="do-radio"></div>
+              <div class="do-icon"><i class="ph ph-clock"></i></div>
+              <div class="do-info">
+                <div class="do-name">Next-Day Delivery</div>
+                <div class="do-sub">Delivered tomorrow, 9:00 AM – 5:00 PM</div>
+              </div>
+              <div class="do-price">Free</div>
+            </div>
+            <div class="delivery-opt">
+              <div class="do-radio"></div>
+              <div class="do-icon"><i class="ph ph-map-pin"></i></div>
+              <div class="do-info">
+                <div class="do-name">Self Pickup</div>
+                <div class="do-sub">Collect from vendor stalls — Row 4 &amp; Row 7</div>
+              </div>
+              <div class="do-price free">Free</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAYMENT -->
+      <div class="cf-section">
+        <div class="cf-section-title">
+          <div class="cf-section-num">3</div>
+          <span class="cf-section-name">Payment Method</span>
+        </div>
+
+        <div class="payment-tabs">
+          <div class="pay-tab active" data-tab="card"><i class="ph ph-credit-card" style="font-size:15px"></i> Card</div>
+          <div class="pay-tab" data-tab="bank"><i class="ph ph-bank" style="font-size:15px"></i> Bank Transfer</div>
+          <div class="pay-tab" data-tab="ussd"><i class="ph ph-device-mobile" style="font-size:15px"></i> USSD</div>
+          <div class="pay-tab" data-tab="cod"><i class="ph ph-hand-coins" style="font-size:15px"></i> Cash on Delivery</div>
+        </div>
+
+        <!-- CARD -->
+        <div class="pay-panel" id="pay-panel-card">
+          <div class="field">
+            <label>Cardholder name</label>
+            <input type="text" placeholder="Name on card" />
+          </div>
+          <div class="field">
+            <label>Card number</label>
+            <div class="card-number-field">
+              <input type="text" placeholder="0000  0000  0000  0000" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;background:white;color:var(--dark);outline:none;" />
+              <div class="card-schemes">
+                <span class="card-scheme">VISA</span>
+                <span class="card-scheme">MC</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label>Expiry date</label>
+              <input type="text" placeholder="MM / YY" />
+            </div>
+            <div class="field">
+              <label>CVV</label>
+              <input type="text" placeholder="•••" />
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
+            <div style="width:18px;height:18px;border-radius:4px;border:1.5px solid var(--border);background:var(--dark);display:flex;align-items:center;justify-content:center;font-size:11px;color:white">&#10003;</div>
+            <span style="font-size:13px;color:var(--dark)">Save card for future purchases</span>
+          </div>
+        </div>
+
+        <!-- BANK TRANSFER -->
+        <div class="pay-panel" id="pay-panel-bank" style="display:none">
+          <div class="pay-info-box">
+            <div class="pib-title"><i class="ph ph-bell" style="font-size:13px"></i> Transfer &#8358;35,050 to any account below</div>
+            <div class="pib-sub">Your order will be confirmed within 15 minutes of receiving your transfer.</div>
+          </div>
+          <div class="bank-accounts">
+            <div class="bank-account">
+              <div class="ba-bank">GTBank</div>
+              <div class="ba-number">0123 456 789</div>
+              <div class="ba-name">Market Mirror Escrow Ltd</div>
+              <button class="ba-copy-btn" data-copy="0123456789" onclick="mmCopyAcct(this)">Copy</button>
+            </div>
+            <div class="bank-account">
+              <div class="ba-bank">Access Bank</div>
+              <div class="ba-number">9876 543 210</div>
+              <div class="ba-name">Market Mirror Escrow Ltd</div>
+              <button class="ba-copy-btn" data-copy="9876543210" onclick="mmCopyAcct(this)">Copy</button>
+            </div>
+            <div class="bank-account">
+              <div class="ba-bank">First Bank</div>
+              <div class="ba-number">3012 987 654</div>
+              <div class="ba-name">Market Mirror Escrow Ltd</div>
+              <button class="ba-copy-btn" data-copy="3012987654" onclick="mmCopyAcct(this)">Copy</button>
+            </div>
+          </div>
+          <div class="pay-note"><i class="ph ph-lock-simple" style="font-size:13px"></i> Payment is held in escrow and only released to vendors after you confirm delivery.</div>
+        </div>
+
+        <!-- USSD -->
+        <div class="pay-panel" id="pay-panel-ussd" style="display:none">
+          <div class="pay-info-box">
+            <div class="pib-title"><i class="ph ph-device-mobile" style="font-size:13px"></i> Pay with USSD — no internet needed</div>
+            <div class="pib-sub">Select your bank and dial the code on your phone.</div>
+          </div>
+          <div class="field">
+            <label>Select your bank</label>
+            <select id="ussd-bank-select" onchange="mmUpdateUssd(this.value)">
+              <option value="">-- Choose bank --</option>
+              <option value="gtb">GTBank — *737#</option>
+              <option value="access">Access Bank — *901#</option>
+              <option value="first">First Bank — *894#</option>
+              <option value="zenith">Zenith Bank — *966#</option>
+              <option value="uba">UBA — *919#</option>
+              <option value="sterling">Sterling Bank — *822#</option>
+            </select>
+          </div>
+          <div class="ussd-code-wrap" id="ussd-code-wrap" style="display:none">
+            <div class="ussd-code-label">Dial this code on your phone</div>
+            <div class="ussd-code" id="ussd-code">*737*000*35050#</div>
+            <button class="ba-copy-btn" style="margin-top:8px" onclick="mmCopyUssd()">Copy code</button>
+          </div>
+          <ol class="ussd-steps" id="ussd-steps" style="display:none">
+            <li>Dial the code above on your registered phone number</li>
+            <li>Follow the prompts and enter your PIN to authorise &#8358;35,050</li>
+            <li>You'll receive an SMS confirmation — we'll update your order automatically</li>
+          </ol>
+          <div class="pay-note">Works on any mobile network. Ensure your phone line is linked to your bank account.</div>
+        </div>
+
+        <!-- CASH ON DELIVERY -->
+        <div class="pay-panel" id="pay-panel-cod" style="display:none">
+          <div class="pay-info-box cod">
+            <div class="pib-title"><i class="ph ph-hand-coins" style="font-size:13px"></i> Pay cash when your order arrives</div>
+            <div class="pib-sub">Have the exact amount ready — our riders do not carry change.</div>
+          </div>
+          <div class="cod-breakdown">
+            <div class="cod-row">
+              <span>Mama Titi Fabrics</span>
+              <span>&#8358;7,200</span>
+            </div>
+            <div class="cod-row">
+              <span>Lagos Leather Co.</span>
+              <span>&#8358;18,500</span>
+            </div>
+            <div class="cod-row">
+              <span>Lace Kingdom</span>
+              <span>&#8358;9,000</span>
+            </div>
+            <div class="cod-row cod-row-total">
+              <span>Total to pay on delivery</span>
+              <span>&#8358;35,050</span>
+            </div>
+          </div>
+          <div class="cod-notes">
+            <div class="cod-note"><i class="ph ph-check-circle" style="font-size:15px;color:#16A34A;flex-shrink:0"></i><span>Cash only — Naira notes accepted</span></div>
+            <div class="cod-note"><i class="ph ph-lock-simple" style="font-size:15px;flex-shrink:0"></i><span>Your order is still escrow-protected until you confirm receipt</span></div>
+            <div class="cod-note"><i class="ph ph-phone" style="font-size:15px;flex-shrink:0"></i><span>Rider will call 30 minutes before arrival</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEW & CONFIRM -->
+      <div class="cf-section">
+        <div class="cf-section-title">
+          <div class="cf-section-num">4</div>
+          <span class="cf-section-name">Review Your Order</span>
+        </div>
+        <div class="review-summary">
+          <div class="rs-item">
+            <div class="rs-icon"><i class="ph ph-user" style="font-size:16px"></i></div>
+            <div>
+              <div class="rs-label">Contact</div>
+              <div class="rs-val">Adaeze Okonkwo &middot; adaeze@email.com</div>
+            </div>
+            <button class="rs-edit">Edit</button>
+          </div>
+          <div class="rs-item">
+            <div class="rs-icon"><i class="ph ph-map-pin" style="font-size:16px"></i></div>
+            <div>
+              <div class="rs-label">Delivery to</div>
+              <div class="rs-val">Lagos Island &middot; Same-Day &middot; Free</div>
+            </div>
+            <button class="rs-edit">Edit</button>
+          </div>
+          <div class="rs-item">
+            <div class="rs-icon"><i class="ph ph-credit-card" style="font-size:16px"></i></div>
+            <div>
+              <div class="rs-label">Payment</div>
+              <div class="rs-val">Card ending •••• 4521 &middot; &#8358;35,050</div>
+            </div>
+            <button class="rs-edit">Edit</button>
+          </div>
+          <div class="rs-item">
+            <div class="rs-icon"><i class="ph ph-lock-simple" style="font-size:16px"></i></div>
+            <div>
+              <div class="rs-label">Buyer protection</div>
+              <div class="rs-val">Payment held in escrow until delivery confirmed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLACE ORDER -->
+      <div class="cf-cta">
+        <button class="btn-place-order" id="place-order-btn">
+          <i class="ph ph-lock-simple" style="font-size:15px"></i> Place Order — &#8358;35,050
+        </button>
+        <p class="cf-terms">
+          By placing your order you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.<br/>
+          Payment is held securely in escrow until you confirm receipt of your goods.
+        </p>
+      </div>
+    </div>
+
+    <!-- RIGHT: ORDER SUMMARY -->
+    <aside class="order-summary">
+      <div class="os-title">Order Summary</div>
+
+      <div class="os-items">
+        <div class="os-item">
+          <div class="os-item-img osi-1">&#129526;</div>
+          <div class="os-item-info">
+            <div class="os-item-name">Premium Ankara Wax Print <span class="os-item-qty">×3</span></div>
+            <div class="os-item-sub">Mama Titi Fabrics</div>
+          </div>
+          <div class="os-item-price">&#8358;7,200</div>
+        </div>
+        <div class="os-item">
+          <div class="os-item-img osi-2">&#128083;</div>
+          <div class="os-item-info">
+            <div class="os-item-name">Handcrafted Leather Tote <span class="os-item-qty">×1</span></div>
+            <div class="os-item-sub">Lagos Leather Co.</div>
+          </div>
+          <div class="os-item-price">&#8358;18,500</div>
+        </div>
+        <div class="os-item">
+          <div class="os-item-img osi-3">&#129525;</div>
+          <div class="os-item-info">
+            <div class="os-item-name">Swiss Voile Lace <span class="os-item-qty">×2</span></div>
+            <div class="os-item-sub">Lace Kingdom</div>
+          </div>
+          <div class="os-item-price">&#8358;9,000</div>
+        </div>
+      </div>
+
+      <div class="os-breakdown">
+        <div class="os-row"><span class="os-row-label">Subtotal</span><span class="os-row-val">&#8358;34,700</span></div>
+        <div class="os-row"><span class="os-row-label">Delivery</span><span class="os-row-val green">Free</span></div>
+        <div class="os-row"><span class="os-row-label">Buyer protection</span><span class="os-row-val">&#8358;350</span></div>
+        <div class="os-row"><span class="os-row-label">Promo discount</span><span class="os-row-val red">–&#8358;0</span></div>
+      </div>
+
+      <div class="os-total">
+        <span class="os-total-label">Total to pay</span>
+        <span class="os-total-val">&#8358;35,050</span>
+      </div>
+
+      <div class="delivery-card">
+        <div class="delivery-card-title"><i class="ph ph-truck" style="font-size:13px"></i> Estimated Delivery</div>
+        <div class="vendor-delivery">
+          <span class="vd-name">Mama Titi Fabrics</span>
+          <span class="vd-eta today">Today, by 7 PM</span>
+        </div>
+        <div class="vendor-delivery">
+          <span class="vd-name">Lagos Leather Co.</span>
+          <span class="vd-eta today">Today, by 7 PM</span>
+        </div>
+        <div class="vendor-delivery">
+          <span class="vd-name">Lace Kingdom</span>
+          <span class="vd-eta today">Today, by 7 PM</span>
+        </div>
+      </div>
+
+      <div class="security-badges">
+        <div class="sec-badge"><i class="ph ph-lock-simple" style="font-size:13px"></i> SSL Secure</div>
+        <div class="sec-badge"><i class="ph ph-shield-check" style="font-size:13px"></i> Escrow</div>
+        <div class="sec-badge"><i class="ph ph-arrow-counter-clockwise" style="font-size:13px"></i> 7-day returns</div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&copy; 2025 <span>Market Mirror</span>. All rights reserved.</p>
+      <p style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:5px"><i class="ph ph-lock-simple" style="font-size:14px"></i> 256-bit TLS encrypted checkout</p>
+    </div>
+  </footer>
+
+  <script src="cart.js"></script>
+  <script>
+    document.getElementById('place-order-btn')?.addEventListener('click', function () {
+      // Collect form data
+      var fname = document.querySelector('input[value="Adaeze"]')?.value || document.querySelectorAll('.field input[type="text"]')[0]?.value || '';
+      var lname = document.querySelector('input[value="Okonkwo"]')?.value || document.querySelectorAll('.field input[type="text"]')[1]?.value || '';
+      var email = document.querySelector('input[type="email"]')?.value || 'adaeze@email.com';
+      var phone = document.querySelector('input[type="tel"]')?.value || '+234 803 456 7890';
+
+      // Save order to localStorage
+      if (window.MM_CART) {
+        MM_CART.saveOrder({
+          customerName:  (fname + ' ' + lname).trim() || 'Customer',
+          email:         email,
+          phone:         phone,
+          deliveryArea:  document.querySelector('select')?.value || 'Lagos Island'
+        });
+      }
+
+      this.textContent = '⏳ Processing…';
+      this.disabled = true;
+      setTimeout(function () { window.location.href = 'otp.html'; }, 600);
+    });
+
+    document.querySelectorAll('.delivery-opt').forEach(opt => {
+      opt.addEventListener('click', function () {
+        document.querySelectorAll('.delivery-opt').forEach(o => {
+          o.classList.remove('selected');
+          o.querySelector('.do-radio')?.classList.remove('selected');
+        });
+        this.classList.add('selected');
+        this.querySelector('.do-radio')?.classList.add('selected');
+      });
+    });
+
+    var USSD_CODES = {
+      gtb:     '*737*000*35050#',
+      access:  '*901*000*35050#',
+      first:   '*894*000*35050#',
+      zenith:  '*966*000*35050#',
+      uba:     '*919*000*35050#',
+      sterling:'*822*000*35050#',
+    };
+
+    document.querySelectorAll('.pay-tab').forEach(tab => {
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.pay-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        document.querySelectorAll('.pay-panel').forEach(p => p.style.display = 'none');
+        var panel = document.getElementById('pay-panel-' + this.dataset.tab);
+        if (panel) panel.style.display = 'block';
+      });
+    });
+
+    window.mmCopyAcct = function (btn) {
+      navigator.clipboard.writeText(btn.dataset.copy).catch(() => {});
+      var orig = btn.textContent;
+      btn.textContent = 'Copied!';
+      btn.style.background = '#16A34A';
+      btn.style.color = '#fff';
+      setTimeout(function () { btn.textContent = orig; btn.style.background = ''; btn.style.color = ''; }, 1800);
+    };
+
+    window.mmUpdateUssd = function (val) {
+      var codeEl = document.getElementById('ussd-code');
+      var wrap = document.getElementById('ussd-code-wrap');
+      var steps = document.getElementById('ussd-steps');
+      if (!val) { wrap.style.display = 'none'; steps.style.display = 'none'; return; }
+      codeEl.textContent = USSD_CODES[val] || '';
+      wrap.style.display = 'block';
+      steps.style.display = 'block';
+    };
+
+    window.mmCopyUssd = function () {
+      var code = document.getElementById('ussd-code').textContent;
+      navigator.clipboard.writeText(code).catch(() => {});
+    };
+  </script>
+</body>
+</html>

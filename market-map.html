@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Market Map — Balogun Market · Market Mirror</title>
+<style>
+  .market-switcher .ms-sw-header{padding:14px 16px 10px;font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="stylesheet" href="market-map.css"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <i class="ph-fill ph-shopping-bag" style="font-size:18px;"></i>
+    </div>
+    Market Mirror
+  </a>
+  <div class="nav-pill" id="marketPill">Viewing: <strong id="marketPillName">Balogun Market</strong>&nbsp;·&nbsp;Map<span class="nav-pill-caret">▾</span></div>
+  <div class="nav-r">
+    <button class="nbtn nbtn-ghost" onclick="window.location.href='market-page.html'">← Market Page</button>
+    <button class="nbtn nbtn-red" id="cartBtn">🛒 Cart (<span class="cart-count" id="cartCount">2</span>)</button>
+  </div>
+</nav>
+
+<!-- Market Switcher Dropdown -->
+<div class="market-switcher" id="marketSwitcher">
+  <div class="ms-sw-header">Lagos Markets</div>
+  <div id="msList"></div>
+</div>
+
+<!-- Subtle grid overlay -->
+<div class="map-grid"></div>
+
+<!-- MAP VIEWPORT -->
+<div class="map-viewport" id="viewport">
+<div class="map-canvas" id="canvas">
+<div class="market-plan" id="plan"><!-- rendered by JS --></div>
+</div><!-- /canvas -->
+</div><!-- /viewport -->
+
+<!-- ── FLOATING CONTROLS ── -->
+<div class="ctrl-top">
+  <div class="map-search" id="searchBar">
+    <span class="ms-ico">🔍</span>
+    <input class="ms-inp" id="searchInp" type="text" placeholder="Search stalls, vendors, products…" autocomplete="off"/>
+    <button class="ms-clear" id="searchClear">✕</button>
+    <div class="ms-divider"></div>
+    <div class="ms-filter" id="filterBtn">
+      <div class="ms-filter-dot" id="filterDot"></div>
+      ⊞ Filter
+    </div>
+  </div>
+  <div class="search-results" id="searchResults"></div>
+  <div class="map-cats" id="mapCats"><!-- rendered by JS --></div>
+</div>
+
+<!-- Right tools -->
+<div class="ctrl-right">
+  <div class="tool-group">
+    <div class="mtool" id="zoomIn" title="Zoom in">＋</div>
+    <div class="mtool" id="zoomOut" title="Zoom out">－</div>
+  </div>
+  <div class="mtool solo" id="resetView" title="Reset view">⌖</div>
+  <div class="mtool solo" id="listView" title="List view" onclick="window.location.href='market-page.html'">☰</div>
+</div>
+
+<!-- Locate me -->
+<div class="ctrl-bl">
+  <div class="locate-btn" id="locateBtn"><span class="locate-ico">◎</span>Locate me</div>
+</div>
+
+<!-- Legend -->
+<div class="legend" id="legend"><!-- rendered by JS --></div>
+
+<!-- Zoom indicator -->
+<div class="zoom-ind" id="zoomInd">100%</div>
+
+<!-- Scale bar -->
+<div class="map-scale"><div class="scale-bar"></div><div class="scale-lbl">≈ 50m</div></div>
+
+<!-- ── BACKDROP ── -->
+<div class="sheet-backdrop" id="backdrop"></div>
+
+<!-- ── SHOP PREVIEW BOTTOM SHEET ── -->
+<div class="bottom-sheet" id="bottomSheet">
+  <div class="bs-card">
+    <div class="bs-handle"><div class="bs-handle-bar"></div></div>
+    <div class="bs-body" id="bsBody"><!-- filled by JS --></div>
+  </div>
+</div>
+
+<!-- ── PRODUCT QUICK-VIEW ── -->
+<div class="pqv-overlay" id="pqvOverlay">
+  <div class="pqv-card" id="pqvCard"><!-- filled by JS --></div>
+</div>
+
+<!-- ── TOAST AREA ── -->
+<div class="toast-wrap" id="toastWrap"></div>
+
+<!-- ── FILTER DRAWER ── -->
+<div class="filter-drawer" id="filterDrawer">
+  <div class="fd-header">
+    <div class="fd-title">Filter Map</div>
+    <button class="fd-close" id="drawerClose">✕</button>
+  </div>
+  <div class="fd-section">
+    <div class="fd-section-title">Vendor Status</div>
+    <div class="fd-option" data-filter="verified">
+      <div class="fd-check on" data-check="verified"></div>
+      <div class="fd-olabel">Verified Sellers</div><div class="fd-ocount">847</div>
+    </div>
+    <div class="fd-option" data-filter="top">
+      <div class="fd-check" data-check="top"></div>
+      <div class="fd-olabel">Top Sellers Only</div><div class="fd-ocount">234</div>
+    </div>
+    <div class="fd-option" data-filter="open">
+      <div class="fd-check on" data-check="open"></div>
+      <div class="fd-olabel">Open Now</div><div class="fd-ocount">1,098</div>
+    </div>
+    <div class="fd-option" data-filter="new">
+      <div class="fd-check" data-check="new"></div>
+      <div class="fd-olabel">New Vendors</div><div class="fd-ocount">159</div>
+    </div>
+  </div>
+  <div class="fd-section">
+    <div class="fd-section-title">Min. Rating</div>
+    <div class="fd-option" data-filter="r4"><div class="fd-check on" data-check="r4"></div><div class="fd-olabel">⭐ 4.0 &amp; above</div><div class="fd-ocount">634</div></div>
+    <div class="fd-option" data-filter="r45"><div class="fd-check" data-check="r45"></div><div class="fd-olabel">⭐ 4.5 &amp; above</div><div class="fd-ocount">298</div></div>
+    <div class="fd-option" data-filter="r5"><div class="fd-check" data-check="r5"></div><div class="fd-olabel">⭐ 5.0 only</div><div class="fd-ocount">12</div></div>
+  </div>
+  <div class="fd-section">
+    <div class="fd-section-title">Delivery</div>
+    <div class="fd-option" data-filter="sameday"><div class="fd-check on" data-check="sameday"></div><div class="fd-olabel">Same-day delivery</div><div class="fd-ocount">912</div></div>
+    <div class="fd-option" data-filter="pickup"><div class="fd-check" data-check="pickup"></div><div class="fd-olabel">Pickup available</div><div class="fd-ocount">1,240</div></div>
+  </div>
+</div>
+
+<script src="market-map.js"></script>
+</body>
+</html>

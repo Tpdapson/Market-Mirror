@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product — Market Mirror</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link rel="stylesheet" href="product-detail.css"/>
+  <link rel="stylesheet" href="auth-modal.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <i class="ph-fill ph-shopping-bag" style="font-size:18px;"></i>
+      </div>
+      Market Mirror
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#markets">Markets</a></li>
+      <li><a href="product-listing.html">Categories</a></li>
+      <li><a href="vendors.html" id="nav-vendors-link">Vendors</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-search-btn" aria-label="Search">
+        <i class="ph-bold ph-magnifying-glass" style="font-size:16px;"></i>
+      </button>
+      <a href="#" class="btn btn-outline">Sign in</a>
+      <a href="cart.html" class="btn btn-dark">
+        <i class="ph-bold ph-shopping-cart" style="font-size:15px;"></i>
+        Cart (2)
+      </a>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a><span class="sep">/</span>
+    <a href="market-page.html?market=balogun" id="pd-bc-market">Balogun Market</a><span class="sep">/</span>
+    <a href="product-listing.html?market=balogun&category=fabrics" id="pd-bc-category">Fabrics</a><span class="sep">/</span>
+    <span class="current" id="pd-bc-product">Premium Ankara Wax Print</span>
+  </div>
+
+  <!-- PRODUCT HERO -->
+  <section class="product-hero">
+
+    <!-- Images -->
+    <div class="ph-images">
+      <div class="ph-main-img">
+        <div class="ph-badge-tl" id="pd-badge">Top Seller</div>
+        <span class="ph-img-emoji" id="pd-main-emoji">&#129526;</span>
+      </div>
+      <div class="ph-thumbs">
+        <div class="ph-thumb active ph-thumb-1">&#129526;</div>
+        <div class="ph-thumb ph-thumb-2">&#129526;</div>
+        <div class="ph-thumb ph-thumb-3">&#129526;</div>
+        <div class="ph-thumb ph-thumb-4">&#129526;</div>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="ph-info">
+      <div class="ph-vendor-row">
+        <div class="ph-vendor">
+          <div class="ph-vendor-avatar" id="pd-vendor-avatar">&#129526;</div>
+          <div>
+            <div class="ph-vendor-name" id="pd-vendor-name">Mama Titi Fabrics <span class="verified">&#10003; Verified</span></div>
+            <div class="ph-vendor-sub" id="pd-vendor-sub">Row 4, Stall 12 &middot; Balogun Market</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <button class="ph-msg-btn" id="pd-msg-btn" title="Message vendor"><i class="ph-bold ph-chat-circle-text"></i></button>
+          <button class="ph-wishlist-btn" id="pd-wishlist-btn"><i class="ph-bold ph-heart"></i></button>
+        </div>
+      </div>
+
+      <h1 class="ph-title" id="pd-title">Premium Ankara<br/>Wax Print Fabric</h1>
+      <p class="ph-subtitle" id="pd-subtitle">Authentic Dutch-wax Ankara sourced from certified mills. Vibrant colourfast prints, soft hand-feel, available in 40+ rotating patterns.</p>
+
+      <div class="ph-rating-row">
+        <span class="ph-stars" id="pd-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="ph-score" id="pd-score">4.9</span>
+        <span class="ph-rev" id="pd-reviews-count">(1,204 reviews)</span>
+        <div class="ph-divider"></div>
+        <span class="ph-sold" id="pd-sold">3,842 yards sold</span>
+        <div class="ph-divider"></div>
+        <span class="ph-sold" style="color:#16A34A">&#9679; In Stock</span>
+      </div>
+
+      <div id="pd-patterns-wrap" style="margin-bottom:28px;display:none">
+        <div class="ph-section-label" id="pd-patterns-label">Select Pattern</div>
+        <div class="ph-patterns" id="pd-patterns"></div>
+        <div style="font-size:12px;color:var(--muted)">Selected: <strong style="color:var(--dark);font-family:'Inter',sans-serif" id="pd-selected-pattern"></strong></div>
+      </div>
+
+      <div class="ph-purchase-row">
+        <div class="ph-qty-wrap">
+          <div class="ph-section-label" id="pd-qty-label">Quantity</div>
+          <div class="ph-qty-control">
+            <button class="qty-btn" id="pd-qty-minus">&#8722;</button>
+            <div class="qty-num" id="pd-qty-num">3</div>
+            <button class="qty-btn" id="pd-qty-plus">&#43;</button>
+          </div>
+          <div style="font-size:11px;color:var(--muted);margin-top:8px" id="pd-min-note">Min. order: 3 yards</div>
+        </div>
+        <div class="ph-price-wrap">
+          <div class="ph-price" id="pd-price">&#8358;2,400</div>
+          <div class="ph-price-unit" id="pd-price-unit">per yard</div>
+          <div class="ph-price-total" id="pd-price-total">Total: <strong>&#8358;7,200</strong> for 3 yds</div>
+        </div>
+      </div>
+
+      <div class="ph-cta-row">
+        <button class="btn-add-cart" id="pd-add-cart"><i class="ph ph-shopping-cart" style="font-size:16px"></i> Add to Cart</button>
+        <button class="btn-buy-now">Buy Now &rarr;</button>
+      </div>
+
+      <div class="ph-guarantees">
+        <div class="ph-guarantee">
+          <div class="guar-icon"><i class="ph ph-truck" style="font-size:15px"></i></div>
+          <div>
+            <div class="guar-label">Same-Day</div>
+            <div class="guar-sub">Lagos delivery</div>
+          </div>
+        </div>
+        <div class="ph-guarantee">
+          <div class="guar-icon"><i class="ph ph-lock-simple" style="font-size:15px"></i></div>
+          <div>
+            <div class="guar-label">Secure Pay</div>
+            <div class="guar-sub">Escrow protected</div>
+          </div>
+        </div>
+        <div class="ph-guarantee">
+          <div class="guar-icon"><i class="ph ph-arrow-counter-clockwise" style="font-size:15px"></i></div>
+          <div>
+            <div class="guar-label">Easy Returns</div>
+            <div class="guar-sub">7-day window</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT BODY: TABS + SIDEBAR -->
+  <div class="product-body">
+    <div class="product-tabs">
+      <div class="tab-bar" id="pd-tab-bar">
+        <div class="tab active" data-tab="Description">Description</div>
+        <div class="tab" data-tab="Specifications">Specifications</div>
+        <div class="tab" data-tab="Reviews">Reviews</div>
+      </div>
+      <div class="tab-content" id="pd-tab-content">
+        <h3>About this fabric</h3>
+        <p>Mama Titi Fabrics has been a staple of Balogun Market since 1998, bringing the finest Dutch-wax Ankara prints direct from certified mills in Ghana and the Netherlands. Each bolt is inspected for colour fastness, thread count, and pattern alignment before it reaches our stall.</p>
+        <p>Our Ankara wax prints are crafted using a traditional resist-dyeing technique that produces sharp, vivid patterns with remarkable durability. Unlike cheaper imitations, genuine Dutch-wax fabric will not fade even after repeated washing.</p>
+        <h3 style="margin-top:28px">Care instructions</h3>
+        <p>Hand wash or machine wash cold (max 30°C). Do not bleach. Iron on medium heat. Dry in shade to preserve colour vibrancy. Suitable for all sewing styles including Ankara dresses, suits, bags, and home furnishings.</p>
+
+        <table class="spec-table" style="margin-top:8px">
+          <tr><td>Material</td><td>100% Cotton (Dutch-wax)</td></tr>
+          <tr><td>Width</td><td>44–46 inches</td></tr>
+          <tr><td>Weight</td><td>180 GSM</td></tr>
+          <tr><td>Origin</td><td>Netherlands / Ghana</td></tr>
+          <tr><td>Wash</td><td>Machine wash cold</td></tr>
+        </table>
+
+        <div style="margin-top:40px">
+          <h3>Customer Reviews</h3>
+          <div class="review-item">
+            <div class="review-header">
+              <div class="reviewer-name">Adaeze Okonkwo</div>
+              <div class="review-date">April 12, 2025</div>
+            </div>
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="review-text">Absolutely stunning fabric. I ordered 6 yards for my daughter's birthday dress and the colour is even more vibrant in person. Delivery was same day — couldn't be happier.</div>
+          </div>
+          <div class="review-item">
+            <div class="review-header">
+              <div class="reviewer-name">Tunde Bakare</div>
+              <div class="review-date">March 28, 2025</div>
+            </div>
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+            <div class="review-text">Great quality, consistent with description. I've bought from Mama Titi three times now through Market Mirror. Fast, reliable and the fabric doesn't disappoint.</div>
+          </div>
+          <div class="review-item">
+            <div class="review-header">
+              <div class="reviewer-name">Ngozi Eze</div>
+              <div class="review-date">March 15, 2025</div>
+            </div>
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="review-text">Perfect for a traditional ceremony set. Made two full outfits and had a little left over. I'll be ordering the blue variant next time.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="product-sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-card-header">About the Vendor</div>
+        <div class="vendor-profile">
+          <div class="vp-top">
+            <div class="vp-avatar" id="pd-vp-avatar">&#129526;</div>
+            <div>
+              <div class="vp-name" id="pd-vp-name">Mama Titi Fabrics</div>
+              <div class="vp-sub" id="pd-vp-sub">Titilayo Adeyemi</div>
+              <div class="vp-badge" id="pd-vp-badge">&#10003; Top Seller</div>
+            </div>
+          </div>
+          <div class="vp-stats" id="pd-vp-stats">
+            <div class="vp-stat"><div class="vp-stat-num">4.9★</div><div class="vp-stat-label">Rating</div></div>
+            <div class="vp-stat"><div class="vp-stat-num">1,204</div><div class="vp-stat-label">Reviews</div></div>
+            <div class="vp-stat"><div class="vp-stat-num">340</div><div class="vp-stat-label">Products</div></div>
+            <div class="vp-stat"><div class="vp-stat-num">27yr</div><div class="vp-stat-label">Trading</div></div>
+          </div>
+          <a href="#" class="btn btn-outline" id="pd-visit-stall" style="width:100%;justify-content:center;font-size:13px">Visit stall &rarr;</a>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-header">Delivery &amp; Info</div>
+        <div class="delivery-info" id="pd-delivery">
+          <div class="del-item">
+            <div class="del-icon">&#128666;</div>
+            <div>
+              <div class="del-label">Same-day delivery</div>
+              <div class="del-val">Order before 2:00 PM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- RELATED PRODUCTS -->
+  <section class="related">
+    <div class="section-header">
+      <div>
+        <p class="section-label">You might also like</p>
+        <h2 id="pd-related-title">More from Balogun</h2>
+      </div>
+      <a href="product-listing.html?market=balogun" class="btn btn-outline" id="pd-related-view-all">View all &rarr;</a>
+    </div>
+    <div class="related-grid" id="pd-related-grid">
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><div class="nav-logo-icon"><i class="ph-fill ph-shopping-bag" style="font-size:16px;"></i></div>Market Mirror</a>
+        <p>The digital twin of Lagos markets — shop from Balogun to Alaba without leaving your home.</p>
+      </div>
+      <div class="footer-col"><h4>Markets</h4><ul><li><a href="market-page.html?market=balogun">Balogun Market</a></li><li><a href="market-page.html?market=alaba">Alaba International</a></li><li><a href="market-page.html?market=computer-village">Computer Village</a></li><li><a href="index.html#markets">All markets</a></li></ul></div>
+      <div class="footer-col"><h4>Platform</h4><ul><li><a href="#">How it works</a></li><li><a href="#">Become a vendor</a></li><li><a href="#">Delivery info</a></li><li><a href="#">Buyer protection</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About us</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 <span>Market Mirror</span>. All rights reserved.</p>
+      <p style="font-size:13px;color:var(--muted)">Viewing: <span id="pd-currently-viewing">Premium Ankara Wax Print</span></p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="cart.js"></script>
+  <script src="wishlist.js"></script>
+  <script src="chats.js"></script>
+  <script src="product-detail.js"></script>
+  <script src="auth-modal.js"></script>
+</body>
+</html>

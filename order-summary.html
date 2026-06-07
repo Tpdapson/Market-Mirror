@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Confirmed — Market Mirror</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="order-summary.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <i class="ph-fill ph-shopping-bag" style="font-size:16px;"></i>
+      </div>
+      Market Mirror
+    </a>
+    <div style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;">
+      <i class="ph-fill ph-check-circle" style="font-size:15px;color:#16A34A;"></i>
+      Order confirmed
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="order-hero">
+    <div class="order-success-badge">✓</div>
+    <h1>Order Confirmed!</h1>
+    <p>Thank you for shopping with Market Mirror. Your order is being prepared.</p>
+    <div class="order-ref">
+      Order reference: <span id="order-ref-id">MM-XXXXXXXX</span>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="order-body">
+
+    <!-- Status -->
+    <div class="os-card">
+      <div class="os-card-header">
+        <div class="os-card-icon">📦</div>
+        <div>
+          <div class="os-card-title">Order Status</div>
+          <div class="os-card-sub" id="order-placed-time">Placed just now</div>
+        </div>
+        <div style="margin-left:auto;">
+          <span class="status-pill"><span class="status-dot"></span> Confirmed</span>
+        </div>
+      </div>
+      <div class="info-list">
+        <div class="info-row">
+          <div class="info-icon">🚚</div>
+          <div>
+            <div class="info-label">Estimated Delivery</div>
+            <div class="info-val" id="order-eta">Today, by 7:00 PM</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">Deliver to</div>
+            <div class="info-val" id="order-delivery-area">Lagos Island</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">Contact</div>
+            <div class="info-val" id="order-contact">Customer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Items ordered -->
+    <div class="os-card">
+      <div class="os-card-header">
+        <div class="os-card-icon">🛍️</div>
+        <div>
+          <div class="os-card-title">Items Ordered</div>
+          <div class="os-card-sub" id="order-item-count">—</div>
+        </div>
+      </div>
+      <div class="order-items-list" id="order-items-list">
+        <!-- rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Cost breakdown -->
+    <div class="os-card">
+      <div class="os-card-header">
+        <div class="os-card-icon">💳</div>
+        <div>
+          <div class="os-card-title">Payment Summary</div>
+          <div class="os-card-sub">Payment verified via OTP</div>
+        </div>
+      </div>
+      <div class="cost-table">
+        <div class="cost-row">
+          <span class="label">Subtotal</span>
+          <span class="value" id="cost-subtotal">₦0</span>
+        </div>
+        <div class="cost-row">
+          <span class="label">Delivery</span>
+          <span class="value green">Free</span>
+        </div>
+        <div class="cost-row">
+          <span class="label">Buyer protection</span>
+          <span class="value">₦350</span>
+        </div>
+        <div class="cost-row">
+          <span class="label">Discount</span>
+          <span class="value red">–₦0</span>
+        </div>
+      </div>
+      <div class="cost-total">
+        <span class="cost-total-label">Total Paid</span>
+        <span class="cost-total-val" id="cost-total">₦350</span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="order-cta">
+      <div class="cta-btn-row">
+        <a href="index.html" class="btn-home">
+          <i class="ph-bold ph-house" style="font-size:15px;"></i>
+          Back to Home Page
+        </a>
+        <a href="product-listing.html" class="btn-track">
+          Continue shopping →
+        </a>
+      </div>
+      <p class="cta-note">An SMS confirmation has been sent to your phone number.</p>
+    </div>
+
+  </div>
+
+  <script src="cart.js"></script>
+  <script>
+    (function () {
+      function escHtml(str) {
+        return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      }
+
+      var order = MM_CART ? MM_CART.getOrder() : null;
+
+      // Fallback demo order if no real order found
+      if (!order) {
+        order = {
+          id: 'MM-DEMO0001',
+          items: [
+            { name: 'Premium Ankara Wax Print', vendor: 'Mama Titi Fabrics', price: '₦2,400', priceNum: 2400, unit: 'yard', emoji: '🧵', qty: 3, marketName: 'Balogun Market' },
+            { name: 'Handcrafted Leather Tote',  vendor: 'Lagos Leather Co.',  price: '₦18,500', priceNum: 18500, unit: 'piece', emoji: '👜', qty: 1, marketName: 'Balogun Market' }
+          ],
+          subtotal: 25700,
+          total: 26050,
+          deliveryArea: 'Lagos Island',
+          customerName: 'Customer',
+          phone: '+234 803 456 7890',
+          estimatedDelivery: 'Today, by 7:00 PM',
+          placedAt: Date.now()
+        };
+      }
+
+      // ── Ref + time ─────────────────────────────────────────────
+      document.getElementById('order-ref-id').textContent = order.id || 'MM-XXXXXXXX';
+
+      var placedDate = new Date(order.placedAt || Date.now());
+      var timeStr = placedDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      document.getElementById('order-placed-time').textContent = 'Placed today at ' + timeStr;
+
+      // ── Delivery info ──────────────────────────────────────────
+      document.getElementById('order-eta').textContent        = order.estimatedDelivery || 'Today, by 7:00 PM';
+      document.getElementById('order-delivery-area').textContent = order.deliveryArea || 'Lagos Island';
+
+      var contact = (order.customerName || 'Customer');
+      if (order.phone) contact += ' · ' + order.phone;
+      document.getElementById('order-contact').textContent = contact;
+
+      // ── Items ──────────────────────────────────────────────────
+      var items = order.items || [];
+      var itemCount = items.length;
+      document.getElementById('order-item-count').textContent =
+        itemCount + ' item' + (itemCount !== 1 ? 's' : '') + ' from ' +
+        [...new Set(items.map(function(i){ return i.vendor; }))].length + ' vendor' +
+        ([...new Set(items.map(function(i){ return i.vendor; }))].length !== 1 ? 's' : '');
+
+      var COLORS = ['#8B4513','#1A3A5C','#4A1970','#1A4A2E','#4A1A1A','#3A2A1A'];
+
+      var itemsHtml = items.map(function (item, idx) {
+        var itemTotal = (item.priceNum || 0) * (item.qty || 1);
+        var bg = COLORS[idx % COLORS.length];
+        return '<div class="order-item">' +
+          '<div class="oi-emoji" style="background:' + bg + ';color:#fff;">' + (item.emoji || '🛍️') + '</div>' +
+          '<div class="oi-body">' +
+            '<div class="oi-name">' + escHtml(item.name) + '</div>' +
+            '<div class="oi-vendor">' + escHtml(item.vendor) + ' &middot; ' + escHtml(item.marketName || '') + '</div>' +
+          '</div>' +
+          '<span class="oi-qty-badge">×' + (item.qty || 1) + '</span>' +
+          '<div class="oi-price">₦' + itemTotal.toLocaleString() +
+            '<div class="oi-price-sub">' + escHtml(item.price) + ' / ' + escHtml(item.unit || 'unit') + '</div>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+
+      document.getElementById('order-items-list').innerHTML = itemsHtml || '<div style="padding:20px;text-align:center;color:var(--muted);font-size:13px;">No items found</div>';
+
+      // ── Costs ──────────────────────────────────────────────────
+      document.getElementById('cost-subtotal').textContent = '₦' + Number(order.subtotal || 0).toLocaleString();
+      document.getElementById('cost-total').textContent    = '₦' + Number(order.total || 350).toLocaleString();
+
+    })();
+  </script>
+</body>
+</html>

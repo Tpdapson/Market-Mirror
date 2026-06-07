@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Market — Market Mirror</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link rel="stylesheet" href="market-page.css">
+  <link rel="stylesheet" href="auth-modal.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <i class="ph-fill ph-shopping-bag" style="font-size:18px;"></i>
+      </div>
+      Market Mirror
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#markets">Markets</a></li>
+      <li><a href="product-listing.html" id="nav-categories-link">Categories</a></li>
+      <li><a href="vendors.html" id="nav-vendors-link">Vendors</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-search-btn" aria-label="Search">
+        <i class="ph-bold ph-magnifying-glass" style="font-size:16px;"></i>
+      </button>
+      <a href="#" class="btn btn-outline">Sign in</a>
+      <a href="cart.html" class="btn btn-dark">
+        <i class="ph-bold ph-shopping-cart" style="font-size:15px;"></i>
+        Cart (2)
+      </a>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="sep">/</span>
+    <a href="#">Markets</a>
+    <span class="sep">/</span>
+    <span class="current" id="breadcrumb-market">Balogun Market</span>
+  </div>
+
+  <!-- MARKET HERO -->
+  <section class="market-hero">
+
+    <div class="mh-left">
+      <div>
+        <div class="mh-tag" id="mh-vendor-status">
+          <span class="live-dot"></span>
+          1,240 vendors online now
+        </div>
+        <h1 class="mh-title" id="mh-title">Balogun<br/><span class="accent">Market</span></h1>
+        <div class="mh-location" id="mh-location">Lagos Island, Lagos State &nbsp;&middot;&nbsp; Est. 1920s</div>
+      </div>
+      <div class="mh-stats">
+        <div class="mh-stat">
+          <div class="mh-stat-num" id="stat-vendors">1,240<span class="red">+</span></div>
+          <div class="mh-stat-label">Active Vendors</div>
+        </div>
+        <div class="mh-stat">
+          <div class="mh-stat-num" id="stat-products">48<span class="red">k</span></div>
+          <div class="mh-stat-label">Products Listed</div>
+        </div>
+        <div class="mh-stat">
+          <div class="mh-stat-num" id="stat-rating">4.7<span class="red">★</span></div>
+          <div class="mh-stat-label">Avg. Rating</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mh-right">
+      <img src="assets/hero-photo.jpg" alt="Market" class="mh-photo" id="mh-hero-img"/>
+      <div class="mh-photo-overlay"></div>
+      <div class="mh-overlay-text" id="mh-initials">BM</div>
+
+      <!-- Top-left mini card -->
+      <div class="mh-mini-card mc-tl">
+        <div class="mc-icon">&#9203;</div>
+        <div>
+          <div class="mc-t" id="mc-status">Open now</div>
+          <div class="mc-s" id="mc-closing-time">Closes 7:00 PM</div>
+        </div>
+      </div>
+
+      <!-- Bottom-right mini card -->
+      <div class="mh-mini-card mc-br">
+        <div class="mc-rating" id="mc-rating-stars">
+          <span class="star">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:6px">
+          <span class="rating-num" id="mc-rating-num">4.7</span>
+          <span class="rating-count" id="mc-rating-count">from 8,200 reviews</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- META BAR -->
+  <div class="meta-bar">
+    <div class="meta-item">
+      <div class="meta-icon"><i class="ph ph-map-pin" style="font-size:20px;color:#F97316;"></i></div>
+      <div>
+        <div class="meta-label">Location</div>
+        <div class="meta-value" id="meta-location">Lagos Island, LGA</div>
+      </div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-icon"><i class="ph ph-clock" style="font-size:20px;color:#F97316;"></i></div>
+      <div>
+        <div class="meta-label">Trading Hours</div>
+        <div class="meta-value" id="meta-hours"><span class="open">Open</span> &middot; 8:00 AM &ndash; 7:00 PM</div>
+      </div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-icon"><i class="ph ph-truck" style="font-size:20px;color:#F97316;"></i></div>
+      <div>
+        <div class="meta-label">Delivery</div>
+        <div class="meta-value" id="meta-delivery">Same-day across Lagos</div>
+      </div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-icon"><i class="ph ph-credit-card" style="font-size:20px;color:#F97316;"></i></div>
+      <div>
+        <div class="meta-label">Min. Order</div>
+        <div class="meta-value" id="meta-minorder">&#8358;1,500 &middot; Free above &#8358;20k</div>
+      </div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-icon"><i class="ph ph-star" style="font-size:20px;color:#F97316;"></i></div>
+      <div>
+        <div class="meta-label">Speciality</div>
+        <div class="meta-value" id="meta-specialty">Fabrics, Fashion &amp; Wholesale</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <div class="filter-cats" id="filter-cats">
+      <a href="product-listing.html?market=balogun" class="filter-cat active">All Products</a>
+      <a href="product-listing.html?market=balogun&category=fabrics" class="filter-cat">Fabrics</a>
+      <a href="product-listing.html?market=balogun&category=ready-to-wear" class="filter-cat">Ready-to-Wear</a>
+      <a href="product-listing.html?market=balogun&category=accessories" class="filter-cat">Accessories</a>
+      <a href="product-listing.html?market=balogun&category=shoes-bags" class="filter-cat">Shoes &amp; Bags</a>
+      <a href="product-listing.html?market=balogun&category=wholesale" class="filter-cat">Wholesale</a>
+    </div>
+    <div class="filter-right">
+      <select class="sort-select">
+        <option>Sort: Most Popular</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+        <option>Newest First</option>
+      </select>
+      <a href="#" class="btn btn-outline" style="padding:8px 18px;font-size:13px">&#9783; Filter</a>
+    </div>
+  </div>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="featured">
+    <div class="section-header">
+      <div>
+        <p class="section-label" style="margin-bottom:12px">Trending today</p>
+        <h2 id="featured-title">Top picks from<br/>Balogun Market</h2>
+      </div>
+      <a href="product-listing.html?market=balogun&category=fabrics" class="btn btn-outline" id="view-all-btn">View all products &rarr;</a>
+    </div>
+    <div class="featured-grid" id="featured-grid">
+
+      <!-- Large card -->
+      <div class="prod-card-lg">
+        <div class="pcl-img">
+          <img src="assets/fabric-large.jpg" alt="Premium Ankara Wax Print" class="pcl-photo"/>
+        </div>
+        <div class="pcl-body">
+          <div>
+            <div class="pcl-vendor">Mama Titi Fabrics <span class="verified">&#10003; Verified</span></div>
+            <div class="pcl-name">Premium Ankara Wax Print</div>
+            <div class="pcl-meta">Balogun Row 4, Stall 12 &nbsp;&middot;&nbsp; Min. 3 yards</div>
+          </div>
+          <div class="pcl-price-col">
+            <div class="pcl-price">&#8358;2,400</div>
+            <div class="pcl-unit">per yard</div>
+            <button class="pcl-add">Add to cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Small card 1 -->
+      <div class="prod-card-sm">
+        <div class="pcs-img">
+          <img src="assets/fabric-sm1.jpg" alt="Handcrafted Leather Tote" class="pcs-photo"/>
+        </div>
+        <div class="pcs-body">
+          <div class="pcs-vendor">Lagos Leather Co. &nbsp;<span class="verified">&#10003;</span></div>
+          <div class="pcs-name">Handcrafted Leather Tote</div>
+          <div class="pcs-sub">Row 7 &middot; Available in 4 colours</div>
+          <div class="pcs-row">
+            <div class="pcs-price">&#8358;18,500</div>
+            <span class="pcs-badge badge-green">In stock</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Small card 2 -->
+      <div class="prod-card-sm">
+        <div class="pcs-img">
+          <img src="assets/fabric-sm2.jpg" alt="Aso-oke Wedding Set" class="pcs-photo"/>
+        </div>
+        <div class="pcs-body">
+          <div class="pcs-vendor">Aso Oke Palace &nbsp;<span class="verified">&#10003;</span></div>
+          <div class="pcs-name">Aso-oke Wedding Set</div>
+          <div class="pcs-sub">Row 2 &middot; 3-piece, custom colours</div>
+          <div class="pcs-row">
+            <div class="pcs-price">&#8358;34,000</div>
+            <span class="pcs-badge badge-orange">5 left</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STALLS -->
+  <section class="stalls">
+    <div class="section-header">
+      <div>
+        <p class="section-label" style="margin-bottom:12px">Browse vendors</p>
+        <h2>Active stalls &amp;<br/>verified sellers</h2>
+      </div>
+      <a href="vendors.html" class="btn btn-outline" id="all-stalls-btn">All stalls &rarr;</a>
+    </div>
+    <div class="stalls-grid" id="stalls-grid">
+
+      <div class="stall-card">
+        <div class="stall-header">
+          <div class="stall-avatar sa-1">&#129526;</div>
+          <span class="stall-badge">Top Seller</span>
+        </div>
+        <div class="stall-name">Mama Titi Fabrics</div>
+        <div class="stall-owner">Titilayo Adeyemi &middot; Row 4, Stall 12</div>
+        <div class="stall-tags">
+          <span class="stall-tag">Ankara</span>
+          <span class="stall-tag">Lace</span>
+          <span class="stall-tag">Aso-oke</span>
+          <span class="stall-tag">Wholesale</span>
+        </div>
+        <div class="stall-footer">
+          <div class="stall-rating">
+            <span class="stall-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="stall-score">4.9</span>
+            <span class="stall-reviews">(1,204 reviews)</span>
+          </div>
+          <div class="stall-products"><strong>340</strong> products</div>
+        </div>
+      </div>
+
+      <div class="stall-card">
+        <div class="stall-header">
+          <div class="stall-avatar sa-2">&#128083;</div>
+          <span class="stall-badge">Verified</span>
+        </div>
+        <div class="stall-name">Lagos Leather Co.</div>
+        <div class="stall-owner">Emeka Okafor &middot; Row 7, Stall 3</div>
+        <div class="stall-tags">
+          <span class="stall-tag">Bags</span>
+          <span class="stall-tag">Shoes</span>
+          <span class="stall-tag">Belts</span>
+          <span class="stall-tag">Custom</span>
+        </div>
+        <div class="stall-footer">
+          <div class="stall-rating">
+            <span class="stall-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+            <span class="stall-score">4.6</span>
+            <span class="stall-reviews">(872 reviews)</span>
+          </div>
+          <div class="stall-products"><strong>124</strong> products</div>
+        </div>
+      </div>
+
+      <div class="stall-card">
+        <div class="stall-header">
+          <div class="stall-avatar sa-3">&#128255;</div>
+          <span class="stall-badge">Top Seller</span>
+        </div>
+        <div class="stall-name">Aso Oke Palace</div>
+        <div class="stall-owner">Funmilayo Bello &middot; Row 2, Stall 8</div>
+        <div class="stall-tags">
+          <span class="stall-tag">Aso-oke</span>
+          <span class="stall-tag">Gele</span>
+          <span class="stall-tag">Wedding</span>
+        </div>
+        <div class="stall-footer">
+          <div class="stall-rating">
+            <span class="stall-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="stall-score">4.8</span>
+            <span class="stall-reviews">(643 reviews)</span>
+          </div>
+          <div class="stall-products"><strong>89</strong> products</div>
+        </div>
+      </div>
+
+      <div class="stall-card">
+        <div class="stall-header">
+          <div class="stall-avatar sa-4">&#128141;</div>
+          <span class="stall-badge">Verified</span>
+        </div>
+        <div class="stall-name">Adire &amp; Tie-dye Hub</div>
+        <div class="stall-owner">Abiodun Salau &middot; Row 9, Stall 6</div>
+        <div class="stall-tags">
+          <span class="stall-tag">Adire</span>
+          <span class="stall-tag">Tie-dye</span>
+          <span class="stall-tag">Batik</span>
+        </div>
+        <div class="stall-footer">
+          <div class="stall-rating">
+            <span class="stall-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+            <span class="stall-score">4.5</span>
+            <span class="stall-reviews">(511 reviews)</span>
+          </div>
+          <div class="stall-products"><strong>206</strong> products</div>
+        </div>
+      </div>
+
+      <div class="stall-card">
+        <div class="stall-header">
+          <div class="stall-avatar sa-5">&#128081;</div>
+          <span class="stall-badge">Verified</span>
+        </div>
+        <div class="stall-name">Crown Headwear</div>
+        <div class="stall-owner">Ngozi Chukwu &middot; Row 5, Stall 15</div>
+        <div class="stall-tags">
+          <span class="stall-tag">Gele</span>
+          <span class="stall-tag">Caps</span>
+          <span class="stall-tag">Headwraps</span>
+        </div>
+        <div class="stall-footer">
+          <div class="stall-rating">
+            <span class="stall-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+            <span class="stall-score">4.4</span>
+            <span class="stall-reviews">(389 reviews)</span>
+          </div>
+          <div class="stall-products"><strong>78</strong> products</div>
+        </div>
+      </div>
+
+      <div class="stall-card">
+        <div class="stall-header">
+          <div class="stall-avatar sa-6">&#9986;</div>
+          <span class="stall-badge">New</span>
+        </div>
+        <div class="stall-name">Tailor's Corner</div>
+        <div class="stall-owner">Ibrahim Musa &middot; Row 11, Stall 2</div>
+        <div class="stall-tags">
+          <span class="stall-tag">Bespoke</span>
+          <span class="stall-tag">Alterations</span>
+          <span class="stall-tag">Agbada</span>
+        </div>
+        <div class="stall-footer">
+          <div class="stall-rating">
+            <span class="stall-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="stall-score">5.0</span>
+            <span class="stall-reviews">(42 reviews)</span>
+          </div>
+          <div class="stall-products"><strong>31</strong> products</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="about-left">
+      <p class="section-label">About this market</p>
+      <h2 id="about-title">A Lagos landmark since the 1920s</h2>
+      <p id="about-p1">Balogun Market is one of West Africa's largest open-air markets, located in the heart of Lagos Island.</p>
+      <p id="about-p2">The market spans dozens of rows and thousands of stalls, each specialising in a specific category.</p>
+      <a href="vendors.html" class="btn btn-outline" id="explore-stalls-btn" style="margin-top:16px">Explore all stalls &rarr;</a>
+    </div>
+    <div class="about-right" id="about-facts">
+      <div class="fact-item">
+        <div class="fact-num">100<span class="red">+</span></div>
+        <div class="fact-body">
+          <div class="fact-title">Years of trading history</div>
+          <div class="fact-desc">One of Lagos' oldest and most storied markets, established in the early twentieth century.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="cta-strip">
+    <h2 id="cta-title">
+      Ready to shop<br/>
+      <span class="dim">Balogun from</span><br/>
+      <span class="red">anywhere?</span>
+    </h2>
+    <div class="cta-strip-right">
+      <a href="product-listing.html?market=balogun" class="btn btn-red" id="cta-btn">Browse all products &rarr;</a>
+      <p class="cta-note">Same-day delivery across Lagos. Secure checkout. 12,000+ happy buyers.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="nav-logo-icon">
+            <i class="ph-fill ph-shopping-bag" style="font-size:16px;"></i>
+          </div>
+          Market Mirror
+        </a>
+        <p>The digital twin of Lagos markets — shop from Balogun to Alaba without leaving your home.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Markets</h4>
+        <ul>
+          <li><a href="#">Balogun Market</a></li>
+          <li><a href="#">Alaba International</a></li>
+          <li><a href="#">Computer Village</a></li>
+          <li><a href="#">Tejuosho Market</a></li>
+          <li><a href="#">All markets</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#">How it works</a></li>
+          <li><a href="#">Become a vendor</a></li>
+          <li><a href="#">Delivery info</a></li>
+          <li><a href="#">Buyer protection</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 <span>Market Mirror</span>. All rights reserved.</p>
+      <p style="font-size:13px;color:var(--muted)">Currently viewing: <span id="currently-viewing">Balogun Market</span></p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="cart.js"></script>
+  <script src="wishlist.js"></script>
+  <script src="chats.js"></script>
+  <script src="market-page.js"></script>
+  <script src="auth-modal.js"></script>
+</body>
+</html>

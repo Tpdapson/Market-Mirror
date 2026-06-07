@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Market Mirror — Lagos Markets, Digitally Mirrored</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  
+  
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="auth-modal.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <i class="ph-fill ph-shopping-bag" style="font-size:18px;"></i>
+      </div>
+      Market Mirror
+    </a>
+    <ul class="nav-links">
+      <li><a href="#markets">Markets</a></li>
+      <li><a href="product-listing.html">Categories</a></li>
+      <li><a href="vendors.html">Vendors</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-search-btn" aria-label="Search">
+        <i class="ph-bold ph-magnifying-glass" style="font-size:16px;"></i>
+      </button>
+      <a href="#" class="btn btn-outline">Sign in</a>
+      <a href="cart.html" class="btn btn-dark">
+        <i class="ph-bold ph-shopping-cart" style="font-size:15px;"></i>
+        Cart (0)
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Now live &mdash; Lagos Markets, Online
+      </div>
+
+      <h1 class="hero-title">
+        Lagos Market<br>
+        Brought to <span class="accent">Your</span><br>
+        <span class="accent">Screen.</span>
+      </h1>
+
+      <div class="hero-bottom-row">
+        <div class="hero-left-col">
+          <p class="hero-sub">
+            Market Mirror digitally replicates the vibrant markets of Lagos — browse stalls, compare prices, and shop from Balogun, Alaba, Oshodi and more, without leaving home.
+          </p>
+          <div class="hero-actions">
+            <a href="#markets" class="btn btn-red hero-btn">Start Shopping <i class="ph ph-arrow-right"></i></a>
+            <a href="#how" class="btn btn-outline hero-btn">See how it works</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scrolling category image strip — hover to scroll -->
+    <div class="hero-image-strip">
+      <div class="hero-images-track">
+        <!-- Set 1 -->
+        <a href="product-listing.html?market=tejuosho&category=jewelry" class="category-card">
+          <div class="category-card-img">
+            <img src="https://www.figma.com/api/mcp/asset/2a6d33d7-3888-46c1-9eac-8324391daa32" alt="Jewelry" />
+          </div>
+          <div class="category-card-label">Jewelry</div>
+        </a>
+        <a href="product-listing.html?market=tejuosho&category=bags" class="category-card">
+          <div class="category-card-img">
+            <img src="https://www.figma.com/api/mcp/asset/dcf6262d-988f-4036-8303-6e1e1eb96082" alt="Bags" />
+          </div>
+          <div class="category-card-label">Bags</div>
+        </a>
+        <a href="product-listing.html?market=tejuosho&category=shoes" class="category-card">
+          <div class="category-card-img">
+            <img src="https://www.figma.com/api/mcp/asset/313970a4-a19b-4e54-9e7d-67818c91260a" alt="Shoes" />
+          </div>
+          <div class="category-card-label">Shoes</div>
+        </a>
+        <a href="product-listing.html?market=mile-12&category=produce" class="category-card">
+          <div class="category-card-img">
+            <img src="https://www.figma.com/api/mcp/asset/4c419a1f-a755-4b97-9f64-2878336ab920" alt="Fresh Produce" />
+          </div>
+          <div class="category-card-label">Fresh Produce</div>
+        </a>
+        <a href="product-listing.html?market=balogun&category=fabrics" class="category-card">
+          <div class="category-card-img">
+            <img src="https://www.figma.com/api/mcp/asset/57dfa200-1172-4474-bb21-dc33c1b7e72f" alt="Aso-oke" />
+          </div>
+          <div class="category-card-label">Aso-oke</div>
+        </a>
+        <a href="product-listing.html?market=idumota&category=gifts" class="category-card">
+          <div class="category-card-img">
+            <img src="https://www.figma.com/api/mcp/asset/d2b1e87a-a402-4b1b-a59b-fc33376b780f" alt="Gift Ideas" />
+          </div>
+          <div class="category-card-label">Gift Ideas</div>
+        </a>
+        <a href="product-listing.html?market=balogun&category=fabrics" class="category-card">
+          <div class="category-card-img">
+            <img src="https://www.figma.com/api/mcp/asset/d07a20ee-2477-4d5b-bba7-9717e3a3b253" alt="Ankara Fabrics" />
+          </div>
+          <div class="category-card-label">Ankara Fabrics</div>
+        </a>
+        <!-- Set 2 (duplicate for seamless loop) -->
+        <a href="product-listing.html?market=tejuosho&category=jewelry" class="category-card">
+          <div class="category-card-img">
+            <img src="https://www.figma.com/api/mcp/asset/2a6d33d7-3888-46c1-9eac-8324391daa32" alt="Jewelry" />
+          </div>
+          <div class="category-card-label">Jewelry</div>
+        </a>
+        <a href="product-listing.html?market=tejuosho&category=bags" class="category-card">
+          <div class="category-card-img">
+            <img src="https://www.figma.com/api/mcp/asset/dcf6262d-988f-4036-8303-6e1e1eb96082" alt="Bags" />
+          </div>
+          <div class="category-card-label">Bags</div>
+        </a>
+        <a href="product-listing.html?market=tejuosho&category=shoes" class="category-card">
+          <div class="category-card-img">
+            <img src="https://www.figma.com/api/mcp/asset/313970a4-a19b-4e54-9e7d-67818c91260a" alt="Shoes" />
+          </div>
+          <div class="category-card-label">Shoes</div>
+        </a>
+        <a href="product-listing.html?market=mile-12&category=produce" class="category-card">
+          <div class="category-card-img">
+            <img src="https://www.figma.com/api/mcp/asset/4c419a1f-a755-4b97-9f64-2878336ab920" alt="Fresh Produce" />
+          </div>
+          <div class="category-card-label">Fresh Produce</div>
+        </a>
+        <a href="product-listing.html?market=mile-12&category=groceries" class="category-card">
+          <div class="category-card-img">
+            <img src="https://www.figma.com/api/mcp/asset/57dfa200-1172-4474-bb21-dc33c1b7e72f" alt="Groceries" />
+          </div>
+          <div class="category-card-label">Groceries</div>
+        </a>
+        <a href="product-listing.html?market=alaba&category=electronics" class="category-card">
+          <div class="category-card-img">
+            <img src="https://www.figma.com/api/mcp/asset/d07a20ee-2477-4d5b-bba7-9717e3a3b253" alt="Gadgets" />
+          </div>
+          <div class="category-card-label">Gadgets</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <a href="market-page.html?market=balogun" class="ticker-item" style="text-decoration:none;">Balogun Market<span class="sep"></span></a>
+      <a href="market-page.html?market=alaba" class="ticker-item" style="text-decoration:none;">Alaba International<span class="sep"></span></a>
+      <a href="market-page.html?market=oshodi" class="ticker-item" style="text-decoration:none;">Oshodi Market<span class="sep"></span></a>
+      <a href="market-page.html?market=trade-fair" class="ticker-item" style="text-decoration:none;">Trade Fair Complex<span class="sep"></span></a>
+      <a href="market-page.html?market=balogun" class="ticker-item" style="text-decoration:none;">Lagos Island<span class="sep"></span></a>
+      <a href="market-page.html?market=tejuosho" class="ticker-item" style="text-decoration:none;">Tejuosho Market<span class="sep"></span></a>
+      <a href="market-page.html?market=computer-village" class="ticker-item" style="text-decoration:none;">Ikeja Computer Village<span class="sep"></span></a>
+      <a href="market-page.html?market=idumota" class="ticker-item" style="text-decoration:none;">Idumota Market<span class="sep"></span></a>
+      <a href="market-page.html?market=mile-12" class="ticker-item" style="text-decoration:none;">Mile 12 Market<span class="sep"></span></a>
+      <a href="market-page.html?market=balogun" class="ticker-item" style="text-decoration:none;">Eko Market<span class="sep"></span></a>
+      <!-- duplicate for seamless loop -->
+      <a href="market-page.html?market=balogun" class="ticker-item" style="text-decoration:none;">Balogun Market<span class="sep"></span></a>
+      <a href="market-page.html?market=alaba" class="ticker-item" style="text-decoration:none;">Alaba International<span class="sep"></span></a>
+      <a href="market-page.html?market=oshodi" class="ticker-item" style="text-decoration:none;">Oshodi Market<span class="sep"></span></a>
+      <a href="market-page.html?market=trade-fair" class="ticker-item" style="text-decoration:none;">Trade Fair Complex<span class="sep"></span></a>
+      <a href="market-page.html?market=balogun" class="ticker-item" style="text-decoration:none;">Lagos Island<span class="sep"></span></a>
+      <a href="market-page.html?market=tejuosho" class="ticker-item" style="text-decoration:none;">Tejuosho Market<span class="sep"></span></a>
+      <a href="market-page.html?market=computer-village" class="ticker-item" style="text-decoration:none;">Ikeja Computer Village<span class="sep"></span></a>
+      <a href="market-page.html?market=idumota" class="ticker-item" style="text-decoration:none;">Idumota Market<span class="sep"></span></a>
+      <a href="market-page.html?market=mile-12" class="ticker-item" style="text-decoration:none;">Mile 12 Market<span class="sep"></span></a>
+      <a href="market-page.html?market=balogun" class="ticker-item" style="text-decoration:none;">Eko Market<span class="sep"></span></a>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat-item">
+      <div class="stat-num">40<span class="red">+</span></div>
+      <p class="stat-label">Lagos markets digitally mirrored on the platform</p>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">12<span class="red">k</span></div>
+      <p class="stat-label">Active vendors and stalls listed and verified</p>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">200<span class="red">k</span></div>
+      <p class="stat-label">Products discoverable across all categories</p>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <div class="intro-left">
+      <div>
+        <p class="section-label">Our Mission</p>
+        <h2>Shopping the Lagos way — minus the traffic, heat, and haggling.</h2>
+        <p style="font-size:16px;color:var(--muted);line-height:1.7;max-width:420px;margin-bottom:40px;">
+          Lagos markets are vibrant, chaotic, and full of incredible deals. Market Mirror preserves that energy while giving you the convenience, speed, and safety of a digital-first platform.
+        </p>
+        <a href="#markets" class="btn btn-dark">Explore markets &rarr;</a>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:48px;letter-spacing:0.04em;">
+        Trusted by shoppers across Lagos &mdash; delivering from island to mainland.
+      </p>
+    </div>
+    <div class="intro-visual">
+      <img class="intro-visual-img" src="https://www.figma.com/api/mcp/asset/5012e0ce-0c50-44f8-92cb-846db5ccee80" alt="Woman shopping on Market Mirror" />
+
+      <!-- Top-left card -->
+      <div class="floating-card fc-top">
+        <div class="fc-icon">&#x1F6D2;</div>
+        <div>
+          <div class="fc-title">Balogun Market</div>
+          <div class="fc-sub">1,240 vendors online</div>
+        </div>
+      </div>
+
+      <!-- Left overlay: pill + MM branding -->
+      <div class="intro-visual-badge">
+        <div class="visual-tag">Digital Market</div>
+        <div class="visual-mm">
+          <span class="visual-dot">&bull;</span>
+          <span class="visual-mm-text">MM</span>
+        </div>
+      </div>
+
+      <!-- Bottom-right price card -->
+      <div class="floating-card fc-bottom">
+        <div class="price-label">Ankara fabric &mdash; per yard</div>
+        <div class="price">&#8358;2,400</div>
+        <div class="badge-price">Best price found</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARKETS -->
+  <section class="markets" id="markets">
+    <div class="markets-header">
+      <h2>Explore Lagos<br />by market</h2>
+      <a href="#markets" class="btn btn-outline">View all markets &rarr;</a>
+    </div>
+    <div class="markets-grid">
+      <a href="market-page.html?market=balogun" class="market-card" style="text-decoration:none;">
+        <div class="mc-num">01</div>
+        <div class="mc-name">Balogun Market</div>
+        <div class="mc-area">Lagos Island</div>
+        <div class="mc-tags">
+          <span class="mc-tag">Fashion</span>
+          <span class="mc-tag">Fabric</span>
+          <span class="mc-tag">Wholesale</span>
+        </div>
+        <div class="mc-count">1,240 vendors</div>
+      </a>
+      <a href="market-page.html?market=alaba" class="market-card" style="text-decoration:none;">
+        <div class="mc-num">02</div>
+        <div class="mc-name">Alaba International</div>
+        <div class="mc-area">Ojo, Lagos</div>
+        <div class="mc-tags">
+          <span class="mc-tag">Electronics</span>
+          <span class="mc-tag">Gadgets</span>
+          <span class="mc-tag">Appliances</span>
+        </div>
+        <div class="mc-count">870 vendors</div>
+      </a>
+      <a href="market-page.html?market=computer-village" class="market-card" style="text-decoration:none;">
+        <div class="mc-num">03</div>
+        <div class="mc-name">Computer Village</div>
+        <div class="mc-area">Ikeja</div>
+        <div class="mc-tags">
+          <span class="mc-tag">Computers</span>
+          <span class="mc-tag">Phones</span>
+          <span class="mc-tag">Accessories</span>
+        </div>
+        <div class="mc-count">640 vendors</div>
+      </a>
+      <a href="market-page.html?market=tejuosho" class="market-card" style="text-decoration:none;">
+        <div class="mc-num">04</div>
+        <div class="mc-name">Tejuosho Market</div>
+        <div class="mc-area">Yaba</div>
+        <div class="mc-tags">
+          <span class="mc-tag">Clothing</span>
+          <span class="mc-tag">Shoes</span>
+          <span class="mc-tag">Bags</span>
+        </div>
+        <div class="mc-count">510 vendors</div>
+      </a>
+      <a href="market-page.html?market=mile-12" class="market-card" style="text-decoration:none;">
+        <div class="mc-num">05</div>
+        <div class="mc-name">Mile 12 Market</div>
+        <div class="mc-area">Kosofe</div>
+        <div class="mc-tags">
+          <span class="mc-tag">Food</span>
+          <span class="mc-tag">Produce</span>
+          <span class="mc-tag">Groceries</span>
+        </div>
+        <div class="mc-count">390 vendors</div>
+      </a>
+      <a href="market-page.html?market=trade-fair" class="market-card" style="text-decoration:none;">
+        <div class="mc-num">06</div>
+        <div class="mc-name">Trade Fair Complex</div>
+        <div class="mc-area">Lagos</div>
+        <div class="mc-tags">
+          <span class="mc-tag">Hardware</span>
+          <span class="mc-tag">Building</span>
+          <span class="mc-tag">Industrial</span>
+        </div>
+        <div class="mc-count">720 vendors</div>
+      </a>
+      <a href="market-page.html?market=idumota" class="market-card" style="text-decoration:none;">
+        <div class="mc-num">07</div>
+        <div class="mc-name">Idumota Market</div>
+        <div class="mc-area">Lagos Island</div>
+        <div class="mc-tags">
+          <span class="mc-tag">Stationery</span>
+          <span class="mc-tag">Books</span>
+          <span class="mc-tag">Toys</span>
+        </div>
+        <div class="mc-count">460 vendors</div>
+      </a>
+      <a href="market-page.html?market=oshodi" class="market-card" style="text-decoration:none;">
+        <div class="mc-num">08</div>
+        <div class="mc-name">Oshodi Market</div>
+        <div class="mc-area">Oshodi-Isale</div>
+        <div class="mc-tags">
+          <span class="mc-tag">Fashion</span>
+          <span class="mc-tag">Street</span>
+          <span class="mc-tag">Mixed</span>
+        </div>
+        <div class="mc-count">980 vendors</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="how-header">
+      <h2>How Market<br/>Mirror works</h2>
+      
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">STEP 01</div>
+        <div class="step-icon">
+          <i class="ph ph-magnifying-glass" style="font-size:22px;"></i>
+        </div>
+        <h3>Browse or search</h3>
+        <p>Search by product name, market, or category. Filter by price, vendor rating, and location. Real-time inventory from verified stalls.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 02</div>
+        <div class="step-icon" style="background:var(--red)">
+          <i class="ph ph-shopping-cart" style="font-size:22px;"></i>
+        </div>
+        <h3>Add to cart, pay safely</h3>
+        <p>Secure checkout with escrow-based payment. Your money is only released when you confirm your order arrived as described.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 03</div>
+        <div class="step-icon">
+          <i class="ph ph-truck" style="font-size:22px;"></i>
+        </div>
+        <h3>Get it delivered</h3>
+        <p>Choose same-day delivery across Lagos or schedule a pickup. Track your order in real-time from market to doorstep.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="features-header">
+      <p class="section-label">Platform Features</p>
+      <h2>Everything you'd want from a Lagos market — built into one platform</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="fi-icon"><i class="ph ph-tag" style="font-size:22px;"></i></div>
+        <div class="fi-title">Real-time price comparison</div>
+        <p class="fi-desc">See prices from multiple vendors side by side. Never overpay again — the market's best price is always visible.</p>
+      </div>
+      <div class="feature-item">
+        <div class="fi-icon"><i class="ph ph-stack" style="font-size:22px;"></i></div>
+        <div class="fi-title">Wholesale &amp; bulk orders</div>
+        <p class="fi-desc">Order wholesale quantities directly from major markets with minimum order support and tiered pricing.</p>
+      </div>
+      <div class="feature-item">
+        <div class="fi-icon"><i class="ph ph-truck" style="font-size:22px;"></i></div>
+        <div class="fi-title">Lagos-wide delivery</div>
+        <p class="fi-desc">Same-day delivery across all 20 LGAs in Lagos. Partnered with trusted logistics riders who know every route.</p>
+      </div>
+      <div class="feature-item">
+        <div class="fi-icon"><i class="ph ph-star" style="font-size:22px;"></i></div>
+        <div class="fi-title">Verified vendor ratings</div>
+        <p class="fi-desc">Every vendor is vetted, reviewed, and rated by real buyers. Shop with confidence, even from first-time sellers.</p>
+      </div>
+      <div class="feature-item">
+        <div class="fi-icon"><i class="ph ph-shield-check" style="font-size:22px;"></i></div>
+        <div class="fi-title">Escrow payment protection</div>
+        <p class="fi-desc">Your payment is held securely until your order is confirmed. Full refund guaranteed if an item doesn't match its listing.</p>
+      </div>
+      <div class="feature-item">
+        <div class="fi-icon"><i class="ph ph-chat-dots" style="font-size:22px;"></i></div>
+        <div class="fi-title">Direct vendor chat</div>
+        <p class="fi-desc">Negotiate, ask questions, and confirm stock availability by chatting directly with stall vendors before you buy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner" id="contact">
+    <h2>
+      Shop Lagos.<br/>
+      <span class="muted">From anywhere</span><br/>
+      <span class="red">in the world.</span>
+    </h2>
+    <div class="cta-right">
+      <a href="#" class="btn btn-red">Create free account &rarr;</a>
+      <p class="cta-note">No subscription fees. Pay only when you buy. Works on any device.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom:16px;">
+          <div class="nav-logo-icon">
+            <i class="ph-fill ph-shopping-bag" style="font-size:16px;"></i>
+          </div>
+          Market Mirror
+        </a>
+        <p>The digital twin of Lagos markets — shop from Balogun to Alaba without leaving your home.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Markets</h4>
+        <ul>
+          <li><a href="market-page.html?market=balogun">Balogun Market</a></li>
+          <li><a href="market-page.html?market=alaba">Alaba International</a></li>
+          <li><a href="market-page.html?market=computer-village">Computer Village</a></li>
+          <li><a href="market-page.html?market=tejuosho">Tejuosho Market</a></li>
+          <li><a href="#markets">All markets</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#">Become a vendor</a></li>
+          <li><a href="#">Delivery info</a></li>
+          <li><a href="#">Buyer protection</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 <span>Market Mirror</span>. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="X (Twitter)">
+          <i class="ph-fill ph-x-logo" style="font-size:16px;"></i>
+        </a>
+        <a href="#" class="social-link" aria-label="LinkedIn">
+          <i class="ph-fill ph-linkedin-logo" style="font-size:16px;"></i>
+        </a>
+        <a href="#" class="social-link" aria-label="Instagram">
+          <i class="ph-fill ph-instagram-logo" style="font-size:16px;"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="cart.js"></script>
+  <script src="wishlist.js"></script>
+  <script src="chats.js"></script>
+  <script src="auth-modal.js"></script>
+</body>
+</html>
