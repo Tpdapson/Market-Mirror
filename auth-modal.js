@@ -70,7 +70,7 @@
           <!-- Right panel -->
           <div class="auth-panel-right" style="position:relative;">
             <button class="auth-modal-close" id="auth-modal-close" title="Close">
-              <i class="ph-fill ph-x"></i>
+              <i class="ph-bold ph-x"></i>
             </button>
 
             <div class="auth-tabs">
