@@ -41,6 +41,19 @@
   set('vh-market-label', market.name);
   set('vh-sub', `${stalls.length} active stalls · ${market.specialty}`);
 
+  // ── market switcher ──────────────────────────────────────────────────────────
+  const switcher = document.getElementById('market-switcher');
+  if (switcher) {
+    switcher.innerHTML = Object.keys(MM_DATA.stalls).map(id => {
+      const m = MM_DATA.markets[id];
+      if (!m) return '';
+      return `<option value="${id}"${id === marketId ? ' selected' : ''}>${m.name}</option>`;
+    }).join('');
+    switcher.addEventListener('change', () => {
+      location.href = `vendors.html?market=${switcher.value}`;
+    });
+  }
+
   const browseBtn = document.getElementById('vh-browse-btn');
   if (browseBtn) browseBtn.href = listingBase;
 

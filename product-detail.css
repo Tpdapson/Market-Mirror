@@ -37,24 +37,25 @@
     .product-hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      align-items: start;
       border-bottom: 1px solid var(--border);
     }
 
     /* Image panel */
     .ph-images {
       border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
+      position: sticky;
+      top: 68px;
     }
 
     .ph-main-img {
-      height: 520px;
+      height: 640px;
+      max-height: 640px;
       background: #EFEAE2;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 100px;
-      border-bottom: 1px solid var(--border);
       position: relative;
       overflow: hidden;
     }
@@ -82,8 +83,7 @@
     }
 
     .ph-thumbs {
-      display: flex;
-      gap: 0;
+      display: none;
     }
 
     .ph-thumb {
@@ -117,7 +117,7 @@
 
     /* Right info panel */
     .ph-info {
-      padding: 48px 56px;
+      padding: 48px 56px 0;
       display: flex;
       flex-direction: column;
       gap: 0;
@@ -308,6 +308,7 @@
       gap: 0;
       border-top: 1px solid var(--border);
       padding-top: 24px;
+      padding-bottom: 32px;
     }
 
     .ph-guarantee {

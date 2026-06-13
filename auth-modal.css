@@ -1,3 +1,141 @@
+/* ─── CATEGORIES NAV DROPDOWN ─────────────────────────────────── */
+.nav-dd-li {
+  position: relative;
+  list-style: none;
+}
+
+.nav-dd-trigger {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-dd-caret {
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.nav-dd-li:hover .nav-dd-caret {
+  transform: rotate(180deg);
+}
+
+.nav-dd-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: #fff;
+  border: 1px solid #E8E2D9;
+  border-radius: 16px;
+  padding: 8px;
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  width: 420px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.05);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 500;
+}
+
+/* Bridge the gap so hover doesn't drop when moving from trigger to menu */
+.nav-dd-menu::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: -20px;
+  right: -20px;
+  height: 16px;
+}
+
+.nav-dd-li:hover .nav-dd-menu {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-dd-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #0C0B09;
+  transition: background 0.12s;
+}
+
+.nav-dd-item:hover { background: #F5F0E8; }
+
+.nav-dd-icon {
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  background: #F5F0E8;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nav-dd-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0C0B09;
+  line-height: 1.2;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.nav-dd-sub {
+  font-size: 11px;
+  color: #9A9189;
+  margin-top: 2px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ─── SHARED MARKET SWITCHER ──────────────────────────────────── */
+.market-switcher-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.market-switcher-wrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 1px solid #E8E2D9;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9A9189;
+  padding: 5px 26px 5px 10px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.market-switcher-wrap select:hover,
+.market-switcher-wrap select:focus {
+  border-color: #C0392B;
+  color: #C0392B;
+}
+
+.market-caret {
+  position: absolute;
+  right: 8px;
+  font-size: 10px;
+  color: #9A9189;
+  pointer-events: none;
+}
+
 /* ─── SEARCH OVERLAY ──────────────────────────────────────────── */
 .search-overlay {
   position: fixed;
@@ -916,21 +1054,21 @@
 /* ─── HAMBURGER / MOBILE NAV ──────────────────────────────────── */
 .nav-hamburger {
   display: none;
-  width: 40px; height: 40px;
+  width: 41px; height: 41px;
   border-radius: 10px;
   border: 1.5px solid #E0DAD1;
-  background: transparent;
+  background: #FFFFFF;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #0C0B09;
-  transition: all 0.2s;
+  color: #7A756D;
+  transition: border-color 0.2s, color 0.2s;
   flex-shrink: 0;
 }
 
 .nav-hamburger:hover {
-  background: rgba(12,11,9,0.05);
   border-color: #0C0B09;
+  color: #0C0B09;
 }
 
 .mobile-nav-panel {
@@ -980,6 +1118,93 @@
 .mobile-nav-links li:last-child a { border-bottom: none; }
 .mobile-nav-links li a:hover { color: #E63C1E; }
 
+/* Accordion items (Markets / Categories) */
+.mob-accordion-li {
+  border-bottom: 1px solid #E0DAD1;
+}
+
+.mob-accordion-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 0;
+  background: transparent;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #0C0B09;
+  cursor: pointer;
+  text-align: left;
+}
+
+.mob-acc-caret {
+  font-size: 12px;
+  color: #9A9189;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.mob-accordion-li.open .mob-acc-caret {
+  transform: rotate(180deg);
+}
+
+.mob-accordion-content {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: 12px;
+}
+
+.mob-accordion-li.open .mob-accordion-content {
+  display: flex;
+}
+
+.mob-accordion-content .mob-dd-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  text-decoration: none;
+  color: #0C0B09;
+  border-bottom: 1px solid #E0DAD1;
+  transition: background 0.12s;
+}
+
+.mob-accordion-content .mob-dd-item:last-child { border-bottom: none; }
+
+.mob-accordion-content .mob-dd-item:hover,
+.mob-accordion-content .mob-dd-item:active { background: #F5F0E8; }
+
+.mob-dd-icon {
+  font-size: 16px;
+  width: 32px;
+  height: 32px;
+  background: #FAFAFA;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mob-dd-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0C0B09;
+  line-height: 1.2;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.mob-dd-sub {
+  font-size: 11px;
+  color: #9A9189;
+  margin-top: 1px;
+  font-family: 'Inter', sans-serif;
+}
+
 .mobile-nav-actions {
   padding-top: 16px;
   display: flex;
@@ -1014,12 +1239,13 @@
 }
 
 @media (max-width: 768px) {
-  nav { padding: 0 20px !important; }
+  nav { padding: 0 20px !important; justify-content: flex-start !important; }
   .nav-links { display: none !important; }
   .nav-actions a.btn { display: none !important; }
   .nav-actions .nav-wishlist-btn { display: none !important; }
   .nav-actions .nav-user-pill { display: none !important; }
-  .nav-hamburger { display: flex !important; }
+  .nav-actions { margin-left: auto; }
+  .nav-hamburger { display: flex !important; margin-left: 8px; }
 
   /* Auth modal: hide left decorative panel on mobile */
   .auth-modal {

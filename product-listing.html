@@ -46,9 +46,7 @@
   <div class="breadcrumb">
     <a href="index.html">Home</a>
     <span class="sep">/</span>
-    <a href="index.html#markets">Markets</a>
-    <span class="sep">/</span>
-    <a href="market-page.html?market=balogun" id="bc-market-link">Balogun Market</a>
+    <a href="product-listing.html">Categories</a>
     <span class="sep">/</span>
     <span class="current" id="bc-category">Fabrics</span>
   </div>
@@ -60,13 +58,6 @@
       <h1 id="pl-category-title">Fabrics &amp;<br/><span class="accent">Textiles</span></h1>
       <p class="result-count" id="pl-result-count"><strong>1,240</strong> products in this category</p>
     </div>
-    <div class="header-actions">
-      <div style="display:flex;gap:8px">
-        <a href="#" class="btn btn-outline" style="font-size:12px;padding:8px 16px">&#10515; Export list</a>
-        <a href="#" class="btn btn-dark" style="font-size:12px;padding:8px 16px">&#128276; Set price alert</a>
-      </div>
-      <p style="font-size:12px;color:var(--muted);text-align:right">Updated 12 minutes ago</p>
-    </div>
   </div>
 
   <!-- TOOLBAR -->
@@ -75,25 +66,20 @@
       <button class="mobile-filter-btn" id="mobile-filter-btn" onclick="document.getElementById('pl-sidebar').classList.add('mobile-open');document.body.classList.add('sidebar-open')">
         <i class="ph-bold ph-sliders" style="font-size:14px;"></i> Filters
       </button>
-      <button class="filter-chip active">&#9783; All Filters</button>
-      <button class="filter-chip active">Ankara <span class="chip-x">&#10005;</span></button>
-      <button class="filter-chip active">Under &#8358;5,000 <span class="chip-x">&#10005;</span></button>
-      <button class="filter-chip active">4★ &amp; above <span class="chip-x">&#10005;</span></button>
-      <button class="filter-chip active">In Stock <span class="chip-x">&#10005;</span></button>
-      <button class="clear-filters" style="font-size:12px;margin-left:8px">Clear all</button>
+      <button class="filter-chip" id="all-filters-chip">&#9783; All Filters</button>
+      <span id="pl-active-chips"></span>
+      <button class="clear-filters" id="clear-filters-btn" style="font-size:12px;margin-left:8px;display:none">Clear all</button>
     </div>
     <div class="toolbar-right">
-      <select class="sort-select">
-        <option>Most Popular</option>
-        <option>Price: Low to High</option>
-        <option>Price: High to Low</option>
-        <option>Newest First</option>
-        <option>Best Rated</option>
-      </select>
-      <div class="view-toggle">
-        <button class="view-btn active">&#9632;&#9632;&#9632;</button>
-        <button class="view-btn">&#9632;&#9632;</button>
-        <button class="view-btn">&#9644;</button>
+      <div class="sort-wrap">
+        <select class="sort-select">
+          <option>Most Popular</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+          <option>Newest First</option>
+          <option>Best Rated</option>
+        </select>
+        <i class="ph-bold ph-caret-down sort-caret"></i>
       </div>
     </div>
   </div>
@@ -171,42 +157,42 @@
         </div>
       </div>
 
-      <div class="filter-group">
+      <div class="filter-group" id="fg-rating">
         <div class="filter-group-title">Vendor Rating</div>
-        <div class="rating-stars">
-          <div class="fcheck checked"></div>
+        <div class="rating-stars" data-rating="4">
+          <div class="fcheck"></div>
           <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <span class="rating-up">4 &amp; up</span>
         </div>
-        <div class="rating-stars">
+        <div class="rating-stars" data-rating="3">
           <div class="fcheck"></div>
           <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
           <span class="rating-up">3 &amp; up</span>
         </div>
-        <div class="rating-stars">
+        <div class="rating-stars" data-rating="2">
           <div class="fcheck"></div>
           <span class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
           <span class="rating-up">2 &amp; up</span>
         </div>
       </div>
 
-      <div class="filter-group">
+      <div class="filter-group" id="fg-availability">
         <div class="filter-group-title">Availability</div>
-        <div class="filter-option">
+        <div class="filter-option" data-avail="instock">
           <div class="filter-option-left">
-            <div class="fcheck checked"></div>
+            <div class="fcheck"></div>
             <span class="filter-option-label">In Stock</span>
           </div>
           <span class="filter-option-count">1,098</span>
         </div>
-        <div class="filter-option">
+        <div class="filter-option" data-avail="preorder">
           <div class="filter-option-left">
             <div class="fcheck"></div>
             <span class="filter-option-label">Pre-order</span>
           </div>
           <span class="filter-option-count">142</span>
         </div>
-        <div class="filter-option">
+        <div class="filter-option" data-avail="wholesale">
           <div class="filter-option-left">
             <div class="fcheck"></div>
             <span class="filter-option-label">Wholesale Only</span>
@@ -215,23 +201,23 @@
         </div>
       </div>
 
-      <div class="filter-group">
+      <div class="filter-group" id="fg-vendor-type">
         <div class="filter-group-title">Vendor Type</div>
-        <div class="filter-option">
+        <div class="filter-option" data-vtype="verified">
           <div class="filter-option-left">
             <div class="fcheck"></div>
             <span class="filter-option-label">Verified Sellers</span>
           </div>
           <span class="filter-option-count">847</span>
         </div>
-        <div class="filter-option">
+        <div class="filter-option" data-vtype="top-seller">
           <div class="filter-option-left">
             <div class="fcheck"></div>
             <span class="filter-option-label">Top Sellers</span>
           </div>
           <span class="filter-option-count">234</span>
         </div>
-        <div class="filter-option">
+        <div class="filter-option" data-vtype="new">
           <div class="filter-option-left">
             <div class="fcheck"></div>
             <span class="filter-option-label">New Vendors</span>
@@ -247,54 +233,13 @@
 
       <div class="products-top-bar">
         <div class="active-filters">
-          <span style="font-size:12px;color:var(--muted);margin-right:4px">Filtered by:</span>
-          <span id="pl-active-filters-summary">
-            <span class="active-filter-tag">Ankara <span>&#10005;</span></span>
-          </span>
+          <span id="pl-filtered-by-label" style="font-size:12px;color:var(--muted);margin-right:4px;display:none">Filtered by:</span>
+          <span id="pl-active-filters-summary"></span>
         </div>
         <div class="products-count" id="pl-products-count"><strong>486</strong> results</div>
       </div>
 
       <div class="product-grid" id="product-grid">
-
-        <!-- WIDE FEATURED CARD -->
-        <div class="product-card-wide">
-          <div class="pcw-img">
-            <img src="assets/pl-featured.jpg" alt="Premium Ankara Wax Print Fabric" class="pcw-photo"/>
-          </div>
-          <div class="pcw-body">
-            <div>
-              <div class="pcw-label">Featured Vendor &middot; Top Seller</div>
-              <div class="pcw-name">Premium Ankara<br/>Wax Print Fabric</div>
-              <div class="pcw-desc">Authentic Dutch-wax Ankara prints sourced directly from established mills. Vibrant, colourfast, and available in 40+ patterns. Minimum 3-yard purchase.</div>
-              <div class="pcw-meta">
-                <div class="pcw-meta-item">
-                  <span class="pcw-meta-label">Vendor</span>
-                  <span class="pcw-meta-val">Mama Titi Fabrics</span>
-                </div>
-                <div class="pcw-meta-item">
-                  <span class="pcw-meta-label">Location</span>
-                  <span class="pcw-meta-val">Row 4, Stall 12</span>
-                </div>
-                <div class="pcw-meta-item">
-                  <span class="pcw-meta-label">Rating</span>
-                  <span class="pcw-meta-val">4.9 ★ (1,204)</span>
-                </div>
-                <div class="pcw-meta-item">
-                  <span class="pcw-meta-label">Min. Order</span>
-                  <span class="pcw-meta-val">3 yards</span>
-                </div>
-              </div>
-            </div>
-            <div class="pcw-footer">
-              <div>
-                <div class="pcw-price">&#8358;2,400 <span class="pcw-price-unit">/ yard</span></div>
-              </div>
-              <button class="pc-add" style="padding:12px 28px;font-size:13px">Add to cart &rarr;</button>
-              <a href="#" class="btn btn-outline" style="padding:11px 20px;font-size:13px">View stall</a>
-            </div>
-          </div>
-        </div>
 
         <!-- CARD 1 -->
         <div class="product-card">

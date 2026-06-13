@@ -185,6 +185,45 @@ nav {
   background: var(--red);
 }
 
+/* ─── MARKET SWITCHER ────────────────────────────────── */
+.market-switcher-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.market-switcher-wrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 5px 26px 5px 10px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.market-switcher-wrap select:hover,
+.market-switcher-wrap select:focus {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.market-caret {
+  position: absolute;
+  right: 8px;
+  font-size: 10px;
+  color: var(--muted);
+  pointer-events: none;
+}
+
 /* ─── PAGE HEADER ───────────────────────────────────── */
 .vendors-header {
   display: flex;

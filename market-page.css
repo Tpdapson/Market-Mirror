@@ -466,8 +466,14 @@ nav {
   flex-shrink: 0;
 }
 
+.sort-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
 .sort-select {
-  padding: 8px 16px;
+  padding: 8px 36px 8px 16px;
   border: 1.5px solid var(--border);
   border-radius: 100px;
   font-size: 13px;
@@ -476,6 +482,16 @@ nav {
   font-family: 'DM Sans', sans-serif;
   cursor: pointer;
   outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.sort-caret {
+  position: absolute;
+  right: 14px;
+  font-size: 12px;
+  color: var(--muted);
+  pointer-events: none;
 }
 
 /* ─── FEATURED PRODUCTS ───────────────────────────── */
@@ -974,7 +990,10 @@ footer {
     -webkit-overflow-scrolling: touch;
     width: 100%;
     padding-bottom: 2px;
+    scrollbar-width: none;
   }
+  .filter-cats::-webkit-scrollbar { display: none; }
+  .filter-cat { white-space: nowrap; }
   .filter-right { width: 100%; justify-content: flex-end; }
 
   /* Section headers */

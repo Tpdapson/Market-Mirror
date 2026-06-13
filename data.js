@@ -151,7 +151,7 @@ const MM_DATA = {
     'trade-fair': {
       id: 'trade-fair', name: 'Trade Fair Complex', shortName: 'Trade Fair', initials: 'TF',
       area: 'Badagry Expressway, Lagos', established: '1970s',
-      heroImage: 'assets/hero-trade-fair.jpg',
+      heroImage: 'assets/Elevate Your Perfume Packaging with Premium Coatings and Printing.jpeg',
       vendors: '680', products: '31k', rating: '4.5', reviews: '4,800',
       hours: '8:00 AM – 6:00 PM', isOpen: true, closingTime: '6:00 PM',
       delivery: 'Lagos-wide · Same-day available', minOrder: '₦3,000 · Free above ₦30k',
@@ -306,7 +306,7 @@ const MM_DATA = {
       title: 'Fabrics & Textiles', categoryLabel: 'Fabrics',
       totalProducts: 1240, resultCount: 486,
       subcategories: [
-        { label: 'Ankara / Wax Print', count: 486, checked: true },
+        { label: 'Ankara / Wax Print', count: 486 },
         { label: 'Lace Fabric', count: 214 },
         { label: 'Aso-oke', count: 189 },
         { label: 'Adire / Tie-dye', count: 143 },
@@ -337,7 +337,7 @@ const MM_DATA = {
       title: 'Electronics & Gadgets', categoryLabel: 'Electronics',
       totalProducts: 870, resultCount: 620,
       subcategories: [
-        { label: 'Televisions', count: 186, checked: true },
+        { label: 'Televisions', count: 186 },
         { label: 'Laptops & Computers', count: 210 },
         { label: 'Smartphones', count: 245 },
         { label: 'Home Appliances', count: 134 },
@@ -368,7 +368,7 @@ const MM_DATA = {
       title: 'Office Furniture', categoryLabel: 'Office Furniture',
       totalProducts: 98, resultCount: 72,
       subcategories: [
-        { label: 'Office Chairs', count: 34, checked: true },
+        { label: 'Office Chairs', count: 34 },
         { label: 'Executive Tables', count: 22 },
         { label: 'Computer Desks', count: 18 },
         { label: 'Shelving & Storage', count: 12 },
@@ -396,7 +396,7 @@ const MM_DATA = {
       title: 'Computers & Laptops', categoryLabel: 'Computers',
       totalProducts: 640, resultCount: 380,
       subcategories: [
-        { label: 'MacBooks & Apple', count: 94, checked: true },
+        { label: 'MacBooks & Apple', count: 94 },
         { label: 'Windows Laptops', count: 186 },
         { label: 'Desktop PCs', count: 72 },
         { label: 'Tablets & iPads', count: 54 },
@@ -427,7 +427,7 @@ const MM_DATA = {
       title: 'Clothing & Fashion', categoryLabel: 'Clothing',
       totalProducts: 510, resultCount: 342,
       subcategories: [
-        { label: "Women's Wear", count: 164, checked: true },
+        { label: "Women's Wear", count: 164 },
         { label: "Men's Wear", count: 98 },
         { label: 'Ankara & Native', count: 112 },
         { label: 'Kids Clothing', count: 76 },
@@ -458,7 +458,7 @@ const MM_DATA = {
       title: 'Fresh Produce & Vegetables', categoryLabel: 'Fresh Produce',
       totalProducts: 390, resultCount: 280,
       subcategories: [
-        { label: 'Tomatoes & Peppers', count: 68, checked: true },
+        { label: 'Tomatoes & Peppers', count: 68 },
         { label: 'Leafy Vegetables', count: 54 },
         { label: 'Root Vegetables', count: 42 },
         { label: 'Fruits', count: 38 },
@@ -466,22 +466,74 @@ const MM_DATA = {
         { label: 'Organic Produce', count: 50 },
       ],
       featured: {
-        image: 'assets/feat-mile12.jpg', label: 'Featured Vendor · Top Seller',
-        name: 'Fresh Tomato Basket — 10kg',
-        desc: 'Farm-fresh roma tomatoes harvested daily from Kaduna and Jos farms. Plump, red, and fully ripe. Ideal for stew, jollof rice, and tomato paste. Delivered same morning to your door.',
+        image: 'assets/_Fresh, vibrant veggies to brighten up your meals….jpeg', label: 'Featured Vendor · Top Seller',
+        name: 'Weekly Fresh Veg Box — 7 Varieties',
+        desc: 'A curated weekly box bursting with farm-fresh produce: vine-ripe tomatoes, broccoli, carrots, red & yellow bell peppers, cucumber, green onions, and fresh herbs. All sourced directly from verified farms and delivered same morning.',
         vendor: 'FreshFarm Direct', location: 'Section A, Stall 3',
-        ratingStr: '4.8 ★ (1,120)', minOrder: '5kg',
-        price: '₦4,500', unit: '10kg'
+        ratingStr: '4.9 ★ (412)', minOrder: '1 box',
+        price: '₦4,500', unit: 'box'
       },
       items: [
-        { image: 'assets/pl-produce-1.jpg', badge: 'Hot', badgeClass: 'badge-hot', name: 'Scotch Bonnet Pepper (Tatashe) 3kg', vendor: 'FreshFarm Direct ✓', sub: 'Section A, Stall 3 · Freshly harvested', rating: 4.8, reviews: 320, price: '₦2,800', unit: '3kg' },
-        { image: 'assets/pl-produce-2.jpg', badge: '', badgeClass: '', name: 'Sweet Potato — 5kg Bag', vendor: 'RootVeg Depot ✓', sub: 'Section A, Stall 9 · Ogun farms', rating: 4.5, reviews: 187, price: '₦1,800', unit: '5kg' },
-        { image: 'assets/pl-produce-3.jpg', badge: 'New', badgeClass: 'badge-new', name: 'Fresh Ugwu (Fluted Pumpkin)', vendor: 'GreenLeaf Market ✓', sub: 'Section B, Stall 5 · Daily cut', rating: 4.7, reviews: 145, price: '₦800', unit: 'bundle' },
-        { image: 'assets/pl-produce-4.jpg', badge: '-10%', badgeClass: 'badge-sale', name: 'Onions Bag — 10kg', vendor: 'Grain Masters ✓', sub: 'Section B, Stall 8 · Sokoto onions', rating: 4.6, reviews: 298, price: '₦3,200', oldPrice: '₦3,500', unit: '10kg' },
-        { image: 'assets/pl-produce-5.jpg', badge: '', badgeClass: '', name: 'Garden Egg (White) — 2kg', vendor: 'FreshFarm Direct ✓', sub: 'Section A, Stall 3', rating: 4.4, reviews: 92, price: '₦1,200', unit: '2kg' },
-        { image: 'assets/pl-produce-1.jpg', badge: 'Hot', badgeClass: 'badge-hot', name: 'Yam — Extra-Large Tuber', vendor: 'RootVeg Depot ✓', sub: 'Section A, Stall 9 · Benue yam', rating: 4.9, reviews: 412, price: '₦2,500', unit: 'tuber' },
-        { image: 'assets/pl-produce-2.jpg', badge: 'New', badgeClass: 'badge-new', name: 'Waterleaf (Talinum) Bundle', vendor: 'GreenLeaf Market ✓', sub: 'Section B, Stall 5 · Fresh daily', rating: 4.7, reviews: 68, price: '₦600', unit: 'bundle' },
-        { image: 'assets/pl-produce-3.jpg', badge: '', badgeClass: '', name: 'Corn (Maize) — Half Bag', vendor: 'Grain Masters ✓', sub: 'Section B, Stall 8 · Dry season', rating: 4.5, reviews: 234, price: '₦4,800', unit: 'half bag' },
+        { image: 'assets/875809458774827357.jpeg', badge: 'Hot', badgeClass: 'badge-hot', name: 'Red Chili Peppers (Shombo) — 2kg', vendor: 'FreshFarm Direct ✓', sub: 'Section A, Stall 3 · Freshly harvested', rating: 4.8, reviews: 320, price: '₦2,200', unit: '2kg' },
+        { image: 'assets/970736894669637684.jpeg', badge: '', badgeClass: '', name: 'Fresh Carrots — 1kg Bunch', vendor: 'FreshFarm Direct ✓', sub: 'Section A, Stall 3 · Farm-fresh with tops', rating: 4.6, reviews: 187, price: '₦900', unit: '1kg' },
+        { image: 'assets/822047738278417136.jpeg', badge: 'New', badgeClass: 'badge-new', name: 'Fresh Broccoli Head — 500g', vendor: 'GreenLeaf Market ✓', sub: 'Section B, Stall 5 · Fresh & firm', rating: 4.7, reviews: 145, price: '₦1,200', unit: '500g' },
+        { image: 'assets/양파.jpeg', badge: '-10%', badgeClass: 'badge-sale', name: 'Onions Bag — 10kg', vendor: 'Grain Masters ✓', sub: 'Section B, Stall 8 · Sokoto onions', rating: 4.6, reviews: 298, price: '₦3,200', oldPrice: '₦3,500', unit: '10kg' },
+        { image: 'assets/Okro Soup with Shrimp and Spinach (Nigerian Okra….jpeg', badge: '', badgeClass: '', name: 'Fresh Okro (Pre-sliced) — 500g', vendor: 'FreshFarm Direct ✓', sub: 'Section A, Stall 3 · Pre-sliced, ready to cook', rating: 4.5, reviews: 92, price: '₦800', unit: '500g' },
+        { image: 'assets/_Fresh, vibrant veggies to brighten up your meals….jpeg', badge: 'Hot', badgeClass: 'badge-hot', name: 'Weekly Fresh Veg Box — 7 Varieties', vendor: 'FreshFarm Direct ✓', sub: 'Section A, Stall 3 · Tomatoes, peppers, broccoli & more', rating: 4.9, reviews: 412, price: '₦4,500', unit: 'box' },
+        { image: 'assets/Our grass-fed diced chuck is perfect for your….jpeg', badge: 'New', badgeClass: 'badge-new', name: 'Fresh Diced Beef (Chuck) — 1kg', vendor: 'FreshFarm Direct ✓', sub: 'Section A, Stall 3 · Grass-fed · Delivered fresh', rating: 4.8, reviews: 234, price: '₦4,200', unit: '1kg' },
+        { image: 'assets/The 36 absolute best things in the world.jpeg', badge: '', badgeClass: '', name: 'Long Grain Parboiled Rice — 10kg', vendor: 'Grain Masters ✓', sub: 'Section B, Stall 8 · Grade A · Kebbi farms', rating: 4.7, reviews: 389, price: '₦9,800', unit: '10kg' },
+      ]
+    },
+
+    'mile-12-grains': {
+      title: 'Grains & Cereals', categoryLabel: 'Grains & Cereals',
+      totalProducts: 120, resultCount: 85,
+      subcategories: [
+        { label: 'Rice', count: 34 },
+        { label: 'Beans', count: 22 },
+        { label: 'Maize & Corn', count: 18 },
+        { label: 'Millet & Sorghum', count: 14 },
+        { label: 'Oats & Other Grains', count: 12 },
+      ],
+      featured: {
+        image: 'assets/The 36 absolute best things in the world.jpeg', label: 'Featured Vendor · Top Seller',
+        name: 'Long Grain Parboiled Rice — 50kg Bag',
+        desc: 'Premium Grade A parboiled long grain rice sourced directly from paddy farms in Kebbi and Benue states. Fluffy, non-sticky texture every time. Perfect for jollof, fried rice, and everyday cooking. Order full bags at wholesale prices.',
+        vendor: 'Grain Masters', location: 'Section B, Stall 8',
+        ratingStr: '4.6 ★ (870)', minOrder: '5kg',
+        price: '₦42,000', unit: '50kg bag'
+      },
+      items: [
+        { image: 'assets/The 36 absolute best things in the world.jpeg', badge: 'Top Seller', badgeClass: 'badge-hot', name: 'Long Grain Parboiled Rice — 50kg Bag', vendor: 'Grain Masters ✓', sub: 'Section B, Stall 8 · Grade A', rating: 4.6, reviews: 870, price: '₦42,000', unit: '50kg' },
+        { image: 'assets/The 36 absolute best things in the world.jpeg', badge: '', badgeClass: '', name: 'Long Grain Parboiled Rice — 10kg', vendor: 'Grain Masters ✓', sub: 'Section B, Stall 8 · Premium grade', rating: 4.7, reviews: 389, price: '₦9,800', unit: '10kg' },
+        { image: 'assets/The 36 absolute best things in the world.jpeg', badge: '-5%', badgeClass: 'badge-sale', name: 'Ofada Brown Rice — 5kg', vendor: 'Grain Masters ✓', sub: 'Section B, Stall 8 · Local variety', rating: 4.8, reviews: 210, price: '₦5,700', oldPrice: '₦6,000', unit: '5kg' },
+        { image: 'assets/The 36 absolute best things in the world.jpeg', badge: 'New', badgeClass: 'badge-new', name: 'Jasmine Rice — 10kg Bag', vendor: 'Grain Masters ✓', sub: 'Section B, Stall 8 · Thai import', rating: 4.5, reviews: 98, price: '₦11,500', unit: '10kg' },
+      ]
+    },
+
+    'mile-12-groceries': {
+      title: 'Packaged Groceries', categoryLabel: 'Packaged Groceries',
+      totalProducts: 180, resultCount: 140,
+      subcategories: [
+        { label: 'Instant Noodles', count: 42 },
+        { label: 'Canned Goods', count: 36 },
+        { label: 'Cooking Oils', count: 28 },
+        { label: 'Condiments & Sauces', count: 22 },
+        { label: 'Dry Goods', count: 18 },
+      ],
+      featured: {
+        image: 'assets/Ready Stock in SG! Indomie Goreng Indomie Kuah….jpeg', label: 'Featured Vendor · Top Seller',
+        name: 'Indomie Mi Goreng Instant Noodles — Carton of 40',
+        desc: 'The iconic Indonesian-style dry instant noodles beloved across Nigeria. Each pack comes with 5 seasoning sachets for an authentic stir-fry noodle experience. Order a full carton of 40 packs at unbeatable wholesale price.',
+        vendor: 'Grain Masters', location: 'Section B, Stall 8',
+        ratingStr: '4.8 ★ (560)', minOrder: '1 carton',
+        price: '₦9,500', unit: 'carton (40 packs)'
+      },
+      items: [
+        { image: 'assets/Ready Stock in SG! Indomie Goreng Indomie Kuah….jpeg', badge: 'Hot', badgeClass: 'badge-hot', name: 'Indomie Mi Goreng — Carton of 40', vendor: 'Grain Masters ✓', sub: 'Section B, Stall 8 · Wholesale price', rating: 4.8, reviews: 560, price: '₦9,500', unit: 'carton' },
+        { image: 'assets/Ready Stock in SG! Indomie Goreng Indomie Kuah….jpeg', badge: '-10%', badgeClass: 'badge-sale', name: 'Indomie Chicken Flavour — Carton of 40', vendor: 'Grain Masters ✓', sub: 'Section B, Stall 8 · Classic Nigerian flavour', rating: 4.7, reviews: 420, price: '₦8,100', oldPrice: '₦9,000', unit: 'carton' },
+        { image: 'assets/Ready Stock in SG! Indomie Goreng Indomie Kuah….jpeg', badge: 'New', badgeClass: 'badge-new', name: 'Indomie Mi Goreng — 10-Pack Bundle', vendor: 'Grain Masters ✓', sub: 'Section B, Stall 8 · Trial pack', rating: 4.9, reviews: 132, price: '₦2,800', unit: '10 packs' },
+        { image: 'assets/Ready Stock in SG! Indomie Goreng Indomie Kuah….jpeg', badge: '', badgeClass: '', name: 'Indomie Instant Noodles — Carton of 40 (Assorted)', vendor: 'Grain Masters ✓', sub: 'Section B, Stall 8 · Mixed flavours', rating: 4.6, reviews: 289, price: '₦8,800', unit: 'carton' },
       ]
     },
 
@@ -489,7 +541,7 @@ const MM_DATA = {
       title: 'Jewelry & Watches', categoryLabel: 'Jewelry & Watches',
       totalProducts: 680, resultCount: 520,
       subcategories: [
-        { label: 'Gold-Plated Jewelry', count: 186, checked: true },
+        { label: 'Gold-Plated Jewelry', count: 186 },
         { label: 'Earrings & Studs', count: 142 },
         { label: 'Necklaces & Chains', count: 118 },
         { label: 'Bracelets & Bangles', count: 96 },
@@ -508,11 +560,95 @@ const MM_DATA = {
         { image: 'assets/tf-jewelry-1.jpg', badge: 'Hot', badgeClass: 'badge-hot', name: 'Statement Gold Choker Necklace', vendor: 'Crown Jewels Wholesale ✓', sub: 'Hall A, Shop 5 · 8 designs', rating: 4.8, reviews: 620, price: '₦4,200', unit: 'piece' },
         { image: 'assets/tf-watch-1.jpg', badge: '-15%', badgeClass: 'badge-sale', name: 'Women\'s Rose Gold Wristwatch', vendor: 'Crown Jewels Wholesale ✓', sub: 'Hall A, Shop 5 · Waterproof', rating: 4.7, reviews: 410, price: '₦12,500', oldPrice: '₦14,700', unit: 'piece' },
         { image: 'assets/tf-jewelry-2.jpg', badge: 'New', badgeClass: 'badge-new', name: 'Pearl Drop Earrings Set', vendor: 'Crown Jewels Wholesale ✓', sub: 'Hall A, Shop 5 · 12 colour options', rating: 4.9, reviews: 188, price: '₦2,800', unit: 'pair' },
-        { image: 'assets/tf-accessories-1.jpg', badge: '', badgeClass: '', name: 'Layered Gold Waist Chain', vendor: 'Crown Jewels Wholesale ✓', sub: 'Hall A, Shop 5 · Adjustable', rating: 4.6, reviews: 312, price: '₦3,500', unit: 'piece' },
+        { image: 'assets/1121748219709108410.jpeg', badge: '', badgeClass: '', name: 'Rhinestone Gold Statement Set — 4 Pieces', vendor: 'Crown Jewels Wholesale ✓', sub: 'Hall A, Shop 5 · Necklace, Earrings, Bracelet & Ring', rating: 4.6, reviews: 312, price: '₦12,500', unit: 'set' },
         { image: 'assets/tf-watch-2.jpg', badge: '-10%', badgeClass: 'badge-sale', name: 'Luxury Bracelet Watch — Black', vendor: 'Crown Jewels Wholesale ✓', sub: 'Hall A, Shop 5 · Gift box included', rating: 4.7, reviews: 256, price: '₦18,000', oldPrice: '₦20,000', unit: 'piece' },
         { image: 'assets/tf-jewelry-3.jpg', badge: 'Hot', badgeClass: 'badge-hot', name: 'Rhinestone Stud Earrings Pack × 6', vendor: 'Crown Jewels Wholesale ✓', sub: 'Hall A, Shop 5 · Wholesale pack', rating: 4.8, reviews: 890, price: '₦6,000', unit: 'pack' },
-        { image: 'assets/tf-accessories-2.jpg', badge: 'New', badgeClass: 'badge-new', name: 'Charm Bangle Set — 5 Pieces', vendor: 'Crown Jewels Wholesale ✓', sub: 'Hall A, Shop 5 · Mixed metals', rating: 4.7, reviews: 145, price: '₦4,800', unit: 'set' },
-        { image: 'assets/tf-jewelry-1.jpg', badge: '', badgeClass: '', name: 'Ankle Bracelet — Gold Plated', vendor: 'Crown Jewels Wholesale ✓', sub: 'Hall A, Shop 5 · Adjustable size', rating: 4.5, reviews: 198, price: '₦1,800', unit: 'piece' },
+        { image: 'assets/Silver  Collar     Embellished   Women Fashion….jpeg', badge: 'New', badgeClass: 'badge-new', name: 'Silver Diamond Collar Necklace Set', vendor: 'Crown Jewels Wholesale ✓', sub: 'Hall A, Shop 5 · Necklace, Earrings, Bracelet & Ring', rating: 4.7, reviews: 145, price: '₦18,500', unit: 'set' },
+        { image: 'assets/1094726622053039474.jpeg', badge: '', badgeClass: '', name: 'Strathberry-Style Structured Tote — Burgundy', vendor: 'LuxeBag Depot ✓', sub: 'Hall B, Shop 11 · With matching cardholder', rating: 4.5, reviews: 198, price: '₦42,000', unit: 'piece' },
+      ]
+    },
+
+    'trade-fair-bags': {
+      title: 'Bags & Handbags', categoryLabel: 'Bags & Handbags',
+      totalProducts: 360, resultCount: 280,
+      subcategories: [
+        { label: 'Tote Bags', count: 98 },
+        { label: 'Shoulder Bags', count: 86 },
+        { label: 'Clutch Purses', count: 64 },
+        { label: 'Crossbody Bags', count: 52 },
+        { label: 'Mini Bags', count: 38 },
+      ],
+      featured: {
+        image: 'assets/1094726622053039474.jpeg', label: 'Featured Vendor · Top Seller',
+        name: 'Strathberry-Style Structured Tote — Burgundy',
+        desc: 'Luxury-inspired structured tote in rich burgundy pebbled leather with white contrast handle bar and gold-tone hardware. Includes a matching slim cardholder. A statement piece that blends elegance with everyday functionality.',
+        vendor: 'LuxeBag Depot', location: 'Hall B, Shop 11',
+        ratingStr: '4.7 ★ (1,120)', minOrder: '1 piece',
+        price: '₦42,000', unit: 'piece'
+      },
+      items: [
+        { image: 'assets/663506957634861484.jpeg', badge: 'Hot', badgeClass: 'badge-hot', name: 'Designer Beige Scarf Tote Bag', vendor: 'LuxeBag Depot ✓', sub: 'Hall B, Shop 11 · Comes with silk scarf', rating: 4.8, reviews: 540, price: '₦26,000', unit: 'piece' },
+        { image: "assets/#ModernWome_ for a timeless handbag that blends….jpeg", badge: 'Top Seller', badgeClass: 'badge-hot', name: 'Exotic Croc-Embossed Leather Satchel', vendor: 'LuxeBag Depot ✓', sub: 'Hall B, Shop 11 · Camel · Dual carry', rating: 4.9, reviews: 420, price: '₦34,500', unit: 'piece' },
+        { image: 'assets/1094726622053039474.jpeg', badge: 'New', badgeClass: 'badge-new', name: 'Strathberry-Style Structured Tote — Burgundy', vendor: 'LuxeBag Depot ✓', sub: 'Hall B, Shop 11 · With matching cardholder', rating: 4.7, reviews: 198, price: '₦42,000', unit: 'piece' },
+        { image: 'assets/tf-bags-2.jpg', badge: '-15%', badgeClass: 'badge-sale', name: 'Mini Quilted Chain Bag', vendor: 'LuxeBag Depot ✓', sub: 'Hall B, Shop 11 · 6 colour options', rating: 4.6, reviews: 312, price: '₦14,500', oldPrice: '₦17,000', unit: 'piece' },
+        { image: 'assets/tf-bags-1.jpg', badge: '', badgeClass: '', name: 'Classic Tan Tote Bag', vendor: 'LuxeBag Depot ✓', sub: 'Hall B, Shop 11 · Spacious · 4 pockets', rating: 4.5, reviews: 280, price: '₦22,000', unit: 'piece' },
+        { image: 'assets/663506957634861484.jpeg', badge: '-10%', badgeClass: 'badge-sale', name: 'Scarf Tote Bag — White Edition', vendor: 'LuxeBag Depot ✓', sub: 'Hall B, Shop 11 · Limited stock', rating: 4.8, reviews: 156, price: '₦23,500', oldPrice: '₦26,000', unit: 'piece' },
+      ]
+    },
+
+    'trade-fair-beauty': {
+      title: 'Beauty & Skincare', categoryLabel: 'Beauty & Skincare',
+      totalProducts: 310, resultCount: 240,
+      subcategories: [
+        { label: 'Body Creams & Lotions', count: 98 },
+        { label: 'Perfumes & Fragrances', count: 76 },
+        { label: 'Facial Skincare', count: 54 },
+        { label: 'Makeup', count: 42 },
+        { label: 'Hair Care', count: 30 },
+      ],
+      featured: {
+        image: 'assets/Elevate Your Perfume Packaging with Premium Coatings and Printing.jpeg', label: 'Featured Vendor · Top Seller',
+        name: 'Luxury Perfume Collection — 6 Signature Scents',
+        desc: 'Curated set of 6 imported luxury fragrances in stunning crystal-cut bottles. Long-lasting Eau de Parfum formulations. Includes floral, woody, oriental, and fresh scent profiles. Available as full bottles or gift sets.',
+        vendor: 'Glow Beauty Wholesale', location: 'Hall D, Shop 7',
+        ratingStr: '4.5 ★ (720)', minOrder: '1 bottle',
+        price: '₦18,500', unit: 'bottle'
+      },
+      items: [
+        { image: "assets/Palmers in different variants 🤍🩷💜❤️💚__For the….jpeg", badge: 'Hot', badgeClass: 'badge-hot', name: "Palmer's Cocoa Butter Lotion Set — 4 Variants", vendor: 'Glow Beauty Wholesale ✓', sub: 'Hall D, Shop 7 · Firming, Smooth Radiant & more', rating: 4.8, reviews: 680, price: '₦9,500', unit: 'set' },
+        { image: "assets/✨ Pamper your skin with Olay's Anti-Aging Night….jpeg", badge: '-20%', badgeClass: 'badge-sale', name: 'Olay Night Cream — Anti-Aging Hydrating', vendor: 'Glow Beauty Wholesale ✓', sub: 'Hall D, Shop 7 · Niacinamide & Amino Peptides', rating: 4.9, reviews: 412, price: '₦12,800', oldPrice: '₦16,000', unit: 'piece' },
+        { image: 'assets/Use a well-crafted picture to bring you a unique….jpeg', badge: 'New', badgeClass: 'badge-new', name: 'Rose Floral Eau de Parfum 100ml', vendor: 'Glow Beauty Wholesale ✓', sub: 'Hall D, Shop 7 · Long-lasting floral scent', rating: 4.7, reviews: 234, price: '₦14,500', unit: 'bottle' },
+        { image: 'assets/Elevate Your Perfume Packaging with Premium Coatings and Printing.jpeg', badge: 'Top Seller', badgeClass: 'badge-hot', name: 'Luxury Perfume Collection — 6 Bottles', vendor: 'Glow Beauty Wholesale ✓', sub: 'Hall D, Shop 7 · Crystal-cut bottles', rating: 4.8, reviews: 310, price: '₦18,500', unit: 'set' },
+        { image: 'assets/tf-beauty-1.jpg', badge: '-15%', badgeClass: 'badge-sale', name: 'Glow Body Cream Set × 3', vendor: 'Glow Beauty Wholesale ✓', sub: 'Hall D, Shop 7 · Mixed scents', rating: 4.6, reviews: 520, price: '₦9,500', oldPrice: '₦11,200', unit: 'set' },
+        { image: 'assets/tf-beauty-2.jpg', badge: '', badgeClass: '', name: 'Brightening Serum — Vitamin C', vendor: 'Glow Beauty Wholesale ✓', sub: 'Hall D, Shop 7 · Wholesale packs available', rating: 4.5, reviews: 198, price: '₦6,800', unit: 'bottle' },
+      ]
+    },
+
+    'trade-fair-shoes': {
+      title: 'Shoes & Heels', categoryLabel: 'Shoes & Heels',
+      totalProducts: 290, resultCount: 210,
+      subcategories: [
+        { label: 'Stilettos & Strappy Heels', count: 86 },
+        { label: 'Platform Shoes', count: 72 },
+        { label: 'Block Heels', count: 58 },
+        { label: 'Sandals', count: 48 },
+        { label: 'Flats & Slingbacks', count: 36 },
+      ],
+      featured: {
+        image: "assets/Women's Patented High Heels Elevate your style….jpeg", label: 'Featured Vendor · Top Seller',
+        name: "Women's Rose Gold Strappy Stiletto Heels",
+        desc: 'Sleek patent leather stilettos with a single ankle strap and cross-strap toe. Rose gold mirror finish with gold-tone buckle. 10cm heel height. Sizes 36–42. A versatile evening heel that pairs with everything.',
+        vendor: 'Step Queens Footwear', location: 'Hall B, Shop 3',
+        ratingStr: '4.7 ★ (940)', minOrder: '1 pair',
+        price: '₦19,500', unit: 'pair'
+      },
+      items: [
+        { image: "assets/Women's Patented High Heels Elevate your style….jpeg", badge: 'Hot', badgeClass: 'badge-hot', name: 'Rose Gold Strappy Stiletto Heels', vendor: 'Step Queens Footwear ✓', sub: 'Hall B, Shop 3 · Sizes 36–42 · Patent leather', rating: 4.8, reviews: 620, price: '₦19,500', unit: 'pair' },
+        { image: 'assets/As sapatilhas slingbacks mais queridinhas 🤩….jpeg', badge: 'New', badgeClass: 'badge-new', name: 'Pointed-Toe Leather Slingback Flats', vendor: 'Step Queens Footwear ✓', sub: 'Hall B, Shop 3 · Cognac · Sizes 36–41', rating: 4.9, reviews: 188, price: '₦15,800', unit: 'pair' },
+        { image: 'assets/tf-shoes-1.jpg', badge: '-10%', badgeClass: 'badge-sale', name: 'Transparent Clear Mule Heels', vendor: 'Step Queens Footwear ✓', sub: 'Hall B, Shop 3 · 8cm block heel', rating: 4.6, reviews: 310, price: '₦13,500', oldPrice: '₦15,000', unit: 'pair' },
+        { image: 'assets/tf-shoes-2.jpg', badge: '', badgeClass: '', name: 'Block Heel Court Shoes — Nude', vendor: 'Step Queens Footwear ✓', sub: 'Hall B, Shop 3 · Classic court style', rating: 4.5, reviews: 256, price: '₦16,500', unit: 'pair' },
+        { image: "assets/Women's Patented High Heels Elevate your style….jpeg", badge: '-15%', badgeClass: 'badge-sale', name: 'Gold Mirror Ankle-Strap Heels', vendor: 'Step Queens Footwear ✓', sub: 'Hall B, Shop 3 · Evening wear · Sizes 36–42', rating: 4.7, reviews: 145, price: '₦17,000', oldPrice: '₦20,000', unit: 'pair' },
+        { image: 'assets/As sapatilhas slingbacks mais queridinhas 🤩….jpeg', badge: 'Hot', badgeClass: 'badge-hot', name: 'Tan Cap-Toe Slingback Pumps', vendor: 'Step Queens Footwear ✓', sub: 'Hall B, Shop 3 · Work & casual · 3cm heel', rating: 4.8, reviews: 412, price: '₦14,200', unit: 'pair' },
       ]
     },
 
@@ -520,7 +656,7 @@ const MM_DATA = {
       title: 'Stationery & School Supplies', categoryLabel: 'Stationery',
       totalProducts: 460, resultCount: 310,
       subcategories: [
-        { label: 'Notebooks & Journals', count: 98, checked: true },
+        { label: 'Notebooks & Journals', count: 98 },
         { label: 'Pens & Pencils', count: 76 },
         { label: 'Office Supplies', count: 54 },
         { label: 'Art Supplies', count: 42 },
@@ -551,7 +687,7 @@ const MM_DATA = {
       title: 'Fashion & Streetwear', categoryLabel: 'Fashion',
       totalProducts: 980, resultCount: 720,
       subcategories: [
-        { label: "Men's Fashion", count: 220, checked: true },
+        { label: "Men's Fashion", count: 220 },
         { label: "Women's Fashion", count: 280 },
         { label: 'Sneakers & Footwear', count: 198 },
         { label: 'Caps & Headwear', count: 86 },
@@ -638,28 +774,28 @@ const MM_DATA = {
     },
     'mile-12': {
       large: {
-        image: 'assets/feat-mile12.jpg',
+        image: 'assets/_Fresh, vibrant veggies to brighten up your meals….jpeg',
         vendor: 'FreshFarm Direct', verified: true,
-        name: 'Fresh Tomato Basket — 10kg',
-        meta: 'Section A, Stall 3 · Daily harvest',
-        price: '₦4,500', unit: 'per basket',
+        name: 'Weekly Fresh Veg Box — 7 Varieties',
+        meta: 'Section A, Stall 3 · Same-morning delivery',
+        price: '₦4,500', unit: 'per box',
       },
       small: [
-        { image: 'assets/sm-mile12-1.jpg', vendor: 'Grain Masters', verified: true, name: 'Parboiled Rice — 50kg Bag', sub: 'Section B · Grade A', price: '₦42,000', badge: 'In stock', badgeClass: 'badge-green' },
-        { image: 'assets/sm-mile12-2.jpg', vendor: 'Harbour Seafood', verified: true, name: 'Fresh Catfish — 1kg', sub: 'Section C · Cleaned & gutted', price: '₦3,800', badge: 'Daily stock', badgeClass: 'badge-orange' },
+        { image: 'assets/875809458774827357.jpeg', vendor: 'FreshFarm Direct', verified: true, name: 'Red Chili Peppers (Shombo) — 2kg', sub: 'Section A · Freshly harvested', price: '₦2,200', badge: 'In stock', badgeClass: 'badge-green' },
+        { image: 'assets/양파.jpeg', vendor: 'Grain Masters', verified: true, name: 'Onions Bag — 10kg', sub: 'Section B · Sokoto onions', price: '₦3,200', badge: 'Hot item', badgeClass: 'badge-orange' },
       ]
     },
     'trade-fair': {
       large: {
-        image: 'assets/feat-tradefair.jpg',
+        image: 'assets/1121748219709108410.jpeg',
         vendor: 'Crown Jewels Wholesale', verified: true,
-        name: 'Gold-Plated Jewelry Set — 3 Pieces',
-        meta: 'Hall A, Shop 5 · Necklace + Earrings + Bracelet',
-        price: '₦8,500', unit: 'per set',
+        name: 'Rhinestone Gold-Plated Statement Set — 4 Pieces',
+        meta: 'Hall A, Shop 5 · Necklace + Earrings + Bracelet + Ring',
+        price: '₦12,500', unit: 'per set',
       },
       small: [
-        { image: 'assets/tf-bags-1.jpg', vendor: 'LuxeBag Depot', verified: true, name: 'Designer Tote Bag — Tan', sub: 'Hall B · 6 colour options', price: '₦24,000', badge: 'In stock', badgeClass: 'badge-green' },
-        { image: 'assets/tf-shoes-2.jpg', vendor: 'Step Queens Footwear', verified: true, name: 'Block Heel Court Shoes', sub: 'Hall B · Sizes 36–42', price: '₦16,500', badge: 'Hot item', badgeClass: 'badge-orange' },
+        { image: 'assets/663506957634861484.jpeg', vendor: 'LuxeBag Depot', verified: true, name: 'Designer Beige Scarf Tote Bag', sub: 'Hall B · Comes with silk scarf', price: '₦26,000', badge: 'In stock', badgeClass: 'badge-green' },
+        { image: "assets/Women's Patented High Heels Elevate your style….jpeg", vendor: 'Step Queens Footwear', verified: true, name: 'Rose Gold Strappy Stiletto Heels', sub: 'Hall B · Sizes 36–42 · Patent leather', price: '₦19,500', badge: 'Hot item', badgeClass: 'badge-orange' },
       ]
     },
     idumota: {
@@ -823,33 +959,33 @@ const MM_DATA = {
     },
 
     'mile-12': {
-      emoji: '🍅', badge: 'Top Seller',
-      image: 'assets/feat-mile12.jpg',
-      thumbImages: ['assets/pl-produce-1.jpg','assets/pl-produce-2.jpg','assets/pl-produce-3.jpg','assets/pl-produce-4.jpg'],
-      subtitle: 'Farm-fresh roma tomatoes harvested daily from Kaduna and Jos farms. Plump, red, and fully ripe.',
+      emoji: '🥦', badge: 'Top Seller',
+      image: 'assets/_Fresh, vibrant veggies to brighten up your meals….jpeg',
+      thumbImages: ['assets/875809458774827357.jpeg','assets/970736894669637684.jpeg','assets/822047738278417136.jpeg','assets/양파.jpeg'],
+      subtitle: 'A curated weekly box of 7 farm-fresh vegetables — tomatoes, broccoli, carrots, peppers, cucumber, green onions, and herbs.',
       description: [
-        "FreshFarm Direct sources produce daily from verified farms in Kaduna, Jos, Ogun, and Kano states. Our tomatoes are harvested at peak ripeness, transported overnight, and delivered to your door by morning — never more than 24 hours from farm to kitchen.",
-        "Our 10kg basket is ideal for families and restaurants who need volume. Tomatoes are hand-sorted, removing any under-ripe or damaged fruits before packing. Each basket is photographed before dispatch so you know exactly what you're getting."
+        "FreshFarm Direct sources produce daily from verified farms in Kaduna, Jos, Ogun, and Kano states. Our Weekly Fresh Veg Box is hand-packed each morning with whatever is freshest that day — minimum 7 varieties, always photographed before dispatch so you know exactly what's inside.",
+        "From vine-ripe tomatoes and crunchy broccoli to sweet carrots, colourful bell peppers, crisp cucumber, green onions, and aromatic herbs — each box is a complete weekly shopping trip for your kitchen, delivered before 8AM."
       ],
-      care: "Store at room temperature away from direct sunlight. Refrigerate only once fully ripe. Use within 5–7 days of delivery.",
+      care: "Store leafy greens and herbs in the fridge. Keep tomatoes and peppers at room temperature. Use within 4–6 days of delivery for peak freshness.",
       specs: [
-        { label: 'Variety', value: 'Roma / Plum Tomatoes' },
-        { label: 'Origin', value: 'Kaduna & Jos Plateau farms' },
-        { label: 'Weight', value: '10kg per basket' },
-        { label: 'Harvest', value: 'Daily — order by 6PM for next-day' },
-        { label: 'Shelf Life', value: '5–7 days at room temperature' },
+        { label: 'Contents', value: '7 vegetable varieties (changes seasonally)' },
+        { label: 'Origin', value: 'Kaduna, Jos, Ogun & Kano farms' },
+        { label: 'Weight', value: 'Approx. 3–4kg total' },
+        { label: 'Harvest', value: 'Daily — order by 6PM for next-morning' },
+        { label: 'Shelf Life', value: '4–6 days refrigerated' },
       ],
-      sold: '4,812 baskets', unitLabel: '10kg basket', minOrder: 1, vendorYears: '8yr',
+      sold: '1,840 boxes', unitLabel: 'box', minOrder: 1, vendorYears: '8yr',
       reviews: [
-        { name: 'Chef Emeka', date: 'May 28, 2025', rating: 5, text: "I run a restaurant and order 3 crates every week from FreshFarm. Freshest tomatoes in Lagos. Delivery before 8AM every morning. Absolutely reliable." },
-        { name: 'Mama Chidi', date: 'May 15, 2025', rating: 5, text: "Finally found a trustworthy produce vendor on Market Mirror. The tomatoes are plump and tasty. I made the best pot of stew I've had in years!" },
-        { name: 'Temi Oladipo', date: 'May 2, 2025', rating: 4, text: "Good tomatoes, fresh as described. Delivery was prompt. Packaging could be a bit sturdier for transit though." },
+        { name: 'Chef Emeka', date: 'May 28, 2025', rating: 5, text: "I order a box every week for my restaurant. The variety is always excellent and everything arrives crisp and fresh before 8AM. FreshFarm is the most reliable produce vendor I've found in Lagos." },
+        { name: 'Mama Chidi', date: 'May 15, 2025', rating: 5, text: "Best discovery on Market Mirror! Everything in the box was beautiful — the broccoli was firm, carrots sweet, and tomatoes perfectly ripe. Already subscribed weekly." },
+        { name: 'Temi Oladipo', date: 'May 2, 2025', rating: 4, text: "Really good quality vegetables, very fresh. The only thing I'd say is pack the herbs in a separate wrap so they don't get crushed. Otherwise excellent." },
       ],
       related: [
-        { emoji: '🌶️', image: 'assets/pl-produce-1.jpg', name: 'Scotch Bonnet Peppers 3kg', vendor: 'FreshFarm Direct · Section A', price: '₦2,800', unit: '', market: 'mile-12', product: 0 },
-        { emoji: '🧅', image: 'assets/pl-produce-4.jpg', name: 'Onions Bag — 10kg', vendor: 'Grain Masters · Section B', price: '₦3,200', unit: '', market: 'mile-12', product: 3 },
-        { emoji: '🐟', image: 'assets/sm-mile12-2.jpg', name: 'Fresh Catfish — 1kg', vendor: 'Harbour Seafood · Section C', price: '₦3,800', unit: '', market: 'mile-12', product: 6 },
-        { emoji: '🌿', image: 'assets/pl-produce-3.jpg', name: 'Fresh Ugwu Bundle', vendor: 'GreenLeaf Market · Section B', price: '₦800', unit: '', market: 'mile-12', product: 2 },
+        { emoji: '🌶️', image: 'assets/875809458774827357.jpeg', name: 'Red Chili Peppers — 2kg', vendor: 'FreshFarm Direct · Section A', price: '₦2,200', unit: '', market: 'mile-12', product: 0 },
+        { emoji: '🥕', image: 'assets/970736894669637684.jpeg', name: 'Fresh Carrots — 1kg Bunch', vendor: 'FreshFarm Direct · Section A', price: '₦900', unit: '', market: 'mile-12', product: 1 },
+        { emoji: '🧅', image: 'assets/양파.jpeg', name: 'Onions Bag — 10kg', vendor: 'Grain Masters · Section B', price: '₦3,200', unit: '', market: 'mile-12', product: 3 },
+        { emoji: '🥩', image: 'assets/Our grass-fed diced chuck is perfect for your….jpeg', name: 'Fresh Diced Beef (Chuck) — 1kg', vendor: 'FreshFarm Direct · Section A', price: '₦4,200', unit: '', market: 'mile-12', product: 6 },
       ]
     },
 

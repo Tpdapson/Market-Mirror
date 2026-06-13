@@ -18,6 +18,7 @@
 
   // ── resolve product name / price from either featured card or listing item ─
   let productName, productPrice, productUnit, productVendor, productSub;
+  let resolvedItem = null; // the actual listing item clicked (if any)
   const featured = MM_DATA.marketFeatured[marketId];
 
   if (!productP || productP === 'featured') {
@@ -29,13 +30,13 @@
     productSub    = `${(allStalls[0] && allStalls[0].location) || ''} &middot; ${market.name}`;
   } else {
     const idx  = parseInt(productP, 10);
-    const item = listing && listing.items && listing.items[idx];
-    if (item) {
-      productName   = item.name;
-      productPrice  = item.price;
-      productUnit   = 'per ' + item.unit;
-      productVendor = item.vendor.replace(' ✓', '');
-      productSub    = `${item.sub.split('·')[0].trim()} &middot; ${market.name}`;
+    resolvedItem  = (listing && listing.items && listing.items[idx]) || null;
+    if (resolvedItem) {
+      productName   = resolvedItem.name;
+      productPrice  = resolvedItem.price;
+      productUnit   = 'per ' + resolvedItem.unit;
+      productVendor = resolvedItem.vendor.replace(' ✓', '');
+      productSub    = `${resolvedItem.sub.split('·')[0].trim()} &middot; ${market.name}`;
     } else {
       productName   = featured && featured.large ? featured.large.name : market.name;
       productPrice  = featured && featured.large ? featured.large.price : '₦0';
@@ -66,12 +67,13 @@
   // ── hero ──────────────────────────────────────────────────────────────────
   set('pd-badge', details.badge);
 
-  // Main product image
-  if (details.image) {
+  // Main product image — use clicked item's image first, then fall back to detail default
+  const mainImage = (resolvedItem && resolvedItem.image) || details.image;
+  if (mainImage) {
     const mainImgEl = document.getElementById('pd-main-emoji');
     if (mainImgEl) {
       const img = document.createElement('img');
-      img.src = details.image;
+      img.src = mainImage;
       img.alt = productName;
       img.className = 'ph-main-actual-img';
       mainImgEl.replaceWith(img);
@@ -80,27 +82,15 @@
     set('pd-main-emoji', details.emoji);
   }
 
-  // Thumbnail strip
-  if (details.thumbImages) {
-    const thumbEls = document.querySelectorAll('.ph-thumb');
-    details.thumbImages.forEach((src, i) => {
-      if (thumbEls[i]) {
-        thumbEls[i].innerHTML = `<img src="${src}" alt="thumb ${i+1}" class="ph-thumb-actual-img" />`;
-        thumbEls[i].addEventListener('click', () => {
-          const mainImg = document.querySelector('.ph-main-actual-img');
-          if (mainImg) mainImg.src = src;
-          thumbEls.forEach(t => t.classList.remove('active'));
-          thumbEls[i].classList.add('active');
-        });
-      }
-    });
-  }
-
   set('pd-vendor-avatar', details.emoji);
   set('pd-vendor-name', `${productVendor} <span class="verified">&#10003; Verified</span>`);
   set('pd-vendor-sub', productSub);
   set('pd-title', productName);
-  set('pd-subtitle', details.subtitle);
+  // Use item sub as subtitle when no per-product rich detail exists
+  const subtitle = (detailKey && MM_DATA.productDetails[detailKey])
+    ? details.subtitle
+    : (resolvedItem ? resolvedItem.sub : details.subtitle);
+  set('pd-subtitle', subtitle);
   set('pd-stars', stars(stall.rating || 4.8));
   set('pd-score', stall.rating || '4.8');
   set('pd-reviews-count', `(${(stall.reviews || 0).toLocaleString()} reviews)`);

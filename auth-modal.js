@@ -601,6 +601,92 @@
     });
   }
 
+  // ── Markets nav dropdown ───────────────────────────────────────
+  function injectMarketsDropdown() {
+    const navLinks = document.querySelector('.nav-links');
+    if (!navLinks) return;
+
+    const mktLi = [...navLinks.querySelectorAll('li')].find(li =>
+      li.querySelector('a')?.textContent.trim() === 'Markets'
+    );
+    if (!mktLi) return;
+
+    const mktLink = mktLi.querySelector('a');
+    mktLi.classList.add('nav-dd-li');
+    mktLink.classList.add('nav-dd-trigger');
+    mktLink.innerHTML = `Markets <i class="ph-bold ph-caret-down nav-dd-caret"></i>`;
+
+    const markets = [
+      { icon: '🧵', label: 'Balogun Market',      sub: 'Fabrics, Fashion & Wholesale',        id: 'balogun'          },
+      { icon: '📺', label: 'Alaba International',  sub: 'Electronics, Gadgets & Furniture',    id: 'alaba'            },
+      { icon: '💻', label: 'Computer Village',     sub: 'Computers, Phones & Accessories',     id: 'computer-village' },
+      { icon: '👗', label: 'Tejuosho Market',      sub: 'Clothing, Shoes & Bags',              id: 'tejuosho'         },
+      { icon: '🥬', label: 'Mile 12 Market',       sub: 'Fresh Produce & Groceries',           id: 'mile-12'          },
+      { icon: '💍', label: 'Trade Fair Complex',   sub: 'Fashion Accessories & Wholesale',     id: 'trade-fair'       },
+      { icon: '📚', label: 'Idumota Market',       sub: 'Stationery, Books & Gifts',           id: 'idumota'          },
+      { icon: '👚', label: 'Oshodi Market',        sub: 'Fashion, Shoes & Streetwear',         id: 'oshodi'           },
+    ];
+
+    const menu = document.createElement('div');
+    menu.className = 'nav-dd-menu';
+    menu.innerHTML = markets.map(m =>
+      `<a href="market-page.html?market=${m.id}" class="nav-dd-item">
+        <span class="nav-dd-icon">${m.icon}</span>
+        <div class="nav-dd-text">
+          <div class="nav-dd-name">${m.label}</div>
+          <div class="nav-dd-sub">${m.sub}</div>
+        </div>
+      </a>`
+    ).join('');
+    mktLi.appendChild(menu);
+  }
+
+  // ── Categories nav dropdown ────────────────────────────────────
+  function injectCategoriesDropdown() {
+    const navLinks = document.querySelector('.nav-links');
+    if (!navLinks) return;
+
+    const catLi = [...navLinks.querySelectorAll('li')].find(li =>
+      li.querySelector('a')?.textContent.trim() === 'Categories'
+    );
+    if (!catLi) return;
+
+    const catLink = catLi.querySelector('a');
+    catLi.classList.add('nav-dd-li');
+    catLink.classList.add('nav-dd-trigger');
+    catLink.href = 'product-listing.html';
+    catLink.innerHTML = `Categories <i class="ph-bold ph-caret-down nav-dd-caret"></i>`;
+
+    const items = [
+      { icon: '📱', label: 'Electronics',       sub: 'Alaba International',  market: 'alaba',            cat: 'electronics' },
+      { icon: '💻', label: 'Computers & Phones', sub: 'Computer Village',     market: 'computer-village', cat: 'computers'   },
+      { icon: '🧵', label: 'Fabrics & Textiles', sub: 'Balogun Market',       market: 'balogun',          cat: 'fabrics'     },
+      { icon: '👗', label: 'Fashion & Clothing', sub: 'Tejuosho Market',      market: 'tejuosho',         cat: 'clothing'    },
+      { icon: '👠', label: 'Shoes & Footwear',   sub: 'Trade Fair Complex',   market: 'trade-fair',       cat: 'shoes'       },
+      { icon: '👜', label: 'Bags & Handbags',    sub: 'Trade Fair Complex',   market: 'trade-fair',       cat: 'bags'        },
+      { icon: '💍', label: 'Jewelry & Watches',  sub: 'Trade Fair Complex',   market: 'trade-fair',       cat: 'jewelry'     },
+      { icon: '💄', label: 'Beauty & Skincare',  sub: 'Trade Fair Complex',   market: 'trade-fair',       cat: 'beauty'      },
+      { icon: '🥬', label: 'Fresh Produce',      sub: 'Mile 12 Market',       market: 'mile-12',          cat: 'produce'     },
+      { icon: '🛒', label: 'Groceries',          sub: 'Mile 12 Market',       market: 'mile-12',          cat: 'groceries'   },
+      { icon: '📚', label: 'Books & Stationery', sub: 'Idumota Market',       market: 'idumota',          cat: 'stationery'  },
+      { icon: '🪑', label: 'Office Furniture',   sub: 'Alaba International',  market: 'alaba',            cat: 'furniture'   },
+    ];
+
+    const menu = document.createElement('div');
+    menu.className = 'nav-dd-menu';
+    menu.innerHTML = items.map(c =>
+      `<a href="product-listing.html?market=${c.market}&category=${c.cat}" class="nav-dd-item">
+        <span class="nav-dd-icon">${c.icon}</span>
+        <div class="nav-dd-text">
+          <div class="nav-dd-name">${c.label}</div>
+          <div class="nav-dd-sub">${c.sub}</div>
+        </div>
+      </a>`
+    ).join('');
+    catLi.appendChild(menu);
+
+  }
+
   // ── Mobile nav injection ───────────────────────────────────────
   function injectMobileNav() {
     const nav = document.querySelector('nav');
@@ -617,8 +703,28 @@
     const existingLinks = nav.querySelector('.nav-links');
     let linksHTML = '';
     if (existingLinks) {
-      existingLinks.querySelectorAll('a').forEach(a => {
-        linksHTML += `<li><a href="${a.getAttribute('href')}">${a.textContent.trim()}</a></li>`;
+      existingLinks.querySelectorAll('li').forEach(li => {
+        const a = li.querySelector('a');
+        if (!a) return;
+        const menu = li.querySelector('.nav-dd-menu');
+        if (menu) {
+          const label = a.textContent.trim();
+          const items = [...menu.querySelectorAll('.nav-dd-item')].map(item => {
+            const icon = item.querySelector('.nav-dd-icon')?.textContent?.trim() || '';
+            const name = item.querySelector('.nav-dd-name')?.textContent?.trim() || '';
+            const sub  = item.querySelector('.nav-dd-sub')?.textContent?.trim() || '';
+            return `<a href="${item.getAttribute('href')}" class="mob-dd-item">
+              <span class="mob-dd-icon">${icon}</span>
+              <div><div class="mob-dd-name">${name}</div><div class="mob-dd-sub">${sub}</div></div>
+            </a>`;
+          }).join('');
+          linksHTML += `<li class="mob-accordion-li">
+            <button class="mob-accordion-btn">${label}<i class="ph-bold ph-caret-down mob-acc-caret"></i></button>
+            <div class="mob-accordion-content">${items}</div>
+          </li>`;
+        } else {
+          linksHTML += `<li><a href="${a.getAttribute('href')}">${a.textContent.trim()}</a></li>`;
+        }
       });
     }
 
@@ -654,6 +760,13 @@
       </div>
     `;
     nav.insertAdjacentElement('afterend', panel);
+
+    // Accordion toggles for Markets / Categories
+    panel.querySelectorAll('.mob-accordion-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.closest('.mob-accordion-li').classList.toggle('open');
+      });
+    });
 
     const signinBtn = panel.querySelector('.mobile-signin-btn');
     if (signinBtn) {
@@ -766,6 +879,8 @@
     // Wire search + sign-in buttons
     wireSearchButtons();
     updateNavForSession();
+    injectMarketsDropdown();
+    injectCategoriesDropdown();
     injectMobileNav();
   }
 
