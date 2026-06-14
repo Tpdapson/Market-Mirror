@@ -133,7 +133,7 @@
           <i class="ph-bold ph-house" style="font-size:15px;"></i>
           Back to Home Page
         </a>
-        <a href="product-listing.html" class="btn-track">
+        <a href="product-listing.html" class="btn-track" id="continue-shopping-btn">
           Continue shopping →
         </a>
       </div>
@@ -215,6 +215,15 @@
       // ── Costs ──────────────────────────────────────────────────
       document.getElementById('cost-subtotal').textContent = '₦' + Number(order.subtotal || 0).toLocaleString();
       document.getElementById('cost-total').textContent    = '₦' + Number(order.total || 350).toLocaleString();
+
+      // ── Continue shopping → return to last visited product/listing page ──────
+      try {
+        var returnUrl = sessionStorage.getItem('mm_return_url');
+        if (returnUrl) {
+          document.getElementById('continue-shopping-btn').href = returnUrl;
+          sessionStorage.removeItem('mm_return_url');
+        }
+      } catch (e) {}
 
     })();
   </script>

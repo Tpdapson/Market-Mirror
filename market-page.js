@@ -97,8 +97,11 @@
             </div>
           </div>
         </a>
-        ${sm.map((s, idx) => `
-        <a href="${detailBase}&product=${idx}" class="prod-card-sm" style="text-decoration:none;color:inherit;cursor:pointer;">
+        ${sm.map((s, idx) => {
+          const smCat = s.category || market.defaultCategory;
+          const smProd = s.product !== undefined ? s.product : idx;
+          return `
+        <a href="product-detail.html?market=${market.id}&category=${smCat}&product=${smProd}" class="prod-card-sm" style="text-decoration:none;color:inherit;cursor:pointer;">
           <div class="pcs-img">
             <img src="${s.image}" alt="${s.name}" class="pcs-photo"/>
           </div>
@@ -111,7 +114,7 @@
               <span class="pcs-badge ${s.badgeClass}">${s.badge}</span>
             </div>
           </div>
-        </a>`).join('')}`;
+        </a>`; }).join('')}`;
     }
   }
 

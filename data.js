@@ -383,7 +383,7 @@ const MM_DATA = {
         price: '₦65,000', unit: 'unit'
       },
       items: [
-        { image: 'assets/Qulomvs Mesh Ergonomic Office Chair with Footrest Home Office Desk Chair with Headrest and Backrest 90-135 Adjustable Computer Executive Desk Chair with Wheels 360 Swivel Task Chair.jpeg', badge: 'Hot', badgeClass: 'badge-hot', name: 'Ergonomic Mesh Chair with Footrest', vendor: 'FurniTech Alaba ✓', sub: 'Block E, Shop 3 · 360° Swivel · Black', rating: 4.8, reviews: 312, price: '₦65,000', unit: 'unit' },
+        { image: 'assets/Qulomvs Mesh Ergonomic Office Chair with Footrest Home Office Desk Chair with Headrest and Backrest 90-135 Adjustable Computer Executive Desk Chair with Wheels 360 Swivel Task Chair.jpeg', badge: 'Hot', badgeClass: 'badge-hot', name: 'Ergonomic Mesh Office Chair with Footrest', vendor: 'FurniTech Alaba ✓', sub: 'Block E, Shop 3 · 360° Swivel · Black', rating: 4.8, reviews: 312, price: '₦65,000', unit: 'unit' },
         { image: 'assets/Boss Table.jpeg', badge: 'Top Seller', badgeClass: 'badge-hot', name: 'Executive Boss Office Table', vendor: 'FurniTech Alaba ✓', sub: 'Block E, Shop 3 · L-Shape · Walnut finish', rating: 4.7, reviews: 156, price: '₦95,000', unit: 'unit' },
         { image: 'assets/_ (9).jpeg', badge: 'New', badgeClass: 'badge-new', name: 'Complete Computer Desk Setup', vendor: 'FurniTech Alaba ✓', sub: 'Block E, Shop 3 · Includes monitor stand & mat', rating: 4.8, reviews: 63, price: '₦45,000', unit: 'unit' },
         { image: 'assets/Smart tv 32.jpeg', badge: '-10%', badgeClass: 'badge-sale', name: 'Office Reception 32" Smart TV', vendor: 'Mega Electronics ✓', sub: 'Block A, Shop 5 · Wall-mount ready', rating: 4.6, reviews: 89, price: '₦85,000', oldPrice: '₦95,000', unit: 'unit' },
@@ -794,8 +794,8 @@ const MM_DATA = {
         price: '₦12,500', unit: 'per set',
       },
       small: [
-        { image: 'assets/663506957634861484.jpeg', vendor: 'LuxeBag Depot', verified: true, name: 'Designer Beige Scarf Tote Bag', sub: 'Hall B · Comes with silk scarf', price: '₦26,000', badge: 'In stock', badgeClass: 'badge-green' },
-        { image: "assets/Women's Patented High Heels Elevate your style….jpeg", vendor: 'Step Queens Footwear', verified: true, name: 'Rose Gold Strappy Stiletto Heels', sub: 'Hall B · Sizes 36–42 · Patent leather', price: '₦19,500', badge: 'Hot item', badgeClass: 'badge-orange' },
+        { image: 'assets/663506957634861484.jpeg', vendor: 'LuxeBag Depot', verified: true, name: 'Designer Beige Scarf Tote Bag', sub: 'Hall B · Comes with silk scarf', price: '₦26,000', badge: 'In stock', badgeClass: 'badge-green', category: 'bags', product: 0 },
+        { image: "assets/Women's Patented High Heels Elevate your style….jpeg", vendor: 'Step Queens Footwear', verified: true, name: 'Rose Gold Strappy Stiletto Heels', sub: 'Hall B · Sizes 36–42 · Patent leather', price: '₦19,500', badge: 'Hot item', badgeClass: 'badge-orange', category: 'shoes', product: 0 },
       ]
     },
     idumota: {

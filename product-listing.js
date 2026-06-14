@@ -65,6 +65,10 @@
 
   const detailBase = `product-detail.html?market=${market.id}&category=${resolvedCat}`;
 
+  function escAttr(s) {
+    return String(s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+  }
+
   function buildItemCard(p, idx) {
     const wid = window.mmWishlistSlug ? mmWishlistSlug(p.name + '-' + p.vendor.replace(/ ✓/g, '')) : '';
     const cleanVendor = p.vendor.replace(/ ✓/g, '');
@@ -74,7 +78,7 @@
     const vstatus = stallInfo ? stallInfo.badge.toLowerCase().replace(/\s+/g, '-') : (p.vendor.includes('✓') ? 'verified' : '');
     return `
     <a href="${detailBase}&product=${idx}" class="product-card"
-      data-name="${p.name.toLowerCase()} ${p.vendor.toLowerCase()}"
+      data-name="${escAttr(p.name.toLowerCase() + ' ' + p.vendor.toLowerCase())}"
       data-rating="${p.rating}"
       data-avail="instock"
       data-vstatus="${vstatus}"
@@ -86,7 +90,7 @@
           ${p.badge ? `<span class="pc-badge ${p.badgeClass}">${p.badge}</span>` : '<span></span>'}
           <button class="pc-wishlist"
             data-wid="${wid}"
-            data-wname="${p.name}"
+            data-wname="${escAttr(p.name)}"
             data-wvendor="${p.vendor.replace(/ ✓/g, '')}"
             data-wprice="${p.price}"
             data-wpricenum="${p.price.replace(/[^\d]/g, '')}"
@@ -115,7 +119,7 @@
             <div class="pc-unit">per ${p.unit}</div>
           </div>
           <button class="pc-add"
-            data-product-name="${p.name}"
+            data-product-name="${escAttr(p.name)}"
             data-product-vendor="${p.vendor.replace(/ ✓/g,'')}"
             data-product-price="${p.price}"
             data-product-pricenum="${p.price.replace(/[^\d]/g,'')}"
@@ -383,6 +387,9 @@
 
   // ── footer ─────────────────────────────────────────────────────────────────
   set('currently-viewing', `${market.name} — ${listing.categoryLabel}`);
+
+  // Remember this listing page so "Continue shopping" on order summary returns here
+  try { sessionStorage.setItem('mm_return_url', location.href); } catch (e) {}
 
 })();
 

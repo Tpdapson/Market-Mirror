@@ -67,8 +67,9 @@
   // ── hero ──────────────────────────────────────────────────────────────────
   set('pd-badge', details.badge);
 
-  // Main product image — use clicked item's image first, then fall back to detail default
-  const mainImage = (resolvedItem && resolvedItem.image) || details.image;
+  // Main product image — use clicked item's image, then featured large image, then detail default
+  const featuredLargeImage = (!productP || productP === 'featured') && featured && featured.large ? featured.large.image : null;
+  const mainImage = (resolvedItem && resolvedItem.image) || featuredLargeImage || details.image;
   if (mainImage) {
     const mainImgEl = document.getElementById('pd-main-emoji');
     if (mainImgEl) {
@@ -190,7 +191,7 @@
   const navVendors = document.getElementById('nav-vendors-link');
   if (navVendors) navVendors.href = `vendors.html?market=${market.id}`;
 
-  // ── add to cart → navigate to cart ────────────────────────────────────────
+  // ── add to cart ────────────────────────────────────────────────────────────
   document.getElementById('pd-add-cart')?.addEventListener('click', function () {
     if (window.MM_CART) {
       MM_CART.add({
@@ -205,9 +206,13 @@
         marketName: market.name
       });
     }
+    const origHTML = this.innerHTML;
     this.textContent = '✓ Added to Cart!';
     this.style.background = '#16A34A';
-    setTimeout(() => { window.location.href = 'cart.html'; }, 900);
+    setTimeout(() => {
+      this.innerHTML = origHTML;
+      this.style.background = '';
+    }, 1500);
   });
 
   // ── buy now → checkout ────────────────────────────────────────────────────
@@ -321,5 +326,8 @@
 
   // ── footer ────────────────────────────────────────────────────────────────
   set('pd-currently-viewing', productName);
+
+  // Remember this product page so "Continue shopping" on order summary returns here
+  try { sessionStorage.setItem('mm_return_url', location.href); } catch (e) {}
 
 })();
