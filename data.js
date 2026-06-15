@@ -24,9 +24,9 @@ const MM_DATA = {
         p1: 'Balogun Market is one of West Africa\'s largest open-air markets, located in the heart of Lagos Island. Renowned for its incredible selection of fabrics — particularly Ankara, Lace, Aso-oke, and imported textiles — it draws buyers from across Nigeria and beyond.',
         p2: 'The market spans dozens of rows and thousands of stalls, each specialising in a specific category. Finding the best deal used to require hours of walking. Market Mirror gives you the entire market in a single, searchable platform.',
         facts: [
-          { num: '100+', title: 'Years of trading history', desc: 'One of Lagos\'s oldest and most storied markets, established in the early twentieth century.' },
+          { num: '100', title: 'Years of trading history', desc: 'One of Lagos\'s oldest and most storied markets, established in the early twentieth century.' },
           { num: '50k', title: 'Daily footfall (physical)', desc: 'On peak days, Balogun draws over 50,000 physical shoppers — now accessible digitally.' },
-          { num: '12+', title: 'Distinct product rows', desc: 'From lace to leather, each row is a specialist zone for specific categories of goods.' }
+          { num: '12k', title: 'Distinct product rows', desc: 'From lace to leather, each row is a specialist zone for specific categories of goods.' }
         ]
       }
     },
@@ -54,7 +54,7 @@ const MM_DATA = {
         p1: 'Alaba International Market is the undisputed electronics capital of West Africa, located in Ojo, Lagos. From the latest smartphones and laptops to heavy domestic appliances and industrial equipment, Alaba stocks virtually every electronic product imaginable.',
         p2: 'The market operates on a wholesale-first model, attracting traders from across Nigeria, Ghana, Benin, and beyond. Market Mirror gives you direct access to Alaba\'s best dealers without the need to haggle in person.',
         facts: [
-          { num: '50+', title: 'Years of electronics trading', desc: 'Established in the 1970s as Lagos\'s primary electronics hub, drawing traders from across West Africa.' },
+          { num: '50', title: 'Years of electronics trading', desc: 'Established in the 1970s as Lagos\'s primary electronics hub, drawing traders from across West Africa.' },
           { num: '870', title: 'Active vendors online', desc: 'Hundreds of verified electronics dealers now available digitally through Market Mirror.' },
           { num: '32k', title: 'Products listed', desc: 'From components to complete systems, Alaba\'s full inventory is now searchable and shoppable online.' }
         ]
@@ -83,7 +83,7 @@ const MM_DATA = {
         p1: 'Computer Village in Ikeja is Nigeria\'s most famous technology market — a dense, vibrant hub where thousands of vendors sell laptops, desktops, smartphones, printers, and every kind of tech accessory. It\'s the go-to destination for tech buyers across Lagos.',
         p2: 'Whether you\'re looking for a new MacBook, an affordable Android phone, or a hard-to-find USB-C cable, Computer Village has it. Market Mirror makes this vast inventory searchable and shippable across Lagos.',
         facts: [
-          { num: '30+', title: 'Years as Lagos tech hub', desc: 'Computer Village has been Ikeja\'s technology heartbeat since the early 1990s.' },
+          { num: '30', title: 'Years as Lagos tech hub', desc: 'Computer Village has been Ikeja\'s technology heartbeat since the early 1990s.' },
           { num: '640', title: 'Verified tech vendors', desc: 'From authorised dealers to specialist repair shops — all now searchable on Market Mirror.' },
           { num: '24k', title: 'Tech products listed', desc: 'Laptops, phones, accessories, and more — all available for delivery across Lagos.' }
         ]
@@ -112,9 +112,9 @@ const MM_DATA = {
         p1: 'Tejuosho Market in Yaba is one of Lagos\'s most beloved fashion destinations. From trendy streetwear and imported shoes to locally crafted bags and children\'s clothing, Tejuosho caters to every style and budget.',
         p2: 'Recently renovated and modernised, Tejuosho is home to hundreds of fashion-forward vendors who keep up with current trends. Market Mirror brings the full Tejuosho catalogue to your fingertips.',
         facts: [
-          { num: '60+', title: 'Years of fashion trading', desc: 'A Yaba landmark since the 1960s, Tejuosho has dressed generations of Lagosians.' },
+          { num: '60', title: 'Years of fashion trading', desc: 'A Yaba landmark since the 1960s, Tejuosho has dressed generations of Lagosians.' },
           { num: '510', title: 'Fashion vendors online', desc: 'Browse hundreds of clothing, shoes, and accessories vendors now on Market Mirror.' },
-          { num: '19k+', title: 'Fashion items listed', desc: 'From kids\' wear to elegant evening gowns — Tejuosho\'s inventory is fully searchable.' }
+          { num: '19k', title: 'Fashion items listed', desc: 'From kids\' wear to elegant evening gowns — Tejuosho\'s inventory is fully searchable.' }
         ]
       }
     },
@@ -143,7 +143,7 @@ const MM_DATA = {
         facts: [
           { num: '5AM', title: 'Opens at the crack of dawn', desc: 'Mile 12 starts trading before sunrise, with the freshest produce arriving from upcountry farms overnight.' },
           { num: '390', title: 'Food vendors online', desc: 'Wholesale and retail food vendors now reachable through Market Mirror for doorstep delivery.' },
-          { num: '1M+', title: 'Meals supplied daily', desc: 'Mile 12 directly supplies ingredients for over a million meals served in Lagos every day.' }
+          { num: '1M', title: 'Meals supplied daily', desc: 'Mile 12 directly supplies ingredients for over a million meals served in Lagos every day.' }
         ]
       }
     },
@@ -170,9 +170,9 @@ const MM_DATA = {
         p1: 'Trade Fair Complex on the Badagry Expressway is Lagos\'s premier destination for wholesale women\'s fashion accessories. From dazzling gold-plated jewellery and luxury-inspired handbags to human hair wigs, body creams, and designer heels — Trade Fair has it all under one expansive roof.',
         p2: 'Hundreds of wholesale vendors supply boutiques, fashion retailers, and individual buyers from across Nigeria and West Africa. Whether you\'re restocking a shop or treating yourself, Trade Fair\'s unbeatable wholesale prices and enormous variety make it the smartest place to buy.',
         facts: [
-          { num: '680+', title: 'Fashion & accessories vendors', desc: 'Jewellery dealers, bag importers, wig specialists, and beauty wholesalers — all in one complex.' },
+          { num: '680', title: 'Fashion & accessories vendors', desc: 'Jewellery dealers, bag importers, wig specialists, and beauty wholesalers — all in one complex.' },
           { num: '31k', title: 'Accessories in stock', desc: 'Gold chains, designer bags, lace wigs, skincare sets, platform heels and more — all available for Lagos delivery.' },
-          { num: '50+', title: 'Years of wholesale trading', desc: 'Trade Fair has been the backbone of Lagos\'s fashion retail supply chain since the 1970s.' }
+          { num: '50', title: 'Years of wholesale trading', desc: 'Trade Fair has been the backbone of Lagos\'s fashion retail supply chain since the 1970s.' }
         ]
       }
     },
@@ -199,7 +199,7 @@ const MM_DATA = {
         p1: 'Idumota Market is one of the oldest markets on Lagos Island, with roots going back over a century. Today it\'s best known for stationery, books, gifts, toys, and school supplies — making it especially popular with parents and students.',
         p2: 'Idumota also hosts vendors dealing in party supplies, electronics accessories, and general household goods. Market Mirror brings its eclectic, affordable inventory online for Lagos-wide delivery.',
         facts: [
-          { num: '100+', title: 'Years on Lagos Island', desc: 'Idumota has been a trading hub since Lagos Island was the commercial heart of colonial Nigeria.' },
+          { num: '100', title: 'Years on Lagos Island', desc: 'Idumota has been a trading hub since Lagos Island was the commercial heart of colonial Nigeria.' },
           { num: '460', title: 'Vendors now online', desc: 'Stationery shops, booksellers, and gift vendors — all discoverable through Market Mirror.' },
           { num: '15k', title: 'Products available', desc: 'From school notebooks to premium gifts — Idumota\'s broad inventory is now fully searchable.' }
         ]
@@ -228,7 +228,7 @@ const MM_DATA = {
         p1: 'Oshodi Market is the beating heart of Lagos Mainland fashion culture. One of the largest and most energetic markets in the city, Oshodi is famous for its wide variety of clothing, shoes, bags, and accessories at highly competitive prices.',
         p2: 'The market\'s proximity to the Oshodi transport hub makes it accessible from every part of Lagos. Market Mirror brings Oshodi\'s buzzing energy and unbeatable prices to your screen — no traffic required.',
         facts: [
-          { num: '50+', title: 'Years as mainland fashion hub', desc: 'Oshodi has clothed Lagos for generations — always ahead of trends and always affordable.' },
+          { num: '50', title: 'Years as mainland fashion hub', desc: 'Oshodi has clothed Lagos for generations — always ahead of trends and always affordable.' },
           { num: '980', title: 'Fashion vendors online', desc: 'Lagos\'s largest fashion vendor network, now shoppable on Market Mirror.' },
           { num: '38k', title: 'Style items listed', desc: 'Fashion, shoes, bags, and accessories — Oshodi\'s full catalogue now accessible online.' }
         ]
